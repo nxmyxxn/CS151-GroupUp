@@ -57,7 +57,11 @@ OOP Concepts to be Used
     - add friend
     - accept/block friend request
     - chat    
-      
+    
+   > **Student/ Co worker who owns the schedule**
+    - Kick member
+    - Add member
+  
       
    > **Administrator**
     - find id/pw
