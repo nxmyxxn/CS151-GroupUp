@@ -5,18 +5,15 @@ GroupSchedule
 - **Team members working on the proposal**:   
 Namyoon Cho, Danilo Makarewycz, Preethi Mohan 
 - **Problem/issue to resolve**  
-  > People face various difficulties in coordinating schedules for meetings, meetups, and other such events, where viewing everyone's schedule in one place is not usually an option and deciding availability is complicated.    
+  > People face various difficulties in coordinating schedules for meetings, meetups, and other such events, where viewing everyone's schedule in one place is not usually an option and deciding availability is complicated. People, mainly students and office workers/coworkers, need a way to ease the process of coordinating schedules and finding available times.   
 
 - **If applicable, briefly survey previous works if any (include references)**  
-  > There are several shared schedule applications like "TimeTree", "GoogleCalendar", "Cozi Family Organizer". But Pros ...
+  >   There are shared schedule applications like "When2meet", "GoogleCalendar". But there are some problems to imporove.  
+    Google Calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner.  
+    When2meet users can share weekly and multi-day views, but cannot share a monthly view. Additionally, users describe availability by available/not available, which leaves less room for personal preference and flexibility.
  
 - **If applicable, describe assumptions / operating environments / intended usage**
-  > **Assumptions**   
-  This application is intended for 
-  **Operating Environments**
-  Web
-  **Intended Usage**
-  Students, Coworkers
+  >  This application is intended for students and coworkers, where the operating environment to be used is a webpage. It is assumed that schedules on this website will only be shared with known or “friended” people; in other words, schedules will not be public.
 
 - **High-level description of your solution which may include (but is not limited to), your plan and approach.  Be as specific as possible.**  
   > Functionality/Features (perhaps different methods or different classes?) - schedule for at most one week (7 days)
