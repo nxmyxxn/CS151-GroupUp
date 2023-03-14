@@ -1,6 +1,6 @@
 GroupSchedule
 -------------
-- **Project title** : GroupSchedule - HELLO!!! (BY Preethi) HI PREETHI ITS DANILO
+- **Project title** : GroupSchedule
 - **Team #4** : Namyoon Cho, Danilo Makarewycz, Preethi Mohan
 - **Team members working on the proposal**:   
 Namyoon Cho, Danilo Makarewycz, Preethi Mohan 
