@@ -12,8 +12,9 @@ Namyoon Cho, Danilo Makarewycz, Preethi Mohan
     - Google Calendar [1]
     - When2meet [2]
   >  **Problems with existing applications**
-      > Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner.
-      > When2meet users can share weekly and multi-day views, but cannot share a monthly view. Additionally, users describe availability by available/not available, which leaves less room for personal preference and flexibility.
+      -  Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner.
+      
+      - When2meet users can share weekly and multi-day views, but cannot share a monthly view. Additionally, users describe availability by available/not available, which leaves less room for personal preference and flexibility.
 
  
 - **Description of assumptions / operating environments / intended usage**
