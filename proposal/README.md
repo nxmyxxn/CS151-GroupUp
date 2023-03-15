@@ -66,3 +66,4 @@ OOP Concepts to be Used
 
 
 - **(Optional) References: must include citations in content using the format [1], [2], etc.**
+  > [1]  When2meet. (n.d.). Retrieved March 12, 2023, from https://www.when2meet.com/ 
