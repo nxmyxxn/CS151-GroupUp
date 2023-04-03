@@ -34,7 +34,7 @@ When interacting with the program, users will be able to make an account and a s
     - write schedule in the calendar
     - add friend
     - accept/block friend request
-    - chat    
+        
     
    > **Student/ Co worker who owns the schedule**
     - Kick member
