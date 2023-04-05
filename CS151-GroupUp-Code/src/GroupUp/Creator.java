@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Creator extends User{
 	
-	private ArrayList<Schedule> ownedSchedules; //hello
+	private ArrayList<Schedule> ownedSchedules; //hi
 
 	/**
 	 * default constructor. No need for a parameterized constructor since a creator should reference the same object as the linked user.
