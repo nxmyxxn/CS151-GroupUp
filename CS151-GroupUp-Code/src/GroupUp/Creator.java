@@ -54,5 +54,10 @@ public class Creator extends User{
 		return focus.addUser(target);
 		
 	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("main method");
+	}
 
 }
