@@ -106,5 +106,19 @@ public class User {
 		return friendList;
 	}
 	
+	/**
+	 * Creates an account for the user, given their name, username, and email.
+	 * 
+	 * @param name 	   user's name
+	 * @param username user's username
+	 * @param email    user's email
+	 * 
+	 */
+	public void createAccount(String name, String username, String email)
+	{
+		this.name = name;
+		this.username = username;
+		this.email = email;
+	}
 	
 }
