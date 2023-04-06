@@ -16,7 +16,7 @@ public class LoginPage extends JFrame{
 	private JButton idpwSearchBtn = new JButton("Find id/password");
 	
 	public LoginPage() {
-		super("LoginPage");
+		super("LoginPage!");
 		this.setContentPane(loginPanel);
 		loginPanel.setBounds(100, 100, 500, 160);
 		loginPanel.setBorder(new EmptyBorder(5,5,5,5));

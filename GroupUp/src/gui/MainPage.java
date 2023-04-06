@@ -36,14 +36,14 @@ public class MainPage extends JPanel{
 		add(calendar);
 		
 		// log in , sign up button
-		JButton logIn = new JButton("Log In");
+		JButton logIn = new JButton("Log In!");
 		logIn.setSize(100,50);
 		logIn.setLocation(500,600);
 		
 		logIn.addActionListener(new LoginBtn());
 		add(logIn);
 		
-		JButton signUp = new JButton("Sign Up");
+		JButton signUp = new JButton("Sign Up!");
 		signUp.setSize(100,50);
 		signUp.setLocation(600,600);
 		

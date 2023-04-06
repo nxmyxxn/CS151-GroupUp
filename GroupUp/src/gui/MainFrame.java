@@ -7,7 +7,7 @@ public class MainFrame extends JFrame {
 		/* constructor */
 		public MainFrame()
 		{
-			setTitle("team4 - GroupUp"); 
+			setTitle("Team4 - GroupUp"); 
 			setSize(1200, 800); // frame size
 			setVisible(true); 
 		}
