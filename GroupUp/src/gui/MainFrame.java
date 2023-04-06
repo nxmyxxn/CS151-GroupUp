@@ -12,7 +12,6 @@ public class MainFrame extends JFrame {
 			setVisible(true); 
 		}
 		
-		/* 메인 */
 		public static void main(String[] args) 
 		{
 			MainFrame mf = new MainFrame(); // MainFrame 생성

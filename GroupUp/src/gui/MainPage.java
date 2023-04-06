@@ -139,7 +139,6 @@ public class MainPage extends JPanel{
 			cancle_btn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e)
 				{
-					
 					setVisible(false);
 					ed = null;
 				}

@@ -18,7 +18,7 @@ public class LoginPage extends JFrame{
 	public LoginPage() {
 		super("LoginPage");
 		this.setContentPane(loginPanel);
-		loginPanel.setBounds(100, 100, 522, 164);
+		loginPanel.setBounds(100, 100, 500, 160);
 		loginPanel.setBorder(new EmptyBorder(5,5,5,5));
 		
 		idLabel.setHorizontalAlignment(SwingConstants.CENTER);
