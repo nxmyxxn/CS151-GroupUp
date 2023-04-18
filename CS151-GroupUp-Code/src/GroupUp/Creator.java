@@ -19,6 +19,7 @@ public class Creator extends User{
 	 * @param target the user to be removed
 	 * @param inHere the schedule in which to look for the target
 	 * @return true if a user is successfully kicked, false otherwise
+	 * test
 	 */
 	public boolean kick(User target, Schedule inHere)
 	{
