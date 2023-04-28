@@ -145,7 +145,7 @@ public class InitialWelcomePage extends javax.swing.JFrame {
     private void signupButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                              
         if (evt.getSource() == signupButton1) 
         {
-            //SignupPage.main(null);
+            SignupPage.main(null);
         }
     }                                             
 
