@@ -83,7 +83,7 @@ public class InitialWelcomePage extends javax.swing.JFrame {
         loginButton1.setBorderPainted(false);
         loginButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButton1ActionPerformed(evt);
+            	loginButton1ActionPerformed(evt);
             }
         });
         //changed welcomeLabel addComponent from 700 to 730 to display full text
