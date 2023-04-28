@@ -227,6 +227,81 @@ public class MysqlConn {
 		}
 	}
 	
+	
+	/**
+	 * a method to return the names of all schedules a user is a member of. This includes both ones they own and ones they were invited to 
+	 * @param focus the user whose schedules will be found
+	 * @return scheduleIDs an ArrayList of schedule names
+	 * @throws ClassNotFoundException
+	 */
+	public static ArrayList<String> findJoinedSchedules(User focus) throws ClassNotFoundException
+	{
+		ArrayList<String> schedules = new ArrayList<>();
+		ArrayList<Integer> scheduleIDs = new ArrayList<>();
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			state = sqlConn.createStatement();
+			rs = state.executeQuery("select scheduleID from account_schedule where username = \'" + focus.getUsername() + "\'");
+			while (rs.next())
+				scheduleIDs.add(rs.getInt("scheduleID"));
+			for (int i = 0; i < scheduleIDs.size(); i++)
+			{
+				rs = state.executeQuery("select scheduleName from 7dayschedule where scheduleID = \'" + scheduleIDs.get(i) + "\'");
+				while (rs.next())
+					schedules.add(rs.getString("scheduleName"));
+			}
+	
+			sqlConn.close();
+			
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		return schedules;
+	}
+	
+	/**
+	 * a method which returns the names of the schedules created by a specified user
+	 * @param focus the specified user
+	 * @return an ArrayList of created schedule names
+	 * @throws ClassNotFoundException
+	 */
+	public static ArrayList<String> findCreatedSchedules(User focus) throws ClassNotFoundException
+	{
+		ArrayList<String> schedules = new ArrayList<>();
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			state = sqlConn.createStatement();
+			rs = state.executeQuery("select scheduleName from 7dayschedule where creator = \'" + focus.getUsername() + "\'");
+			while (rs.next())
+				schedules.add(rs.getString("scheduleID"));
+	
+			sqlConn.close();
+			
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		return schedules;
+	}
+	
+	
 	/**
 	 * to test the contents of the database after running the practice method
 	 * @param args

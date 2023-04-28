@@ -28,9 +28,9 @@ public class LoginPage extends javax.swing.JFrame {
         panelGradient1 = new GUI.PanelGradient();
         loginLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
-        firstNameTextField1 = new javax.swing.JTextField();
+        usernameInputTextField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
-        firstNameTextField2 = new javax.swing.JPasswordField();
+        passwordInputTextField = new javax.swing.JPasswordField();
         goButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
 
@@ -49,10 +49,10 @@ public class LoginPage extends javax.swing.JFrame {
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         usernameLabel.setText("Username");
 
-        firstNameTextField1.setFont(new java.awt.Font("Canela", 0, 20)); // NOI18N
-        firstNameTextField1.addActionListener(new java.awt.event.ActionListener() {
+        usernameInputTextField.setFont(new java.awt.Font("Canela", 0, 20)); // NOI18N
+        usernameInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameTextField1ActionPerformed(evt);
+                usernameInputTextFieldActionPerformed(evt);
             }
         });
 
@@ -61,10 +61,10 @@ public class LoginPage extends javax.swing.JFrame {
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         passwordLabel.setText("Password");
 
-        firstNameTextField2.setFont(new java.awt.Font("Canela", 0, 20)); // NOI18N
-        firstNameTextField2.addActionListener(new java.awt.event.ActionListener() {
+        passwordInputTextField.setFont(new java.awt.Font("Canela", 0, 20)); // NOI18N
+        passwordInputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameTextField2ActionPerformed(evt);
+                passwordInputTextFieldActionPerformed(evt);
             }
         });
 
@@ -94,9 +94,9 @@ public class LoginPage extends javax.swing.JFrame {
 
         panelGradient1.setLayer(loginLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradient1.setLayer(usernameLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(firstNameTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient1.setLayer(usernameInputTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradient1.setLayer(passwordLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(firstNameTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient1.setLayer(passwordInputTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradient1.setLayer(goButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradient1.setLayer(exitButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -118,8 +118,8 @@ public class LoginPage extends javax.swing.JFrame {
                                     .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(firstNameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(firstNameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(usernameInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(passwordInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelGradient1Layout.createSequentialGroup()
                                 .addGap(661, 661, 661)
                                 .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -138,12 +138,12 @@ public class LoginPage extends javax.swing.JFrame {
                 .addComponent(loginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstNameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(firstNameTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordInputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(goButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(290, Short.MAX_VALUE))
@@ -163,30 +163,30 @@ public class LoginPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void firstNameTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+    private void usernameInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
     }                                                   
 
-    private void firstNameTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+    private void passwordInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
     }                                                   
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         if (evt.getSource() == goButton) 
         {
-        	String testUsername = firstNameTextField1.getText();			//the user's username input
-    		String testPassword = new String(firstNameTextField2.getPassword());			//the user's password input
+        	String testUsername = usernameInputTextField.getText();			//the user's username input
+    		String testPassword = new String(passwordInputTextField.getPassword());			//the user's password input
     		
     		try 
     		{
 				MysqlConn.findUserPW(testUsername, testPassword);
+				AccountPage.main(null);
 			} 
     		catch (ClassNotFoundException | UserNotFoundException e) 
     		{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            AccountPage.main(null);
         }
     }                                        
 
@@ -234,8 +234,8 @@ public class LoginPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton exitButton;
-    private javax.swing.JTextField firstNameTextField1;
-    private javax.swing.JPasswordField firstNameTextField2;
+    private javax.swing.JTextField usernameInputTextField;
+    private javax.swing.JPasswordField passwordInputTextField;
     private javax.swing.JButton goButton;
     private javax.swing.JLabel loginLabel;
     private GUI.PanelGradient panelGradient1;

@@ -240,6 +240,7 @@ public class SignupPage extends javax.swing.JFrame {
     		   PasswordTester.isValid(pwTest);
     		   User person = new User(fnTest, lnTest, emailTest, pwTest);
    			   MysqlConn.insertUserIntoDB(person);			//insert the user's data into the database
+   			   AccountPage.main(null);
     	   }
     	   catch (LowerCaseCharacterMissing lc)
     	   {
@@ -267,7 +268,6 @@ public class SignupPage extends javax.swing.JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-           AccountPage.main(null);
            
            
        }
