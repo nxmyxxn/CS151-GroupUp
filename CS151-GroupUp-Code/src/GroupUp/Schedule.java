@@ -10,6 +10,8 @@ public class Schedule {
 	protected User creator;
 	private ArrayList<User> members;
 	private String scheduleName;
+	private Integer[][] DaysTimes;
+	private int scheduleID;
 	
 	public Schedule(int daysCount, User maker)
 	{
@@ -18,6 +20,14 @@ public class Schedule {
 		days = new Day[dayAmount];
 		members = new ArrayList<User>();
 	}
+	
+	/**
+	 * default constructor
+	 */
+	public Schedule() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	/**
 	 * method to remove a user from a schedule's array of members
 	 * @param target the User to find and remove
@@ -95,6 +105,39 @@ public class Schedule {
 	 */
 	public void setScheduleName(String scheduleName) {
 		this.scheduleName = scheduleName;
+	}
+
+	public void setDaysTimes(Integer[][] times) {
+		// TODO Auto-generated method stub
+		this.DaysTimes = times;
+	}
+	
+	/**
+	 * returns the integer value held in the schedule at day index a and time index b
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public int getDayTimeValue(int a, int b)
+	{
+		return DaysTimes[a][b];
+	}
+
+	public int getScheduleID() {
+		// TODO Auto-generated method stub
+		return scheduleID;
+	}
+
+	public void setScheduleID(int id) {
+		// TODO Auto-generated method stub
+		this.scheduleID = id;
+		
+	}
+
+	public void setCreator(String name) throws ClassNotFoundException {
+		// TODO Auto-generated method stub
+		this.creator = MysqlConn.getDetails(name);
+		
 	}
 	
 	

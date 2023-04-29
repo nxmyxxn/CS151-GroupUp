@@ -71,10 +71,19 @@ public class CreateSchedule extends javax.swing.JFrame {
                 {"11 PM", null, null, null, null, null, null, null}
             },
             new String [] {
-                "", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-            }
-        ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+                    "", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+                }
+            ) {
+                Class[] types = new Class [] {
+                    java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types [columnIndex];
+                }
+            });
+            jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         jTable1.setIntercellSpacing(new java.awt.Dimension(10, 10));
         jTable1.setRowHeight(40);
         jTable1.setShowGrid(true);

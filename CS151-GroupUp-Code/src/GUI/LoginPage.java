@@ -193,7 +193,7 @@ public class LoginPage extends javax.swing.JFrame {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         if (evt.getSource() == exitButton) 
         {
-            InitialWelcomePage.main(null);
+            this.dispose();
         }
     }                                          
 

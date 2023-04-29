@@ -66,7 +66,7 @@ public class InitialWelcomePage extends javax.swing.JFrame {
         signupButton1.setBackground(new java.awt.Color(13, 165, 165));
         signupButton1.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         signupButton1.setForeground(new java.awt.Color(255, 255, 255));
-        signupButton1.setText("hi");
+        signupButton1.setText("Signup");
         signupButton1.setBorder(null);
         signupButton1.setBorderPainted(false);
         signupButton1.addActionListener(new java.awt.event.ActionListener() {

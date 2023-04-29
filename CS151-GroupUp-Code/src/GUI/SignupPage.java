@@ -1,5 +1,11 @@
 package GUI;
 
+import java.awt.Font;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+
 import GroupUp.MysqlConn;
 import GroupUp.User;
 import exceptions.LowerCaseCharacterMissing;
@@ -245,6 +251,21 @@ public class SignupPage extends javax.swing.JFrame {
     	   catch (LowerCaseCharacterMissing lc)
     	   {
     		   lc.printStackTrace();
+    		   JLabel passwordMessage = new JLabel("Hi My name is error!", SwingConstants.CENTER);
+		        passwordMessage.setFont(new Font("Canela", 1, 30));
+		        passwordMessage.setOpaque(true);
+		        //passwordMessage.setBackground(new Color(159, 204, 229);
+		        //UIManager UI=new UIManager();
+		        //UI.put("OptionPane.background",new ColorUIResource(159, 204, 229));
+		        //UI.put("Panel.background",new ColorUIResource(159, 204, 229));
+		        
+		        //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
+		         JOptionPane.showConfirmDialog(null,
+		                passwordMessage,
+		                null, 
+		                JOptionPane.DEFAULT_OPTION,
+		                JOptionPane.ERROR_MESSAGE);
+
     	   } 
     	   catch (Minimum8CharactersRequired e) {
 			// TODO Auto-generated catch block
@@ -279,8 +300,8 @@ public class SignupPage extends javax.swing.JFrame {
 
    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
       if (evt.getSource() == exitButton) 
-       {
-           InitialWelcomePage.main(null);
+      {
+    	  this.dispose();
        }
    }                                          
 

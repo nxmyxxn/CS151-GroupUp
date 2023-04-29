@@ -135,6 +135,14 @@ public class User {
 		this.email = email;
 		this.password = pw;
 	}
+	public void setUsername(String un) {
+		// TODO Auto-generated method stub
+		this.username = un;
+	}
+	public void setPassword(String pw) {
+		// TODO Auto-generated method stub
+		this.password = pw;
+	}
 	
 	
 	
