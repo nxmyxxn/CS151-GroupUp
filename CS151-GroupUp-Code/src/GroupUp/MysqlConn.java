@@ -27,7 +27,7 @@ import exceptions.UserNotFoundException;
 public class MysqlConn {
 	
 	private static final String myUsername = "root";			//default username for mySQL
-	private static final String myPassword = "%Msq23Cs151*";			//programmers are prompted to create a password along with the 'root' username
+	private static final String myPassword = "Screw_HW-4";			//programmers are prompted to create a password along with the 'root' username
 	private static final String database = "jdbc:mysql://localhost:3306/151projconnector";
 	private String allQuery = "select * from account";			//SQL code to retrieve all values from every column in table user
 	private static String userInsert = "insert into account values (";			//incomplete SQL code to insert a user's details into the table
@@ -313,25 +313,25 @@ public class MysqlConn {
 	 * @param scheduleID
 	 * @return
 	 */
-	public Schedule getPersonalSchedule(User person, int scheduleID)
+	public Schedule getPersonalSchedule(User person, Schedule personal)
 	{
 		Integer[][] result = new Integer[7][24];
 		Schedule returnedSchedule = new Schedule();
-		int counter = 0;
 		
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
+			for (int i = 1; i < 8; i++)
 			{
-				for (int i = 1; i < 8; i++)
+				rs = state.executeQuery("select * from personal_day where scheduleID = \'" + personal.getScheduleID() + "\' and dayNum = \'" + i + "\'");
+				while (rs.next())
 				{
-					rs = state.executeQuery("select * from personal_day where scheduleID = \'" + scheduleID + "\' and dayNum = \'" + i + "\'");
-					while (rs.next())
+					for (int counter = 0; counter < 24; counter++)
 					{
 						result[i - 1][counter] = rs.getInt(timeDefinitions[counter]);
-						counter ++;
+						//System.out.println(result[i - 1][counter]);
 					}
 				}
 			}
@@ -348,14 +348,17 @@ public class MysqlConn {
 			e.printStackTrace();
 		}
 		
+		
 		returnedSchedule.setDaysTimes(result);
 		return returnedSchedule;
 	}
 	
-	public void updatePersonalSchedule(Schedule schedule)
+	public void updatePersonalSchedule(User updater, Schedule schedule)
 	{
 		int counter = 0;
 		int dayNum = 1;
+		
+		
 		
 		try
 		{
@@ -401,7 +404,7 @@ public class MysqlConn {
 			
 			insertSchedule += "\'" + myname.getUsername() + "\', \'" + scheduleName + "\')";
 			state.execute(insertSchedule);
-			
+		
 			rs = state.executeQuery("select scheduleID, creator, scheduleName from 7dayschedule where scheduleName = " + scheduleName);
 			while (rs.next())
 			{
@@ -409,6 +412,7 @@ public class MysqlConn {
 				initialized.setCreator(rs.getString("creator"));
 				initialized.setScheduleName(rs.getString("scheduleName"));
 			}
+			state.execute("insert into account_schedule values(\'" + myname.getUsername() + "\', \'" + initialized.getScheduleID() + "\')");
 			
 			sqlConn.close();
 		}
@@ -443,5 +447,8 @@ public class MysqlConn {
 		System.out.println(retrievedPW.toString());
 		//attempt1.deleteSchedule("2022Meet", "MrMister");
 		//attempt1.insertUserIntoDB(new User("Prthi", "Mohan", "prmo", "prthi.mohan@sjsu.edu", "passord"));
+		Schedule scheduleTester = attempt1.getPersonalSchedule(new User("Danilo", "Maka", "email", "asswprd"), 423491);
+		scheduleTester.printScheduleValues();
+		
 	}
 }

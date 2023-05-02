@@ -48,7 +48,7 @@ public class SignupPage extends javax.swing.JFrame {
        passwordLabel = new javax.swing.JLabel();
        exitButton = new javax.swing.JButton();
        emailTextField = new javax.swing.JTextField();
-       passwordTextField = new javax.swing.JTextField();
+       passwordTextField = new javax.swing.JPasswordField();
        lastNameTextField = new javax.swing.JTextField();
 
        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -239,7 +239,7 @@ public class SignupPage extends javax.swing.JFrame {
     	   String fnTest = firstNameTextField.getText();
     	   String lnTest = lastNameTextField.getText();
     	   String emailTest = emailTextField.getText();
-    	   String pwTest = passwordTextField.getText();
+    	   String pwTest = new String(passwordTextField.getPassword());
     	   
     	   try
     	   {
@@ -363,7 +363,7 @@ public class SignupPage extends javax.swing.JFrame {
    private javax.swing.JTextField lastNameTextField;
    private GUI.PanelGradient panelGradient1;
    private javax.swing.JLabel passwordLabel;
-   private javax.swing.JTextField passwordTextField;
+   private javax.swing.JPasswordField passwordTextField;
    private javax.swing.JLabel signupLabel;
    // End of variables declaration                   
 }

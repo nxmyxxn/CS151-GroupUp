@@ -19,6 +19,7 @@ public class Schedule {
 		creator = maker;
 		days = new Day[dayAmount];
 		members = new ArrayList<User>();
+		DaysTimes = new Integer[7][24];
 	}
 	
 	/**
@@ -26,6 +27,8 @@ public class Schedule {
 	 */
 	public Schedule() {
 		// TODO Auto-generated constructor stub
+		members = new ArrayList<User>();
+		DaysTimes = new Integer[7][24];
 	}
 	
 	/**
@@ -138,6 +141,19 @@ public class Schedule {
 		// TODO Auto-generated method stub
 		this.creator = MysqlConn.getDetails(name);
 		
+	}
+	
+	public void printScheduleValues()
+	{
+		int col;
+		
+		for (int i = 0; DaysTimes.length > i; i++) {
+            for (int j = 0; DaysTimes[0].length > j; j++) 
+            {
+                col = DaysTimes[i][j];
+                System.out.println("Row " + i + ":  Col " + j + ": " + col);
+            }
+		}
 	}
 	
 	
