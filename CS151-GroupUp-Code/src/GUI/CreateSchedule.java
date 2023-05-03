@@ -11,6 +11,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.table.JTableHeader;
 
+import GroupUp.Schedule;
+
 /**
  *
  * @author preethi
@@ -423,21 +425,32 @@ public class CreateSchedule extends javax.swing.JFrame {
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private Schedule saveButtonActionPerformed(java.awt.event.ActionEvent evt) {        
+    	
+    	Schedule input = new Schedule();
+    	Integer[][] result = new Integer[7][24];
+    	
        if (evt.getSource() == saveButton) 
        {
            numOfTimesPressed++;
             System.out.println(numOfTimesPressed + " Time Pressed");
             for (int i = 0; createYourScheduleJTable.getRowCount() > i; i++) {
-                for (int j = 0; createYourScheduleJTable.getColumnCount() > j; j++) 
+                for (int j = 1; createYourScheduleJTable.getColumnCount() > j; j++) 
                 {
-                    Object col = createYourScheduleJTable.getValueAt(i, j); 
+                    Boolean col = (Boolean) createYourScheduleJTable.getValueAt(i, j);
+                    if (col)
+                    	result[j - 1][i] = 1;
+                    else
+                    	result[j - 1][i] = 0;
                     System.out.println("Row " + i + ":  Col " + j + ": " + col);
                 }
                    
             }
-            System.out.println();
+            System.out.println(result);
+            input.setDaysTimes(result);
+            
        }
+       return input;
     }                                          
 
     private void scheduleNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
