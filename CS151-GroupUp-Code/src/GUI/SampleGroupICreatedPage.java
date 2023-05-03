@@ -5,19 +5,21 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
  * @author preethi
  */
-public class AccountPage extends javax.swing.JFrame {
+public class SampleGroupICreatedPage extends javax.swing.JFrame {
 
     /**
-     * Creates new form AccountPage
+     * Creates new form SampleGroupICreatedPage
      */
-    public AccountPage() {
+    public SampleGroupICreatedPage() {
         initComponents();
     }
 
@@ -37,15 +39,48 @@ public class AccountPage extends javax.swing.JFrame {
         accountLabel = new javax.swing.JLabel();
         schedulesLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
-        AccountPageTitleLabel = new javax.swing.JLabel();
-        usernameLabel = new javax.swing.JLabel();
-        firstNameLabel = new javax.swing.JLabel();
-        userUsernameLabel = new javax.swing.JLabel();
-        userFirstNameLabel = new javax.swing.JLabel();
-        lastNameLabel = new javax.swing.JLabel();
-        userLastNameLabel = new javax.swing.JLabel();
-        emailLabel = new javax.swing.JLabel();
-        userEmailLabel = new javax.swing.JLabel();
+        GroupICreatedPageTitle = new javax.swing.JLabel();
+        GroupICreatedPageTitle1 = new javax.swing.JLabel();
+        deleteUserLabel = new javax.swing.JLabel();
+        deleteUserTextField = new javax.swing.JTextField();
+        addUserScheduleLabel = new javax.swing.JLabel();
+        addUserScheduleTextField = new javax.swing.JTextField();
+        deleteUserButton = new javax.swing.JButton();
+        addUserButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        scheduleForGroupICreatedJTable = new javax.swing.JTable();
+        addUserLabel = new javax.swing.JLabel();
+        addUserTextField = new javax.swing.JTextField();
+        arrayForDisplayingGroupScheduleTable = new Object [][] {
+            {"12 AM", null, null, null, null, null, null, null},
+            {"1 AM", null, null, null, null, null, null, null},
+            {"2 AM", null, null, null, null, null, null, null},
+            {"3 AM", null, null, null, null, null, null, null},
+            {"4 AM", null, null, null, null, null, null, null},
+            {"5 AM", null, null, null, null, null, null, null},
+            {"6 AM", null, null, null, null, null, null, null},
+            {"7 AM", null, null, null, null, null, null, null},
+            {"8 AM", null, null, null, null, null, null, null},
+            {"9 AM", null, null, null, null, null, null, null},
+            {"10 AM", null, null, null, null, null, null, null},
+            {"11 AM", null, null, null, null, null, null, null},
+            {"12 PM", null, null, null, null, null, null, null},
+            {"1 PM", null, null, null, null, null, null, null},
+            {"2 PM", null, null, null, null, null, null, null},
+            {"3 PM", null, null, null, null, null, null, null},
+            {"4 PM", null, null, null, null, null, null, null},
+            {"5 PM", null, null, null, null, null, null, null},
+            {"6 PM", null, null, null, null, null, null, null},
+            {"7 PM", null, null, null, null, null, null, null},
+            {"8 PM", null, null, null, null, null, null, null},
+            {"9 PM", null, null, null, null, null, null, null},
+            {"10 PM", null, null, null, null, null, null, null},
+            {"11 PM", null, null, null, null, null, null, null}
+        };
+        
+        arrayForGroupScheduleTableColumnTitles = new String [] {
+                "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,50 +205,113 @@ public class AccountPage extends javax.swing.JFrame {
         panelGradient1.add(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
 
-        AccountPageTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        AccountPageTitleLabel.setText("My Account");
-        panelGradient1.add(AccountPageTitleLabel);
-        AccountPageTitleLabel.setBounds(630, 40, 400, 100);
+        GroupICreatedPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        GroupICreatedPageTitle.setText("Group Name");
+        panelGradient1.add(GroupICreatedPageTitle);
+        GroupICreatedPageTitle.setBounds(290, 30, 800, 100);
 
-        usernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        usernameLabel.setText("Username:");
-        panelGradient1.add(usernameLabel);
-        usernameLabel.setBounds(300, 470, 230, 60);
+        GroupICreatedPageTitle1.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        GroupICreatedPageTitle1.setText("Group Name");
+        panelGradient1.add(GroupICreatedPageTitle1);
+        GroupICreatedPageTitle1.setBounds(290, 30, 800, 100);
 
-        firstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        firstNameLabel.setText("First Name:");
-        panelGradient1.add(firstNameLabel);
-        firstNameLabel.setBounds(300, 170, 230, 60);
+        deleteUserLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
+        deleteUserLabel.setText("Delete user:");
+        panelGradient1.add(deleteUserLabel);
+        deleteUserLabel.setBounds(470, 290, 230, 60);
 
-        userUsernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userUsernameLabel.setText("my Username");
-        panelGradient1.add(userUsernameLabel);
-        userUsernameLabel.setBounds(530, 470, 580, 60);
+        deleteUserTextField.setFont(new java.awt.Font("Canela", 0, 18)); // NOI18N
+        deleteUserTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteUserTextFieldActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(deleteUserTextField);
+        deleteUserTextField.setBounds(700, 300, 270, 50);
 
-        userFirstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userFirstNameLabel.setText("my First Name");
-        panelGradient1.add(userFirstNameLabel);
-        userFirstNameLabel.setBounds(530, 170, 580, 60);
+        addUserScheduleLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
+        addUserScheduleLabel.setText("Add user's schedule:");
+        panelGradient1.add(addUserScheduleLabel);
+        addUserScheduleLabel.setBounds(320, 220, 380, 60);
 
-        lastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        lastNameLabel.setText("Last Name:");
-        panelGradient1.add(lastNameLabel);
-        lastNameLabel.setBounds(300, 270, 230, 60);
+        addUserScheduleTextField.setFont(new java.awt.Font("Canela", 0, 18)); // NOI18N
+        addUserScheduleTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserScheduleTextFieldActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(addUserScheduleTextField);
+        addUserScheduleTextField.setBounds(700, 230, 270, 50);
 
-        userLastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userLastNameLabel.setText("my Last Name");
-        panelGradient1.add(userLastNameLabel);
-        userLastNameLabel.setBounds(530, 270, 580, 60);
+        deleteUserButton.setBackground(new java.awt.Color(13, 165, 165));
+        deleteUserButton.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
+        deleteUserButton.setText("Delete");
+        deleteUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteUserButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(deleteUserButton);
+        deleteUserButton.setBounds(1000, 300, 110, 50);
 
-        emailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        emailLabel.setText("Email:");
-        panelGradient1.add(emailLabel);
-        emailLabel.setBounds(300, 370, 230, 60);
+        addUserButton.setBackground(new java.awt.Color(13, 165, 165));
+        addUserButton.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
+        addUserButton.setText("Add");
+        addUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(addUserButton);
+        addUserButton.setBounds(1000, 200, 110, 50);
 
-        userEmailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userEmailLabel.setText("my Email");
-        panelGradient1.add(userEmailLabel);
-        userEmailLabel.setBounds(530, 370, 580, 60);
+        scheduleForGroupICreatedJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
+        JTableHeader tableHeader = scheduleForGroupICreatedJTable.getTableHeader();
+        Font headerFont = new Font("Canela", 1, 17);
+        tableHeader.setFont(headerFont);
+        scheduleForGroupICreatedJTable.setFont(new java.awt.Font("Canela", 1, 17));
+        scheduleForGroupICreatedJTable.setModel(new javax.swing.table.DefaultTableModel(
+        		arrayForDisplayingGroupScheduleTable, arrayForGroupScheduleTableColumnTitles
+            
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scheduleForGroupICreatedJTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        scheduleForGroupICreatedJTable.setRowHeight(40);
+        scheduleForGroupICreatedJTable.setSelectionBackground(new java.awt.Color(0, 204, 204));
+        scheduleForGroupICreatedJTable.setShowGrid(true);
+        scheduleForGroupICreatedJTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(scheduleForGroupICreatedJTable);
+
+        panelGradient1.add(jScrollPane1);
+        jScrollPane1.setBounds(300, 400, 1090, 370);
+
+        addUserLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
+        addUserLabel.setText("Add user:");
+        panelGradient1.add(addUserLabel);
+        addUserLabel.setBounds(510, 150, 190, 60);
+
+        addUserTextField.setFont(new java.awt.Font("Canela", 0, 18)); // NOI18N
+        addUserTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserTextFieldActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(addUserTextField);
+        addUserTextField.setBounds(700, 160, 270, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -284,7 +382,7 @@ public class AccountPage extends javax.swing.JFrame {
     }                                        
 
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        //testClicked.main(null);
+       // testClicked.main(null);
     }                                         
 
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
@@ -375,6 +473,26 @@ public class AccountPage extends javax.swing.JFrame {
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
 
+    private void deleteUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        // TODO add your handling code here:
+    }                                                   
+
+    private void addUserScheduleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                         
+        // TODO add your handling code here:
+    }                                                        
+
+    private void deleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    }                                                
+
+    private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void addUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    }                                                
+
     /**
      * @param args the command line arguments
      */
@@ -392,40 +510,45 @@ public class AccountPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupICreatedPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupICreatedPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupICreatedPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupICreatedPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountPage().setVisible(true);
+                new SampleGroupICreatedPage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JLabel AccountPageTitleLabel;
+    private javax.swing.JLabel GroupICreatedPageTitle;
+    private javax.swing.JLabel GroupICreatedPageTitle1;
     private javax.swing.JLabel accountLabel;
-    private javax.swing.JLabel emailLabel;
-    private javax.swing.JLabel firstNameLabel;
+    private javax.swing.JButton addUserButton;
+    private javax.swing.JLabel addUserLabel;
+    private javax.swing.JLabel addUserScheduleLabel;
+    private javax.swing.JTextField addUserScheduleTextField;
+    private javax.swing.JTextField addUserTextField;
+    private javax.swing.JButton deleteUserButton;
+    private javax.swing.JLabel deleteUserLabel;
+    private javax.swing.JTextField deleteUserTextField;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
-    private javax.swing.JLabel lastNameLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutLabel;
     private GUI.PanelGradient panelGradient1;
     private GUI.PanelGradient panelGradientForNavigationPanel;
+    private javax.swing.JTable scheduleForGroupICreatedJTable;
     private javax.swing.JLabel schedulesLabel;
-    private javax.swing.JLabel userEmailLabel;
-    private javax.swing.JLabel userFirstNameLabel;
-    private javax.swing.JLabel userLastNameLabel;
-    private javax.swing.JLabel userUsernameLabel;
-    private javax.swing.JLabel usernameLabel;
+    private Object[][] arrayForDisplayingGroupScheduleTable;
+    private String[] arrayForGroupScheduleTableColumnTitles;
     // End of variables declaration                   
 }
