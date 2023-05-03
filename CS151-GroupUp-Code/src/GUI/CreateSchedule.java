@@ -402,7 +402,7 @@ public class CreateSchedule extends javax.swing.JFrame {
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {        
+    private Schedule saveButtonActionPerformed(java.awt.event.ActionEvent evt) {        
     	
     	Schedule input = new Schedule();
     	Integer[][] result = new Integer[7][24];
@@ -424,7 +424,10 @@ public class CreateSchedule extends javax.swing.JFrame {
                    
             }
             System.out.println(result);
+            input.setDaysTimes(result);
+            
        }
+       return input;
     }                                          
 
     /**

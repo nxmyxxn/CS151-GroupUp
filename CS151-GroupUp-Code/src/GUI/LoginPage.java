@@ -1,6 +1,7 @@
 package GUI;
 
 import GroupUp.MysqlConn;
+import GroupUp.User;
 import exceptions.UserNotFoundException;
 
 /**
@@ -8,6 +9,8 @@ import exceptions.UserNotFoundException;
  * @author preethi
  */
 public class LoginPage extends javax.swing.JFrame {
+	
+	
 
     /**
      * Creates new form LoginPage
@@ -184,8 +187,8 @@ public class LoginPage extends javax.swing.JFrame {
 			} 
     		catch (ClassNotFoundException | UserNotFoundException e) 
     		{
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				ErrorPopup.makePopup(e.getMessage());
 			}
         }
     }                                        
