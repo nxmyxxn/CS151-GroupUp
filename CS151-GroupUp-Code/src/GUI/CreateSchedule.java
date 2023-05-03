@@ -1,3 +1,8 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+
 package GUI;
 
 import java.awt.Color;
@@ -35,8 +40,40 @@ public class CreateSchedule extends javax.swing.JFrame {
         logoutLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         createYourScheduleJTable = new javax.swing.JTable();
-        createYourScheduleTitleLabel = new javax.swing.JLabel();
+        scheduleNameLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
+        createYourScheduleTitleLabel = new javax.swing.JLabel();
+        scheduleNameTextField = new javax.swing.JTextField();
+        arrayForDisplayingScheduleTable = new Object [][] {
+            {"12 AM", false, false, false, false, false, false, false},
+            {"1 AM", false, false, false, false, false, false, false},
+            {"2 AM", false, false, false, false, false, false, false},
+            {"3 AM", false, false, false, false, false, false, false},
+            {"4 AM", false, false, false, false, false, false, false},
+            {"5 AM", false, false, false, false, false, false, false},
+            {"6 AM", false, false, false, false, false, false, false},
+            {"7 AM", false, false, false, false, false, false, false},
+            {"8 AM", false, false, false, false, false, false, false},
+            {"9 AM", false, false, false, false, false, false, false},
+            {"10 AM", false, false, false, false, false, false, false},
+            {"11 AM", false, false, false, false, false, false, false},
+            {"12 PM", false, false, false, false, false, false, false},
+            {"1 PM", false, false, false, false, false, false, false},
+            {"2 PM", false, false, false, false, false, false, false},
+            {"3 PM", false, false, false, false, false, false, false},
+            {"4 PM", false, false, false, false, false, false, false},
+            {"5 PM", false, false, false, false, false, false, false},
+            {"6 PM", false, false, false, false, false, false, false},
+            {"7 PM", false, false, false, false, false, false, false},
+            {"8 PM", false, false, false, false, false, false, false},
+            {"9 PM", false, false, false, false, false, false, false},
+            {"10 PM", false, false, false, false, false, false, false},
+            {"11 PM", false, false, false, false, false, false, false}
+        };
+        
+        arrayForScheduleTableColumnTitles = new String [] {
+                "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,36 +204,8 @@ public class CreateSchedule extends javax.swing.JFrame {
         tableHeader.setFont(headerFont);
         createYourScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17));
         createYourScheduleJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"12 AM", false, false, false, false, false, false, false},
-                {"1 AM", false, false, false, false, false, false, false},
-                {"2 AM", false, false, false, false, false, false, false},
-                {"3 AM", false, false, false, false, false, false, false},
-                {"4 AM", false, false, false, false, false, false, false},
-                {"5 AM", false, false, false, false, false, false, false},
-                {"6 AM", false, false, false, false, false, false, false},
-                {"7 AM", false, false, false, false, false, false, false},
-                {"8 AM", false, false, false, false, false, false, false},
-                {"9 AM", false, false, false, false, false, false, false},
-                {"10 AM", false, false, false, false, false, false, false},
-                {"11 AM", false, false, false, false, false, false, false},
-                {"12 PM", false, false, false, false, false, false, false},
-                {"1 PM", false, false, false, false, false, false, false},
-                {"2 PM", false, false, false, false, false, false, false},
-                {"3 PM", false, false, false, false, false, false, false},
-                {"4 PM", false, false, false, false, false, false, false},
-                {"5 PM", false, false, false, false, false, false, false},
-                {"6 PM", false, false, false, false, false, false, false},
-                {"7 PM", false, false, false, false, false, false, false},
-                {"8 PM", false, false, false, false, false, false, false},
-                {"9 PM", false, false, false, false, false, false, false},
-                {"10 PM", false, false, false, false, false, false, false},
-                {"11 PM", false, false, false, false, false, false, false}
-            },
-            new String [] {
-                "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-            }
-        ) {
+        		arrayForDisplayingScheduleTable, arrayForScheduleTableColumnTitles
+            ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
@@ -220,12 +229,12 @@ public class CreateSchedule extends javax.swing.JFrame {
         jScrollPane1.setViewportView(createYourScheduleJTable);
 
         panelGradient1.add(jScrollPane1);
-        jScrollPane1.setBounds(300, 160, 1060, 460);
+        jScrollPane1.setBounds(300, 230, 1060, 460);
 
-        createYourScheduleTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        createYourScheduleTitleLabel.setText("Create Your Schedule");
-        panelGradient1.add(createYourScheduleTitleLabel);
-        createYourScheduleTitleLabel.setBounds(490, 50, 740, 70);
+        scheduleNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
+        scheduleNameLabel.setText("Schedule Name:");
+        panelGradient1.add(scheduleNameLabel);
+        scheduleNameLabel.setBounds(300, 150, 300, 60);
 
         saveButton.setBackground(new java.awt.Color(13, 165, 165));
         saveButton.setFont(new java.awt.Font("Canela", 0, 40)); // NOI18N
@@ -236,7 +245,21 @@ public class CreateSchedule extends javax.swing.JFrame {
             }
         });
         panelGradient1.add(saveButton);
-        saveButton.setBounds(760, 650, 130, 70);
+        saveButton.setBounds(760, 710, 130, 70);
+
+        createYourScheduleTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        createYourScheduleTitleLabel.setText("Create Your Schedule");
+        panelGradient1.add(createYourScheduleTitleLabel);
+        createYourScheduleTitleLabel.setBounds(490, 50, 740, 70);
+
+        scheduleNameTextField.setFont(new java.awt.Font("Canela", 0, 18)); // NOI18N
+        scheduleNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduleNameTextFieldActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(scheduleNameTextField);
+        scheduleNameTextField.setBounds(600, 160, 270, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,7 +276,7 @@ public class CreateSchedule extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
-       // testClicked.main(null);
+        //testClicked.main(null);
     }                                      
 
     private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
@@ -417,6 +440,10 @@ public class CreateSchedule extends javax.swing.JFrame {
        }
     }                                          
 
+    private void scheduleNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        // TODO add your handling code here:
+    }                                                     
+
     /**
      * @param args the command line arguments
      */
@@ -463,7 +490,11 @@ public class CreateSchedule extends javax.swing.JFrame {
     private GUI.PanelGradient panelGradient1;
     private GUI.PanelGradient panelGradientForNavigationPanel;
     private javax.swing.JButton saveButton;
+    private javax.swing.JLabel scheduleNameLabel;
+    private javax.swing.JTextField scheduleNameTextField;
     private javax.swing.JLabel schedulesLabel;
+    private Object[][] arrayForDisplayingScheduleTable;
+    private String[] arrayForScheduleTableColumnTitles;
     // End of variables declaration                   
     private int numOfTimesPressed = 0;
 }

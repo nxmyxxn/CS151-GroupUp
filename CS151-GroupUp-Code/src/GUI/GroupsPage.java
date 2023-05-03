@@ -5,8 +5,21 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.text.AttributedString;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.ListCellRenderer;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -38,6 +51,11 @@ public class GroupsPage extends javax.swing.JFrame {
         accountLabel = new javax.swing.JLabel();
         schedulesLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
+        GroupsPageTitle = new javax.swing.JLabel();
+        groupsIDidNotCreateComboBox = new javax.swing.JComboBox<>();
+        groupsIDidNotCreateLabel = new javax.swing.JLabel();
+        groupsICreatedLabel = new javax.swing.JLabel();
+        groupsICreatedComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -175,6 +193,98 @@ public class GroupsPage extends javax.swing.JFrame {
         panelGradient1.add(jPanel1);
         jPanel1.setBounds(0, 0, 250, 830);
 
+        GroupsPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        GroupsPageTitle.setText("Groups");
+        panelGradient1.add(GroupsPageTitle);
+        GroupsPageTitle.setBounds(700, 40, 270, 100);
+        
+        //source: http://www.java2s.com/Tutorials/Java/Swing_How_to/JComboBox/Change_the_colour_of_JComboBox_s_selected_Item.htm
+        class TwoDecimalRenderer extends DefaultListCellRenderer {
+      	  private ListCellRenderer defaultRenderer;
+      	  public TwoDecimalRenderer(ListCellRenderer defaultRenderer) {
+      	    this.defaultRenderer = defaultRenderer;
+      	  }
+      	  @Override
+      	  public Component getListCellRendererComponent(JList list, Object value,
+      	      int index, boolean isSelected, boolean cellHasFocus) {
+      	    Component c = defaultRenderer.getListCellRendererComponent(list, value,
+      	        index, isSelected, cellHasFocus);
+      	    if (c instanceof JLabel) {
+      	      if (isSelected) {
+      	        c.setBackground(new Color(159,234,234));
+      	        c.setForeground(Color.black);
+      	      } else {
+      	        c.setBackground(Color.white);
+      	      }
+      	    } else {
+      	      c.setBackground(Color.white);
+      	      c = super.getListCellRendererComponent(list, value, index, isSelected,
+      	          cellHasFocus);
+      	    }
+      	    return c;
+      	  }
+      	}
+        	
+        groupsIDidNotCreateComboBox.setBackground(new java.awt.Color(159, 234, 234));
+        groupsIDidNotCreateComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
+        //groupsIDidNotCreateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+       
+        groupsIDidNotCreateComboBox.addItem("Hi1");
+        groupsIDidNotCreateComboBox.addItem("Hello1");
+        groupsIDidNotCreateComboBox.addItem("Yay1");
+        
+        groupsIDidNotCreateComboBox.setBorder(null);
+        groupsIDidNotCreateComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        
+        groupsIDidNotCreateComboBox.setRenderer(new TwoDecimalRenderer(groupsICreatedComboBox.getRenderer()));
+        
+        groupsIDidNotCreateComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                groupsIDidNotCreateComboBoxItemStateChanged(evt);
+            }
+        });
+        groupsIDidNotCreateComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupsIDidNotCreateComboBoxActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(groupsIDidNotCreateComboBox);
+        groupsIDidNotCreateComboBox.setBounds(850, 310, 300, 50);
+
+        groupsIDidNotCreateLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
+        groupsIDidNotCreateLabel.setText("Groups I Did Not Create:");
+        panelGradient1.add(groupsIDidNotCreateLabel);
+        groupsIDidNotCreateLabel.setBounds(380, 300, 460, 60);
+
+        groupsICreatedLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
+        groupsICreatedLabel.setText("Groups  I Created:");
+        panelGradient1.add(groupsICreatedLabel);
+        groupsICreatedLabel.setBounds(500, 200, 340, 60);
+
+        groupsICreatedComboBox.setBackground(new java.awt.Color(159, 234, 234));
+        groupsICreatedComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
+        //groupsICreatedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        groupsICreatedComboBox.addItem("Hi");
+        groupsICreatedComboBox.addItem("Hello");
+        groupsICreatedComboBox.addItem("Yay");
+        groupsICreatedComboBox.setBorder(null);
+        groupsICreatedComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+      
+        groupsICreatedComboBox.setRenderer(new TwoDecimalRenderer(groupsICreatedComboBox.getRenderer()));
+      
+        groupsICreatedComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                groupsICreatedComboBoxItemStateChanged(evt);
+            }
+        });
+        groupsICreatedComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupsICreatedComboBoxActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(groupsICreatedComboBox);
+        groupsICreatedComboBox.setBounds(850, 210, 300, 50);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -271,7 +381,7 @@ public class GroupsPage extends javax.swing.JFrame {
     }                                         
 
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
-         //testClicked.main(null);
+         
     }                                           
 
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
@@ -297,7 +407,23 @@ public class GroupsPage extends javax.swing.JFrame {
     }                                           
 
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
-         //testClicked.main(null);
+        /*JLabel passwordMessage = new JLabel("Hi My Name is Error!", SwingConstants.CENTER);
+        passwordMessage.setFont(new Font("Canela", 1, 30));
+        passwordMessage.setOpaque(true);
+        passwordMessage.setBackground(new Color(159, 204, 229));
+        
+
+        UIManager UI=new UIManager();
+        UI.put("OptionPane.background",new ColorUIResource(159, 204, 229));
+       UI.put("Panel.background",new ColorUIResource(159, 204, 229));
+        
+        //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
+         JOptionPane.showConfirmDialog(null,
+                passwordMessage,
+                null, 
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.ERROR_MESSAGE);*/
+         
     }                                        
 
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
@@ -321,6 +447,36 @@ public class GroupsPage extends javax.swing.JFrame {
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
+
+    private void groupsIDidNotCreateComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                            
+        // TODO add your handling code here:
+    }                                                           
+
+    private void groupsIDidNotCreateComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                                             
+        if(evt.getStateChange()==java.awt.event.ItemEvent.SELECTED)
+        {
+        	//this is how to get the value of the item that has been selected
+        	String groupSelected = String.valueOf(groupsIDidNotCreateComboBox.getSelectedItem());
+        	//System.out.println(groupSelected);
+        	
+        	CreateSchedule.main(null);
+        }
+    }                                                            
+
+    private void groupsICreatedComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                                        
+    	if(evt.getStateChange()==java.awt.event.ItemEvent.SELECTED)
+        {
+    		//this is how to get the value of the item that has been selected
+        	String groupSelected = String.valueOf(groupsIDidNotCreateComboBox.getSelectedItem());
+        	//System.out.println(groupSelected);
+        	
+    		CreateSchedule.main(null);
+        }
+    }                                                       
+
+    private void groupsICreatedComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+        // TODO add your handling code here:
+    }                                                      
 
     /**
      * @param args the command line arguments
@@ -356,9 +512,14 @@ public class GroupsPage extends javax.swing.JFrame {
             }
         });
     }
-
+//private javax.swing.JOptionPane jOptionPane1;
     // Variables declaration - do not modify                     
+    private javax.swing.JLabel GroupsPageTitle;
     private javax.swing.JLabel accountLabel;
+    private javax.swing.JComboBox<String> groupsICreatedComboBox;
+    private javax.swing.JLabel groupsICreatedLabel;
+    private javax.swing.JComboBox<String> groupsIDidNotCreateComboBox;
+    private javax.swing.JLabel groupsIDidNotCreateLabel;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
     private javax.swing.JPanel jPanel1;
@@ -366,5 +527,7 @@ public class GroupsPage extends javax.swing.JFrame {
     private GUI.PanelGradient panelGradient1;
     private GUI.PanelGradient panelGradientForNavigationPanel;
     private javax.swing.JLabel schedulesLabel;
+    //private String[] theStringArray;
+    private ArrayList<String> theStringList;
     // End of variables declaration                   
 }
