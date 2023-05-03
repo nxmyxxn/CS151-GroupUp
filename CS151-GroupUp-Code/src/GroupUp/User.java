@@ -13,10 +13,12 @@ public class User {
 	private Schedule[] ownedSchedules;		//keeping it as a list in case we want to set a maximum number of owned schedules
 	private ArrayList<User> friendList;
 	
+	public static User instance;
+	
 	/**
 	 * default constructor
 	 */
-	public User()
+	private User()
 	{
 		
 	}
@@ -26,10 +28,11 @@ public class User {
 	 * @param username
 	 * @param email
 	 */
-	public User(String fname, String lname, String email, String password)		//havent added icon yet
+	private User(String fname, String lname, String username, String email, String password)		//havent added icon yet
 	{
 		this.firstName = fname;
 		this.lastName = lname;
+		this.username = username;
 		this.email = email;
 		this.password = password;
 		ownedSchedules = new Schedule[10];
@@ -120,30 +123,33 @@ public class User {
 	}
 	
 	/**
-	 * Creates an account for the user, given their first and last name, password, and email.
+	 * Creates an instance for the user upon signup or login, given their first and last name, username, password, and email.
 	 * 
-	 * @param fname 	user's name
-	 * @param lname     user's username
+	 * @param fname 	user's first name
+	 * @param lname     user's last name
+	 * @param username  user's username
 	 * @param email     user's email
 	 * @param pw 		user's password
 	 * 
 	 */
-	public void createAccount(String fname, String lname, String email, String pw)
+	public static User getInstance(String fname, String lname, String username, String email, String password)
 	{
-		this.firstName = fname;
-		this.firstName = lname;
-		this.email = email;
-		this.password = pw;
-	}
-	public void setUsername(String un) {
-		// TODO Auto-generated method stub
-		this.username = un;
-	}
-	public void setPassword(String pw) {
-		// TODO Auto-generated method stub
-		this.password = pw;
+		if (instance == null)
+			instance = new User(fname, lname, username, email, password);
+		return instance;
 	}
 	
+	
+	/**
+	 * default getInstance for the instance singleton
+	 * @return the class's instance
+	 */
+	public static User getInstance()
+	{
+		if (instance == null)
+			instance = new User();
+		return instance;
+	}
 	
 	
 }

@@ -6,5 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/dmaka/OneDrive/Desktop/CS 151/151 Hw/151_Hw4/HW4_DaniloMakarewycz/Additional_Resources/ConnectorJ_For_Reference_Libraries/mysql-connector-j-8.0.32.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

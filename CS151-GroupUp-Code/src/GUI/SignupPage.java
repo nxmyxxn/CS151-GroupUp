@@ -21,7 +21,8 @@ import exceptions.UserAlreadyExistsException;
 * @author preethi
 */
 public class SignupPage extends javax.swing.JFrame {
-
+	
+	
    /**
     * Creates new form SignupPage
     */
@@ -48,7 +49,7 @@ public class SignupPage extends javax.swing.JFrame {
        passwordLabel = new javax.swing.JLabel();
        exitButton = new javax.swing.JButton();
        emailTextField = new javax.swing.JTextField();
-       passwordTextField = new javax.swing.JTextField();
+       passwordTextField = new javax.swing.JPasswordField();
        lastNameTextField = new javax.swing.JTextField();
 
        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -238,58 +239,25 @@ public class SignupPage extends javax.swing.JFrame {
     	   //following added by Danilo
     	   String fnTest = firstNameTextField.getText();
     	   String lnTest = lastNameTextField.getText();
+    	   String unTest = usenameTextField.getText();
     	   String emailTest = emailTextField.getText();
-    	   String pwTest = passwordTextField.getText();
+    	   String pwTest = new String(passwordTextField.getPassword());
     	   
     	   try
     	   {
     		   PasswordTester.isValid(pwTest);
-    		   User person = new User(fnTest, lnTest, emailTest, pwTest);
-   			   MysqlConn.insertUserIntoDB(person);			//insert the user's data into the database
+    		   User.getInstance(fnTest, lnTest, unTest, emailTest, pwTest);
+   			   MysqlConn.insertUserIntoDB(User.instance);			//insert the user's data into the database
    			   AccountPage.main(null);
+   			   
     	   }
-    	   catch (LowerCaseCharacterMissing lc)
+    	   catch (LowerCaseCharacterMissing | Minimum8CharactersRequired | NumberCharacterMissing | SpecialCharacterMissing | UpperCaseCharacterMissing | ClassNotFoundException | UserAlreadyExistsException e)
     	   {
-    		   lc.printStackTrace();
-    		   JLabel passwordMessage = new JLabel("Hi My name is error!", SwingConstants.CENTER);
-		        passwordMessage.setFont(new Font("Canela", 1, 30));
-		        passwordMessage.setOpaque(true);
-		        //passwordMessage.setBackground(new Color(159, 204, 229);
-		        //UIManager UI=new UIManager();
-		        //UI.put("OptionPane.background",new ColorUIResource(159, 204, 229));
-		        //UI.put("Panel.background",new ColorUIResource(159, 204, 229));
-		        
-		        //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
-		         JOptionPane.showConfirmDialog(null,
-		                passwordMessage,
-		                null, 
-		                JOptionPane.DEFAULT_OPTION,
-		                JOptionPane.ERROR_MESSAGE);
+    		   e.printStackTrace();
+    		   ErrorPopup.makePopup(e.getMessage());
 
     	   } 
-    	   catch (Minimum8CharactersRequired e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		   } 
-    	   catch (NumberCharacterMissing e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-    	   } 
-    	   catch (SpecialCharacterMissing e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-    	   } 
-    	   catch (UpperCaseCharacterMissing e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UserAlreadyExistsException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-           
+    	    
            
        }
    }                                        
@@ -363,7 +331,7 @@ public class SignupPage extends javax.swing.JFrame {
    private javax.swing.JTextField lastNameTextField;
    private GUI.PanelGradient panelGradient1;
    private javax.swing.JLabel passwordLabel;
-   private javax.swing.JTextField passwordTextField;
+   private javax.swing.JPasswordField passwordTextField;
    private javax.swing.JLabel signupLabel;
    // End of variables declaration                   
 }
