@@ -30,7 +30,6 @@ GroupSchedule
     - report
       - wrote the case diagram
       - updated the specifics of the problem statement, existing applications, descriptions, and functionality.
-      - updated the class diagram to better represent the msot recent code.
   + Preethi  
     - code
       - all main gui pages such as login/signup/dashboard/schedule.
@@ -47,7 +46,7 @@ GroupSchedule
 - **Previous works**  
   > **Already existing websites**
     - Google Calendar [1]
-    - When2meet [2]
+    - When2meet [2]</br></br>
     
   >  **Problems with existing applications**
       -  Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner. When2meet users can share weekly and multi-day views, but is not appealing to the eye and users cannot easily access their information nor other scheudles.
@@ -67,16 +66,17 @@ GroupSchedule
     - create account
     - log in/ log out
     - create schedule
-    - write schedule in the calendar
+    - write schedule in the calendar</br></br>
         
      > **Student/ Co worker who owns the schedule**
     - Add member
+    - Delete member
 
 - **Solution**  
   When users create groups and display their free time on the calendar, they can see the free time in common, making it easier to make appointments or share schedules with each other.
 
 - **Steps to run the code**
-  1. Signup : It is possible only by entering a password that meets the conditions based on the exception code written. 
+  1. Welcome page : There are signup and login buttons. If you have account you can login, if not you can sign up for a new member.
   2.  Login : Log in with the information that is registered as a member.
   3.  Create Own Schedule : On the Home page there is Schedules button. If you click that button, you can make there own schedules.
       Check the checkboxs in the calendar when you are free.
@@ -86,14 +86,11 @@ GroupSchedule
 
 - **Snapshot of the running program**
   ![initialWelcomePage](https://user-images.githubusercontent.com/72899436/236298065-8675a9aa-d959-4b65-a372-43dc861b1d68.PNG)
-  
-
-  
-  <img width="1435" alt="Screen Shot 2023-05-04 at 2 06 12 PM" src="https://user-images.githubusercontent.com/72899436/236335126-a94b3f30-f7c2-411e-87cd-a7697af4f807.png">
-  <img width="1440" alt="Screen Shot 2023-05-04 at 2 17 24 PM" src="https://user-images.githubusercontent.com/72899436/236335229-5a53bc76-e7fe-4fd2-b19b-165f69802943.png">
-<img width="1438" alt="Screen Shot 2023-05-04 at 2 11 14 PM" src="https://user-images.githubusercontent.com/72899436/236335223-9ef1993c-c9b1-4f8f-a2b2-b3e447b62261.png">
+  <img width="1438" alt="Screen Shot 2023-05-04 at 2 11 14 PM" src="https://user-images.githubusercontent.com/72899436/236335223-9ef1993c-c9b1-4f8f-a2b2-b3e447b62261.png">
 <img width="1439" alt="Screen Shot 2023-05-04 at 2 14 20 PM" src="https://user-images.githubusercontent.com/72899436/236335224-070354d0-16e5-4ca9-8d7f-ae7c842ae1fd.png">
+  <img width="1435" alt="Screen Shot 2023-05-04 at 2 06 12 PM" src="https://user-images.githubusercontent.com/72899436/236335126-a94b3f30-f7c2-411e-87cd-a7697af4f807.png">
 <img width="1440" alt="Screen Shot 2023-05-04 at 2 16 29 PM" src="https://user-images.githubusercontent.com/72899436/236335227-35a94695-e1dd-442a-b2c9-f30d6e9a5c72.png">
+<img width="1440" alt="Screen Shot 2023-05-04 at 2 17 24 PM" src="https://user-images.githubusercontent.com/72899436/236335229-5a53bc76-e7fe-4fd2-b19b-165f69802943.png">
 
 - **References**
   > - [1] https://calendar.google.com/ 
