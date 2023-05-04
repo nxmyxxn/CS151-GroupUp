@@ -47,13 +47,13 @@ public class InitialWelcomePage extends javax.swing.JFrame {
         panelGradient1.setColorSecundario(new java.awt.Color(13, 165, 165));
 
         welcomeLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        welcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        welcomeLabel.setForeground(new java.awt.Color(0, 0, 0));
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeLabel.setText("Welcome to GroupUp");
 
         exitButton.setBackground(new java.awt.Color(13, 165, 165));
         exitButton.setFont(new java.awt.Font("Canela", 1, 60)); // NOI18N
-        exitButton.setForeground(new java.awt.Color(255, 255, 255));
+        exitButton.setForeground(new java.awt.Color(0, 0, 0));
         exitButton.setText("X");
         exitButton.setBorder(null);
         exitButton.setBorderPainted(false);
@@ -65,7 +65,7 @@ public class InitialWelcomePage extends javax.swing.JFrame {
 
         signupButton1.setBackground(new java.awt.Color(13, 165, 165));
         signupButton1.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
-        signupButton1.setForeground(new java.awt.Color(255, 255, 255));
+        signupButton1.setForeground(new java.awt.Color(0, 0, 0));
         signupButton1.setText("Signup");
         signupButton1.setBorder(null);
         signupButton1.setBorderPainted(false);
@@ -77,7 +77,7 @@ public class InitialWelcomePage extends javax.swing.JFrame {
 
         loginButton1.setBackground(new java.awt.Color(13, 165, 165));
         loginButton1.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
-        loginButton1.setForeground(new java.awt.Color(255, 255, 255));
+        loginButton1.setForeground(new java.awt.Color(0, 0, 0));
         loginButton1.setText("Login");
         loginButton1.setBorder(null);
         loginButton1.setBorderPainted(false);

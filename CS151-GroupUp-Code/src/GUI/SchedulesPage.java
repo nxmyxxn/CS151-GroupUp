@@ -14,18 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import GroupUp.MysqlConn;
-import GroupUp.Schedule;
-import GroupUp.User;
-
 /**
  *
  * @author preethi
  */
 public class SchedulesPage extends javax.swing.JFrame {
 
-	
-	ArrayList<Schedule> allPersonalSchedules = new ArrayList<>();
     /**
      * Creates new form SchedulesPage
      */
@@ -51,6 +45,7 @@ public class SchedulesPage extends javax.swing.JFrame {
         logoutLabel = new javax.swing.JLabel();
         SchedulesPageTitleLabel = new javax.swing.JLabel();
         mySchedulesComboBox = new javax.swing.JComboBox<>();
+        createScheduleButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -207,21 +202,16 @@ public class SchedulesPage extends javax.swing.JFrame {
       	  }
       	}
         
+
         mySchedulesComboBox.setBackground(new java.awt.Color(159, 234, 234));
         mySchedulesComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
         //mySchedulesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        allPersonalSchedules.addAll(MysqlConn.getPersonalSchedules());
-        for (int i = 0; i < allPersonalSchedules.size(); i++)
-        {
-        	mySchedulesComboBox.addItem(allPersonalSchedules.get(i).getScheduleName());
-        }
+        mySchedulesComboBox.setBorder(null);
+        mySchedulesComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        
         //mySchedulesComboBox.addItem("mySchedule1");
         //mySchedulesComboBox.addItem("mySchedule2");
         //mySchedulesComboBox.addItem("mySchedule3");
-        
-        
-        mySchedulesComboBox.setBorder(null);
-        mySchedulesComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         
         mySchedulesComboBox.setRenderer(new TwoDecimalRenderer(mySchedulesComboBox.getRenderer()));
         
@@ -236,7 +226,18 @@ public class SchedulesPage extends javax.swing.JFrame {
             }
         });
         panelGradient1.add(mySchedulesComboBox);
-        mySchedulesComboBox.setBounds(570, 220, 470, 100);
+        mySchedulesComboBox.setBounds(580, 430, 460, 100);
+
+        createScheduleButton.setBackground(new java.awt.Color(13, 165, 165));
+        createScheduleButton.setFont(new java.awt.Font("Canela", 1, 48)); // NOI18N
+        createScheduleButton.setText("Create Schedule");
+        createScheduleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createScheduleButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(createScheduleButton);
+        createScheduleButton.setBounds(580, 260, 460, 110);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,7 +254,7 @@ public class SchedulesPage extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
-       // testClicked.main(null);
+        //testClicked.main(null);
     }                                      
 
     private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
@@ -307,7 +308,7 @@ public class SchedulesPage extends javax.swing.JFrame {
     }                                        
 
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-       // testClicked.main(null);
+        //testClicked.main(null);
     }                                         
 
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
@@ -333,7 +334,7 @@ public class SchedulesPage extends javax.swing.JFrame {
     }                                         
 
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
-       // testClicked.main(null);
+        //testClicked.main(null);
     }                                           
 
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
@@ -374,9 +375,6 @@ public class SchedulesPage extends javax.swing.JFrame {
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
-    	this.dispose();
-    	User.nullifyInstance();
-    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                        
 
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
@@ -402,32 +400,17 @@ public class SchedulesPage extends javax.swing.JFrame {
     }                                        
 
     private void mySchedulesComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                                     
-    	if(evt.getStateChange()==java.awt.event.ItemEvent.SELECTED)
-        {
-        	//this is how to get the value of the item that has been selected
-        	//String groupSelected = String.valueOf(mySchedulesComboBox.getSelectedItem());
-        	//System.out.println(groupSelected);
-        	
-        	//CreateSchedule.main(null);
-        }
+        // TODO add your handling code here:
     }                                                    
 
     private void mySchedulesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
-    	String groupSelected = String.valueOf(mySchedulesComboBox.getSelectedItem());
-    	//System.out.println(groupSelected);
-    	
-    	for (int i = 0; i < allPersonalSchedules.size(); i++)
-    	{
-    		if (allPersonalSchedules.get(i).getScheduleName().equals(groupSelected))
-    		{
-    			this.dispose();
-    			Schedule.focusSchedule = allPersonalSchedules.get(i);
-    			SampleMyPersonalSchedulePage.main(null);
-    		}
-    	}
-    	
     }                                                   
+
+    private void createScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        this.dispose();
+        CreateSchedule.main(null);
+    }                                                    
 
     /**
      * @param args the command line arguments
@@ -467,6 +450,7 @@ public class SchedulesPage extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JLabel SchedulesPageTitleLabel;
     private javax.swing.JLabel accountLabel;
+    private javax.swing.JButton createScheduleButton;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
     private javax.swing.JLabel logoutLabel;

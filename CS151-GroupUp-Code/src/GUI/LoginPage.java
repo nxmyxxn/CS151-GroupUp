@@ -43,12 +43,12 @@ public class LoginPage extends javax.swing.JFrame {
         panelGradient1.setColorSecundario(new java.awt.Color(13, 165, 165));
 
         loginLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        loginLabel.setForeground(new java.awt.Color(255, 255, 255));
+        loginLabel.setForeground(new java.awt.Color(0, 0, 0));
         loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginLabel.setText("Login");
 
         usernameLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
-        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        usernameLabel.setForeground(new java.awt.Color(0, 0, 0));
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         usernameLabel.setText("Username");
 
@@ -60,7 +60,7 @@ public class LoginPage extends javax.swing.JFrame {
         });
 
         passwordLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
-        passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
+        passwordLabel.setForeground(new java.awt.Color(0, 0, 0));
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         passwordLabel.setText("Password");
 
@@ -73,7 +73,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         goButton.setBackground(new java.awt.Color(13, 165, 165));
         goButton.setFont(new java.awt.Font("Canela", 1, 60)); // NOI18N
-        goButton.setForeground(new java.awt.Color(255, 255, 255));
+        goButton.setForeground(new java.awt.Color(0, 0, 0));
         goButton.setText("Go");
         goButton.setBorder(null);
         goButton.setBorderPainted(false);
@@ -85,7 +85,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         exitButton.setBackground(new java.awt.Color(13, 165, 165));
         exitButton.setFont(new java.awt.Font("Canela", 1, 60)); // NOI18N
-        exitButton.setForeground(new java.awt.Color(255, 255, 255));
+        exitButton.setForeground(new java.awt.Color(0, 0, 0));
         exitButton.setText("X");
         exitButton.setBorder(null);
         exitButton.setBorderPainted(false);
