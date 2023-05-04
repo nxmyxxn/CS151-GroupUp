@@ -5,9 +5,9 @@ GroupSchedule
 - **Project title** : Group Up
 - **Team #4** : Namyoon Cho, Danilo Makarewycz, Preethi Mohan
 - **Proposal Contributions**:   
-  Namyoon made an idea of pfoject, wrote Operations for each user and formatted the README file. </br>
-  Danilo wrote High-level description of solution, Functionality, Previous works. </br>
-  Preethi Mohan wrote Problems/issue to resolve, Description of assumptions / operating environments / intended usage. </br>
+  Namyoon made an idea of pfoject, wrote Operations for each user and formatted the README file.
+  Danilo wrote High-level description of solution, Functionality, Previous works.
+  Preethi Mohan wrote Problems/issue to resolve, Description of assumptions / operating environments / intended usage.
   
 - **Code and Report Contributions**:  
   + Namyoon
@@ -18,7 +18,7 @@ GroupSchedule
       -updated diagrams
       -formatted the report into GitHub
   + Danilo
-    - code
+    -code
       -Day/Schedule/User/ErrorPopup/MysqlConn classes and all the exception classes, handled database and execptions.
       -Designed and normalized database in MySQL.
       -Wrote the MYsqlConn class which contains methods to insert, delete, and query information permanently stored in the database.
@@ -29,6 +29,7 @@ GroupSchedule
       -Edited the base personal schedule display made by Preethi to dislay time inputs previously saved by a user.
     - report
       -wrote the case diagram
+      -updated the specifics of the problem statement, existing applications, descriptions, and functionality.
   + Preethi  
     - code
       -all main gui pages such as login/signup/dashboard/schedule.
@@ -45,10 +46,10 @@ GroupSchedule
 - **Previous works**  
   > **Already existing websites**
     - Google Calendar [1]
-    - When2meet [2]</br></br>
+    - When2meet [2]
     
   >  **Problems with existing applications**
-     - Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner. When2meet users can share weekly and multi-day views, but is not appealing to the eye and users cannot easily access their information nor other scheudles.
+      -  Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner. When2meet users can share weekly and multi-day views, but is not appealing to the eye and users cannot easily access their information nor other scheudles.
 
  
 - **Description of assumptions / operating environments / intended usage**
@@ -58,32 +59,29 @@ GroupSchedule
   [Link to UML diagrams](https://github.com/nxmyxxn/CS151-GroupUp/tree/preethiBranch2/diagrams#uml-diagram)
 
 - **Functionality**
-  > This application will allow users to view and edit both personal and group schedules in one place. It will allow users to create their own group schedules with other users, where people will be allowed to describe their availability on the selected days on a scale from “no availability” to “completely free.” This will grant users better customization options and can involve users’ flexibility.  An automated group schedule created by the application itself will also exist. Users who utilize this feature will not have to spend extra time looking at schedules and planning available times; available times will be automatically mapped out for a group, increasing time efficiency in terms of scheduling. Additionally, this application will allow users to make both weekly schedules for meetups that are intended to be weekly occurrences and monthly schedules to plan monthly occurrences, major events, and/or inconsistent events.  
+  > This application will allow users to create schedules, edit personal schedules, and view group schedules in one place. Creating a personal schedule will involve a user going to a schedule creation page and checking boxes on a table representing their availabilities over a week. Later, the user can view created personal schedules. Creating a group schedule will involve initializing the schedule name and adding user personal schedules. Before adding any users, the group schedule will only show the numerical availability scores from their own schedule. Any users added will add to the availability scores at the corresponding times and days. Added users can also view these schedules, but do not have the option to add users. In addition, on other panels users can see their account information and all panels have a button to log out, which will bring the user back to the initial welcome page. 
 
 - **Operations for each user**  
   > **Student/ Co-workers**  
     - create account
     - log in/ log out
-    - make timetable
-    - write schedule in the calendar</br></br>
+    - create schedule
+    - write schedule in the calendar
         
-   > **Student/ Co worker who owns the schedule**
+     > **Student/ Co worker who owns the schedule**
     - Add member
-    - Delete member
 
 - **Solution**  
   When users create groups and display their free time on the calendar, they can see the free time in common, making it easier to make appointments or share schedules with each other.
 
 - **Steps to run the code**
-  1. Welcome page : You can see Signup button and Login Button. If you have your account you can login if not you can sign up. 
-  2.  Signup : It is possible only by entering a password that meets the conditions based on the exception code written. 
-  3.  Login : Log in with the information that is registered as a member.
-  4.  Create Own Schedule : On the Home page there is Schedules button. If you click that button, you can make there own schedules.
+  1. Signup : It is possible only by entering a password that meets the conditions based on the exception code written. 
+  2.  Login : Log in with the information that is registered as a member.
+  3.  Create Own Schedule : On the Home page there is Schedules button. If you click that button, you can make there own schedules.
       Check the checkboxs in the calendar when you are free.
   4.  Create Group : On the Home page there is Create Group button. If you click that button, you can make their own group and see each other's schedules. 
   5.  Check the free time on the calendar : You can just check the check boxed and click the save button.
   6.  Check the common free time of your freinds or group users.
-  7.  Logout : On the Home page there is Logout button. If you click that button, you can see the welcomepage again.
 
 - **Snapshot of the running program**
   ![initialWelcomePage](https://user-images.githubusercontent.com/72899436/236298065-8675a9aa-d959-4b65-a372-43dc861b1d68.PNG)
