@@ -5,9 +5,9 @@ GroupSchedule
 - **Project title** : Group Up
 - **Team #4** : Namyoon Cho, Danilo Makarewycz, Preethi Mohan
 - **Proposal Contributions**:   
-  Namyoon made an idea of pfoject, wrote Operations for each user and formatted the README file.
-  Danilo wrote High-level description of solution, Functionality, Previous works.
-  Preethi Mohan wrote Problems/issue to resolve, Description of assumptions / operating environments / intended usage.
+  Namyoon made an idea of pfoject, wrote Operations for each user and formatted the README file. </br>
+  Danilo wrote High-level description of solution, Functionality, Previous works. </br>
+  Preethi Mohan wrote Problems/issue to resolve, Description of assumptions / operating environments / intended usage. </br>
   
 - **Code and Report Contributions**:  
   + Namyoon
@@ -18,7 +18,7 @@ GroupSchedule
       -updated diagrams
       -formatted the report into GitHub
   + Danilo
-    -code
+    - code
       -Day/Schedule/User/ErrorPopup/MysqlConn classes and all the exception classes, handled database and execptions.
       -Designed and normalized database in MySQL.
       -Wrote the MYsqlConn class which contains methods to insert, delete, and query information permanently stored in the database.
@@ -45,10 +45,10 @@ GroupSchedule
 - **Previous works**  
   > **Already existing websites**
     - Google Calendar [1]
-    - When2meet [2]
+    - When2meet [2]</br></br>
     
   >  **Problems with existing applications**
-      -  Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner. When2meet users can share weekly and multi-day views, but is not appealing to the eye and users cannot easily access their information nor other scheudles.
+     - Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner. When2meet users can share weekly and multi-day views, but is not appealing to the eye and users cannot easily access their information nor other scheudles.
 
  
 - **Description of assumptions / operating environments / intended usage**
@@ -65,22 +65,25 @@ GroupSchedule
     - create account
     - log in/ log out
     - make timetable
-    - write schedule in the calendar
+    - write schedule in the calendar</br></br>
         
-     > **Student/ Co worker who owns the schedule**
+   > **Student/ Co worker who owns the schedule**
     - Add member
+    - Delete member
 
 - **Solution**  
   When users create groups and display their free time on the calendar, they can see the free time in common, making it easier to make appointments or share schedules with each other.
 
 - **Steps to run the code**
-  1. Signup : It is possible only by entering a password that meets the conditions based on the exception code written. 
-  2.  Login : Log in with the information that is registered as a member.
-  3.  Create Own Schedule : On the Home page there is Schedules button. If you click that button, you can make there own schedules.
+  1. Welcome page : You can see Signup button and Login Button. If you have your account you can login if not you can sign up. 
+  2.  Signup : It is possible only by entering a password that meets the conditions based on the exception code written. 
+  3.  Login : Log in with the information that is registered as a member.
+  4.  Create Own Schedule : On the Home page there is Schedules button. If you click that button, you can make there own schedules.
       Check the checkboxs in the calendar when you are free.
   4.  Create Group : On the Home page there is Create Group button. If you click that button, you can make their own group and see each other's schedules. 
   5.  Check the free time on the calendar : You can just check the check boxed and click the save button.
   6.  Check the common free time of your freinds or group users.
+  7.  Logout : On the Home page there is Logout button. If you click that button, you can see the welcomepage again.
 
 - **Snapshot of the running program**
   ![initialWelcomePage](https://user-images.githubusercontent.com/72899436/236298065-8675a9aa-d959-4b65-a372-43dc861b1d68.PNG)
