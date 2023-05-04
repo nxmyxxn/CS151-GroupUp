@@ -5,19 +5,25 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
 
 /**
  *
  * @author preethi
  */
-public class AccountPage extends javax.swing.JFrame {
+public class SchedulesPage extends javax.swing.JFrame {
 
     /**
-     * Creates new form AccountPage
+     * Creates new form SchedulesPage
      */
-    public AccountPage() {
+    public SchedulesPage() {
         initComponents();
     }
 
@@ -37,15 +43,8 @@ public class AccountPage extends javax.swing.JFrame {
         accountLabel = new javax.swing.JLabel();
         schedulesLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
-        AccountPageTitleLabel = new javax.swing.JLabel();
-        usernameLabel = new javax.swing.JLabel();
-        firstNameLabel = new javax.swing.JLabel();
-        userUsernameLabel = new javax.swing.JLabel();
-        userFirstNameLabel = new javax.swing.JLabel();
-        lastNameLabel = new javax.swing.JLabel();
-        userLastNameLabel = new javax.swing.JLabel();
-        emailLabel = new javax.swing.JLabel();
-        userEmailLabel = new javax.swing.JLabel();
+        SchedulesPageTitleLabel = new javax.swing.JLabel();
+        mySchedulesComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,50 +169,63 @@ public class AccountPage extends javax.swing.JFrame {
         panelGradient1.add(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
 
-        AccountPageTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        AccountPageTitleLabel.setText("My Account");
-        panelGradient1.add(AccountPageTitleLabel);
-        AccountPageTitleLabel.setBounds(630, 40, 400, 100);
-
-        usernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        usernameLabel.setText("Username:");
-        panelGradient1.add(usernameLabel);
-        usernameLabel.setBounds(300, 470, 230, 60);
-
-        firstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        firstNameLabel.setText("First Name:");
-        panelGradient1.add(firstNameLabel);
-        firstNameLabel.setBounds(300, 170, 230, 60);
-
-        userUsernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userUsernameLabel.setText("my Username");
-        panelGradient1.add(userUsernameLabel);
-        userUsernameLabel.setBounds(530, 470, 580, 60);
-
-        userFirstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userFirstNameLabel.setText("my First Name");
-        panelGradient1.add(userFirstNameLabel);
-        userFirstNameLabel.setBounds(530, 170, 580, 60);
-
-        lastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        lastNameLabel.setText("Last Name:");
-        panelGradient1.add(lastNameLabel);
-        lastNameLabel.setBounds(300, 270, 230, 60);
-
-        userLastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userLastNameLabel.setText("my Last Name");
-        panelGradient1.add(userLastNameLabel);
-        userLastNameLabel.setBounds(530, 270, 580, 60);
-
-        emailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        emailLabel.setText("Email:");
-        panelGradient1.add(emailLabel);
-        emailLabel.setBounds(300, 370, 230, 60);
-
-        userEmailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userEmailLabel.setText("my Email");
-        panelGradient1.add(userEmailLabel);
-        userEmailLabel.setBounds(530, 370, 580, 60);
+        SchedulesPageTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        SchedulesPageTitleLabel.setText("My Schedules");
+        panelGradient1.add(SchedulesPageTitleLabel);
+        SchedulesPageTitleLabel.setBounds(590, 40, 440, 100);
+        
+      //source: http://www.java2s.com/Tutorials/Java/Swing_How_to/JComboBox/Change_the_colour_of_JComboBox_s_selected_Item.htm
+        class TwoDecimalRenderer extends DefaultListCellRenderer {
+      	  private ListCellRenderer defaultRenderer;
+      	  public TwoDecimalRenderer(ListCellRenderer defaultRenderer) {
+      	    this.defaultRenderer = defaultRenderer;
+      	  }
+      	  @Override
+      	  public Component getListCellRendererComponent(JList list, Object value,
+      	      int index, boolean isSelected, boolean cellHasFocus) {
+      	    Component c = defaultRenderer.getListCellRendererComponent(list, value,
+      	        index, isSelected, cellHasFocus);
+      	    if (c instanceof JLabel) {
+      	      if (isSelected) {
+      	        c.setBackground(new Color(159,234,234));
+      	        c.setForeground(Color.black);
+      	      } else {
+      	        c.setBackground(Color.white);
+      	      }
+      	    } else {
+      	      c.setBackground(Color.white);
+      	      c = super.getListCellRendererComponent(list, value, index, isSelected,
+      	          cellHasFocus);
+      	    }
+      	    return c;
+      	  }
+      	}
+        
+        mySchedulesComboBox.setBackground(new java.awt.Color(159, 234, 234));
+        mySchedulesComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
+        //mySchedulesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        mySchedulesComboBox.addItem("mySchedule1");
+        mySchedulesComboBox.addItem("mySchedule2");
+        mySchedulesComboBox.addItem("mySchedule3");
+        
+        
+        mySchedulesComboBox.setBorder(null);
+        mySchedulesComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        
+        mySchedulesComboBox.setRenderer(new TwoDecimalRenderer(mySchedulesComboBox.getRenderer()));
+        
+        mySchedulesComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                mySchedulesComboBoxItemStateChanged(evt);
+            }
+        });
+        mySchedulesComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mySchedulesComboBoxActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(mySchedulesComboBox);
+        mySchedulesComboBox.setBounds(570, 220, 470, 100);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,7 +242,7 @@ public class AccountPage extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
-        //testClicked.main(null);
+       // testClicked.main(null);
     }                                      
 
     private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
@@ -284,7 +296,7 @@ public class AccountPage extends javax.swing.JFrame {
     }                                        
 
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        //testClicked.main(null);
+       // testClicked.main(null);
     }                                         
 
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
@@ -310,7 +322,7 @@ public class AccountPage extends javax.swing.JFrame {
     }                                         
 
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
-        //testClicked.main(null);
+       // testClicked.main(null);
     }                                           
 
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
@@ -375,6 +387,21 @@ public class AccountPage extends javax.swing.JFrame {
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
 
+    private void mySchedulesComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                                     
+    	if(evt.getStateChange()==java.awt.event.ItemEvent.SELECTED)
+        {
+        	//this is how to get the value of the item that has been selected
+        	String groupSelected = String.valueOf(mySchedulesComboBox.getSelectedItem());
+        	//System.out.println(groupSelected);
+        	
+        	CreateSchedule.main(null);
+        }
+    }                                                    
+
+    private void mySchedulesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        // TODO add your handling code here:
+    }                                                   
+
     /**
      * @param args the command line arguments
      */
@@ -392,40 +419,34 @@ public class AccountPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SchedulesPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SchedulesPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SchedulesPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SchedulesPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountPage().setVisible(true);
+                new SchedulesPage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JLabel AccountPageTitleLabel;
+    private javax.swing.JLabel SchedulesPageTitleLabel;
     private javax.swing.JLabel accountLabel;
-    private javax.swing.JLabel emailLabel;
-    private javax.swing.JLabel firstNameLabel;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
-    private javax.swing.JLabel lastNameLabel;
     private javax.swing.JLabel logoutLabel;
+    private javax.swing.JComboBox<String> mySchedulesComboBox;
     private GUI.PanelGradient panelGradient1;
     private GUI.PanelGradient panelGradientForNavigationPanel;
     private javax.swing.JLabel schedulesLabel;
-    private javax.swing.JLabel userEmailLabel;
-    private javax.swing.JLabel userFirstNameLabel;
-    private javax.swing.JLabel userLastNameLabel;
-    private javax.swing.JLabel userUsernameLabel;
-    private javax.swing.JLabel usernameLabel;
+    private ArrayList<String> theStringList;
     // End of variables declaration                   
 }

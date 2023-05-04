@@ -5,19 +5,21 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
  * @author preethi
  */
-public class AccountPage extends javax.swing.JFrame {
+public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
 
     /**
-     * Creates new form AccountPage
+     * Creates new form SampleMySchedulePage
      */
-    public AccountPage() {
+    public SampleMyPersonalSchedulePage() {
         initComponents();
     }
 
@@ -37,15 +39,40 @@ public class AccountPage extends javax.swing.JFrame {
         accountLabel = new javax.swing.JLabel();
         schedulesLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
-        AccountPageTitleLabel = new javax.swing.JLabel();
-        usernameLabel = new javax.swing.JLabel();
-        firstNameLabel = new javax.swing.JLabel();
-        userUsernameLabel = new javax.swing.JLabel();
-        userFirstNameLabel = new javax.swing.JLabel();
-        lastNameLabel = new javax.swing.JLabel();
-        userLastNameLabel = new javax.swing.JLabel();
-        emailLabel = new javax.swing.JLabel();
-        userEmailLabel = new javax.swing.JLabel();
+        GroupICreatedPageTitle = new javax.swing.JLabel();
+        saveButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        myScheduleJTable = new javax.swing.JTable();
+        arrayForDisplayingMyPersonalScheduleTable = new Object [][] {
+            {"12 AM", false, false, false, false, false, false, false},
+            {"1 AM", false, false, false, false, false, false, false},
+            {"2 AM", false, false, false, false, false, false, false},
+            {"3 AM", false, false, false, false, false, false, false},
+            {"4 AM", false, false, false, false, false, false, false},
+            {"5 AM", false, false, false, false, false, false, false},
+            {"6 AM", false, false, false, false, false, false, false},
+            {"7 AM", false, false, false, false, false, false, false},
+            {"8 AM", false, false, false, false, false, false, false},
+            {"9 AM", false, false, false, false, false, false, false},
+            {"10 AM", false, false, false, false, false, false, false},
+            {"11 AM", false, false, false, false, false, false, false},
+            {"12 PM", false, false, false, false, false, false, false},
+            {"1 PM", false, false, false, false, false, false, false},
+            {"2 PM", false, false, false, false, false, false, false},
+            {"3 PM", false, false, false, false, false, false, false},
+            {"4 PM", false, false, false, false, false, false, false},
+            {"5 PM", false, false, false, false, false, false, false},
+            {"6 PM", false, false, false, false, false, false, false},
+            {"7 PM", false, false, false, false, false, false, false},
+            {"8 PM", false, false, false, false, false, false, false},
+            {"9 PM", false, false, false, false, false, false, false},
+            {"10 PM", false, false, false, false, false, false, false},
+            {"11 PM", false, false, false, false, false, false, false}
+        };
+        
+        arrayForMyPersonalScheduleTableColumnTitles = new String [] {
+                "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,50 +197,55 @@ public class AccountPage extends javax.swing.JFrame {
         panelGradient1.add(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
 
-        AccountPageTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        AccountPageTitleLabel.setText("My Account");
-        panelGradient1.add(AccountPageTitleLabel);
-        AccountPageTitleLabel.setBounds(630, 40, 400, 100);
+        GroupICreatedPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        GroupICreatedPageTitle.setText("Schedule Name");
+        panelGradient1.add(GroupICreatedPageTitle);
+        GroupICreatedPageTitle.setBounds(300, 30, 800, 100);
 
-        usernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        usernameLabel.setText("Username:");
-        panelGradient1.add(usernameLabel);
-        usernameLabel.setBounds(300, 470, 230, 60);
+        saveButton.setBackground(new java.awt.Color(13, 165, 165));
+        saveButton.setFont(new java.awt.Font("Canela", 0, 40)); // NOI18N
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(saveButton);
+        saveButton.setBounds(760, 710, 130, 70);
 
-        firstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        firstNameLabel.setText("First Name:");
-        panelGradient1.add(firstNameLabel);
-        firstNameLabel.setBounds(300, 170, 230, 60);
+        myScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
+        JTableHeader tableHeader = myScheduleJTable.getTableHeader();
+        Font headerFont = new Font("Canela", 1, 17);
+        tableHeader.setFont(headerFont);
+        myScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17));
+        myScheduleJTable.setModel(new javax.swing.table.DefaultTableModel(
+        		arrayForDisplayingMyPersonalScheduleTable,
+        		arrayForMyPersonalScheduleTableColumnTitles
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true
+            };
 
-        userUsernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userUsernameLabel.setText("my Username");
-        panelGradient1.add(userUsernameLabel);
-        userUsernameLabel.setBounds(530, 470, 580, 60);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        userFirstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userFirstNameLabel.setText("my First Name");
-        panelGradient1.add(userFirstNameLabel);
-        userFirstNameLabel.setBounds(530, 170, 580, 60);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        myScheduleJTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        myScheduleJTable.setRowHeight(40);
+        myScheduleJTable.setSelectionBackground(new java.awt.Color(0, 204, 204));
+        myScheduleJTable.setShowGrid(true);
+        myScheduleJTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(myScheduleJTable);
 
-        lastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        lastNameLabel.setText("Last Name:");
-        panelGradient1.add(lastNameLabel);
-        lastNameLabel.setBounds(300, 270, 230, 60);
-
-        userLastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userLastNameLabel.setText("my Last Name");
-        panelGradient1.add(userLastNameLabel);
-        userLastNameLabel.setBounds(530, 270, 580, 60);
-
-        emailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        emailLabel.setText("Email:");
-        panelGradient1.add(emailLabel);
-        emailLabel.setBounds(300, 370, 230, 60);
-
-        userEmailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userEmailLabel.setText("my Email");
-        panelGradient1.add(userEmailLabel);
-        userEmailLabel.setBounds(530, 370, 580, 60);
+        panelGradient1.add(jScrollPane1);
+        jScrollPane1.setBounds(300, 150, 1080, 540);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -375,6 +407,23 @@ public class AccountPage extends javax.swing.JFrame {
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        if (evt.getSource() == saveButton)
+        {
+            numOfTimesPressed++;
+            System.out.println(numOfTimesPressed + " Time Pressed");
+            for (int i = 0; myScheduleJTable.getRowCount() > i; i++) {
+                for (int j = 0; myScheduleJTable.getColumnCount() > j; j++)
+                {
+                    Object col = myScheduleJTable.getValueAt(i, j);
+                    System.out.println("Row " + i + ":  Col " + j + ": " + col);
+                }
+
+            }
+            System.out.println();
+        }
+    }                                          
+
     /**
      * @param args the command line arguments
      */
@@ -392,40 +441,38 @@ public class AccountPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleMyPersonalSchedulePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleMyPersonalSchedulePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleMyPersonalSchedulePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleMyPersonalSchedulePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountPage().setVisible(true);
+                new SampleMyPersonalSchedulePage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JLabel AccountPageTitleLabel;
+    private javax.swing.JLabel GroupICreatedPageTitle;
     private javax.swing.JLabel accountLabel;
-    private javax.swing.JLabel emailLabel;
-    private javax.swing.JLabel firstNameLabel;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
-    private javax.swing.JLabel lastNameLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutLabel;
+    private javax.swing.JTable myScheduleJTable;
     private GUI.PanelGradient panelGradient1;
     private GUI.PanelGradient panelGradientForNavigationPanel;
+    private javax.swing.JButton saveButton;
     private javax.swing.JLabel schedulesLabel;
-    private javax.swing.JLabel userEmailLabel;
-    private javax.swing.JLabel userFirstNameLabel;
-    private javax.swing.JLabel userLastNameLabel;
-    private javax.swing.JLabel userUsernameLabel;
-    private javax.swing.JLabel usernameLabel;
+    private Object[][] arrayForDisplayingMyPersonalScheduleTable;
+    private String[] arrayForMyPersonalScheduleTableColumnTitles;
     // End of variables declaration                   
+    private int numOfTimesPressed = 0;
 }

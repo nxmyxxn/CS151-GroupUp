@@ -5,19 +5,21 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
  * @author preethi
  */
-public class AccountPage extends javax.swing.JFrame {
+public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
 
     /**
-     * Creates new form AccountPage
+     * Creates new form SampleGroupIDidNotCreatePage
      */
-    public AccountPage() {
+    public SampleGroupIDidNotCreatePage() {
         initComponents();
     }
 
@@ -37,15 +39,40 @@ public class AccountPage extends javax.swing.JFrame {
         accountLabel = new javax.swing.JLabel();
         schedulesLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
-        AccountPageTitleLabel = new javax.swing.JLabel();
-        usernameLabel = new javax.swing.JLabel();
-        firstNameLabel = new javax.swing.JLabel();
-        userUsernameLabel = new javax.swing.JLabel();
-        userFirstNameLabel = new javax.swing.JLabel();
-        lastNameLabel = new javax.swing.JLabel();
-        userLastNameLabel = new javax.swing.JLabel();
-        emailLabel = new javax.swing.JLabel();
-        userEmailLabel = new javax.swing.JLabel();
+        GroupICreatedPageTitle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        scheduleForGroupIDidNotCreateJTable = new javax.swing.JTable();
+        
+        arrayForDisplayingGroupScheduleTable = new Object [][] {
+            {"12 AM", null, null, null, null, null, null, null},
+            {"1 AM", null, null, null, null, null, null, null},
+            {"2 AM", null, null, null, null, null, null, null},
+            {"3 AM", null, null, null, null, null, null, null},
+            {"4 AM", null, null, null, null, null, null, null},
+            {"5 AM", null, null, null, null, null, null, null},
+            {"6 AM", null, null, null, null, null, null, null},
+            {"7 AM", null, null, null, null, null, null, null},
+            {"8 AM", null, null, null, null, null, null, null},
+            {"9 AM", null, null, null, null, null, null, null},
+            {"10 AM", null, null, null, null, null, null, null},
+            {"11 AM", null, null, null, null, null, null, null},
+            {"12 PM", null, null, null, null, null, null, null},
+            {"1 PM", null, null, null, null, null, null, null},
+            {"2 PM", null, null, null, null, null, null, null},
+            {"3 PM", null, null, null, null, null, null, null},
+            {"4 PM", null, null, null, null, null, null, null},
+            {"5 PM", null, null, null, null, null, null, null},
+            {"6 PM", null, null, null, null, null, null, null},
+            {"7 PM", null, null, null, null, null, null, null},
+            {"8 PM", null, null, null, null, null, null, null},
+            {"9 PM", null, null, null, null, null, null, null},
+            {"10 PM", null, null, null, null, null, null, null},
+            {"11 PM", null, null, null, null, null, null, null}
+        };
+        
+        arrayForGroupScheduleTableColumnTitles = new String [] {
+                "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,50 +197,43 @@ public class AccountPage extends javax.swing.JFrame {
         panelGradient1.add(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
 
-        AccountPageTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        AccountPageTitleLabel.setText("My Account");
-        panelGradient1.add(AccountPageTitleLabel);
-        AccountPageTitleLabel.setBounds(630, 40, 400, 100);
+        GroupICreatedPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        GroupICreatedPageTitle.setText("Group Name");
+        panelGradient1.add(GroupICreatedPageTitle);
+        GroupICreatedPageTitle.setBounds(290, 30, 800, 100);
 
-        usernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        usernameLabel.setText("Username:");
-        panelGradient1.add(usernameLabel);
-        usernameLabel.setBounds(300, 470, 230, 60);
+        scheduleForGroupIDidNotCreateJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
+        JTableHeader tableHeader = scheduleForGroupIDidNotCreateJTable.getTableHeader();
+        Font headerFont = new Font("Canela", 1, 17);
+        tableHeader.setFont(headerFont);
+        scheduleForGroupIDidNotCreateJTable.setFont(new java.awt.Font("Canela", 1, 17));
+        scheduleForGroupIDidNotCreateJTable.setModel(new javax.swing.table.DefaultTableModel(
+        		arrayForDisplayingGroupScheduleTable, arrayForGroupScheduleTableColumnTitles
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, false
+            };
 
-        firstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        firstNameLabel.setText("First Name:");
-        panelGradient1.add(firstNameLabel);
-        firstNameLabel.setBounds(300, 170, 230, 60);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        userUsernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userUsernameLabel.setText("my Username");
-        panelGradient1.add(userUsernameLabel);
-        userUsernameLabel.setBounds(530, 470, 580, 60);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scheduleForGroupIDidNotCreateJTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        scheduleForGroupIDidNotCreateJTable.setRowHeight(40);
+        scheduleForGroupIDidNotCreateJTable.setSelectionBackground(new java.awt.Color(0, 204, 204));
+        scheduleForGroupIDidNotCreateJTable.setShowGrid(true);
+        scheduleForGroupIDidNotCreateJTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(scheduleForGroupIDidNotCreateJTable);
 
-        userFirstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userFirstNameLabel.setText("my First Name");
-        panelGradient1.add(userFirstNameLabel);
-        userFirstNameLabel.setBounds(530, 170, 580, 60);
-
-        lastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        lastNameLabel.setText("Last Name:");
-        panelGradient1.add(lastNameLabel);
-        lastNameLabel.setBounds(300, 270, 230, 60);
-
-        userLastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userLastNameLabel.setText("my Last Name");
-        panelGradient1.add(userLastNameLabel);
-        userLastNameLabel.setBounds(530, 270, 580, 60);
-
-        emailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        emailLabel.setText("Email:");
-        panelGradient1.add(emailLabel);
-        emailLabel.setBounds(300, 370, 230, 60);
-
-        userEmailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userEmailLabel.setText("my Email");
-        panelGradient1.add(userEmailLabel);
-        userEmailLabel.setBounds(530, 370, 580, 60);
+        panelGradient1.add(jScrollPane1);
+        jScrollPane1.setBounds(300, 180, 1090, 540);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -392,40 +412,36 @@ public class AccountPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccountPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountPage().setVisible(true);
+                new SampleGroupIDidNotCreatePage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JLabel AccountPageTitleLabel;
+    private javax.swing.JLabel GroupICreatedPageTitle;
     private javax.swing.JLabel accountLabel;
-    private javax.swing.JLabel emailLabel;
-    private javax.swing.JLabel firstNameLabel;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
-    private javax.swing.JLabel lastNameLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutLabel;
     private GUI.PanelGradient panelGradient1;
     private GUI.PanelGradient panelGradientForNavigationPanel;
+    private javax.swing.JTable scheduleForGroupIDidNotCreateJTable;
     private javax.swing.JLabel schedulesLabel;
-    private javax.swing.JLabel userEmailLabel;
-    private javax.swing.JLabel userFirstNameLabel;
-    private javax.swing.JLabel userLastNameLabel;
-    private javax.swing.JLabel userUsernameLabel;
-    private javax.swing.JLabel usernameLabel;
+    private Object[][] arrayForDisplayingGroupScheduleTable;
+    private String[] arrayForGroupScheduleTableColumnTitles;
     // End of variables declaration                   
 }

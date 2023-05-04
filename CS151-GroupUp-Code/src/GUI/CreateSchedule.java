@@ -1,24 +1,22 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package GUI;
-
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.table.JTableHeader;
-
-import GroupUp.Schedule;
-
 /**
  *
  * @author preethi
  */
 public class CreateSchedule extends javax.swing.JFrame {
-
     /** Creates new form CreateSchedule */
     public CreateSchedule() {
         initComponents();
     }
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -27,7 +25,6 @@ public class CreateSchedule extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
         panelGradient1 = new GUI.PanelGradient();
         panelGradientForNavigationPanel = new GUI.PanelGradient();
         homeLabel = new javax.swing.JLabel();
@@ -37,17 +34,45 @@ public class CreateSchedule extends javax.swing.JFrame {
         logoutLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         createYourScheduleJTable = new javax.swing.JTable();
-        createYourScheduleTitleLabel = new javax.swing.JLabel();
+        scheduleNameLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
-
+        createYourScheduleTitleLabel = new javax.swing.JLabel();
+        scheduleNameTextField = new javax.swing.JTextField();
+        arrayForDisplayingScheduleTable = new Object [][] {
+            {"12 AM", false, false, false, false, false, false, false},
+            {"1 AM", false, false, false, false, false, false, false},
+            {"2 AM", false, false, false, false, false, false, false},
+            {"3 AM", false, false, false, false, false, false, false},
+            {"4 AM", false, false, false, false, false, false, false},
+            {"5 AM", false, false, false, false, false, false, false},
+            {"6 AM", false, false, false, false, false, false, false},
+            {"7 AM", false, false, false, false, false, false, false},
+            {"8 AM", false, false, false, false, false, false, false},
+            {"9 AM", false, false, false, false, false, false, false},
+            {"10 AM", false, false, false, false, false, false, false},
+            {"11 AM", false, false, false, false, false, false, false},
+            {"12 PM", false, false, false, false, false, false, false},
+            {"1 PM", false, false, false, false, false, false, false},
+            {"2 PM", false, false, false, false, false, false, false},
+            {"3 PM", false, false, false, false, false, false, false},
+            {"4 PM", false, false, false, false, false, false, false},
+            {"5 PM", false, false, false, false, false, false, false},
+            {"6 PM", false, false, false, false, false, false, false},
+            {"7 PM", false, false, false, false, false, false, false},
+            {"8 PM", false, false, false, false, false, false, false},
+            {"9 PM", false, false, false, false, false, false, false},
+            {"10 PM", false, false, false, false, false, false, false},
+            {"11 PM", false, false, false, false, false, false, false}
+        };
+        
+        arrayForScheduleTableColumnTitles = new String [] {
+                "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            };
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         panelGradient1.setColorPrimario(new java.awt.Color(159, 234, 234));
         panelGradient1.setColorSecundario(new java.awt.Color(13, 165, 165));
-
         panelGradientForNavigationPanel.setColorPrimario(new java.awt.Color(159, 204, 229));
         panelGradientForNavigationPanel.setColorSecundario(new java.awt.Color(13, 145, 171));
-
         homeLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         homeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         homeLabel.setText("Home");
@@ -63,7 +88,6 @@ public class CreateSchedule extends javax.swing.JFrame {
                 homeLabelMouseEntered(evt);
             }
         });
-
         groupsLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         groupsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         groupsLabel.setText("Groups");
@@ -79,7 +103,6 @@ public class CreateSchedule extends javax.swing.JFrame {
                 groupsLabelMouseEntered(evt);
             }
         });
-
         accountLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         accountLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         accountLabel.setText("Account");
@@ -95,7 +118,6 @@ public class CreateSchedule extends javax.swing.JFrame {
                 accountLabelMouseEntered(evt);
             }
         });
-
         schedulesLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         schedulesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         schedulesLabel.setText("Schedules");
@@ -111,7 +133,6 @@ public class CreateSchedule extends javax.swing.JFrame {
                 schedulesLabelMouseEntered(evt);
             }
         });
-
         logoutLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         logoutLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logoutLabel.setText("Logout");
@@ -127,13 +148,11 @@ public class CreateSchedule extends javax.swing.JFrame {
                 logoutLabelMouseEntered(evt);
             }
         });
-
         panelGradientForNavigationPanel.setLayer(homeLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(groupsLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(accountLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(schedulesLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(logoutLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout panelGradientForNavigationPanelLayout = new javax.swing.GroupLayout(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setLayout(panelGradientForNavigationPanelLayout);
         panelGradientForNavigationPanelLayout.setHorizontalGroup(
@@ -159,57 +178,26 @@ public class CreateSchedule extends javax.swing.JFrame {
                 .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
         panelGradient1.add(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
-
         createYourScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
         JTableHeader tableHeader = createYourScheduleJTable.getTableHeader();
         Font headerFont = new Font("Canela", 1, 17);
         tableHeader.setFont(headerFont);
         createYourScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17));
+        
         createYourScheduleJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"12 AM", false, false, false, false, false, false, false},
-                {"1 AM", false, false, false, false, false, false, false},
-                {"2 AM", false, false, false, false, false, false, false},
-                {"3 AM", false, false, false, false, false, false, false},
-                {"4 AM", false, false, false, false, false, false, false},
-                {"5 AM", false, false, false, false, false, false, false},
-                {"6 AM", false, false, false, false, false, false, false},
-                {"7 AM", false, false, false, false, false, false, false},
-                {"8 AM", false, false, false, false, false, false, false},
-                {"9 AM", false, false, false, false, false, false, false},
-                {"10 AM", false, false, false, false, false, false, false},
-                {"11 AM", false, false, false, false, false, false, false},
-                {"12 PM", false, false, false, false, false, false, false},
-                {"1 PM", false, false, false, false, false, false, false},
-                {"2 PM", false, false, false, false, false, false, false},
-                {"3 PM", false, false, false, false, false, false, false},
-                {"4 PM", false, false, false, false, false, false, false},
-                {"5 PM", false, false, false, false, false, false, false},
-                {"6 PM", false, false, false, false, false, false, false},
-                {"7 PM", false, false, false, false, false, false, false},
-                {"8 PM", false, false, false, false, false, false, false},
-                {"9 PM", false, false, false, false, false, false, false},
-                {"10 PM", false, false, false, false, false, false, false},
-                {"11 PM", false, false, false, false, false, false, false}
-            },
-            new String [] {
-                "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-            }
-        ) {
+        		arrayForDisplayingScheduleTable, arrayForScheduleTableColumnTitles
+            ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
                 false, true, true, true, true, true, true, true
             };
-
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
@@ -220,15 +208,12 @@ public class CreateSchedule extends javax.swing.JFrame {
         createYourScheduleJTable.setShowGrid(true);
         createYourScheduleJTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(createYourScheduleJTable);
-
         panelGradient1.add(jScrollPane1);
-        jScrollPane1.setBounds(300, 160, 1060, 460);
-
-        createYourScheduleTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        createYourScheduleTitleLabel.setText("Create Your Schedule");
-        panelGradient1.add(createYourScheduleTitleLabel);
-        createYourScheduleTitleLabel.setBounds(490, 50, 740, 70);
-
+        jScrollPane1.setBounds(300, 230, 1060, 460);
+        scheduleNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
+        scheduleNameLabel.setText("Schedule Name:");
+        panelGradient1.add(scheduleNameLabel);
+        scheduleNameLabel.setBounds(300, 150, 300, 60);
         saveButton.setBackground(new java.awt.Color(13, 165, 165));
         saveButton.setFont(new java.awt.Font("Canela", 0, 40)); // NOI18N
         saveButton.setText("Save");
@@ -238,8 +223,19 @@ public class CreateSchedule extends javax.swing.JFrame {
             }
         });
         panelGradient1.add(saveButton);
-        saveButton.setBounds(760, 650, 130, 70);
-
+        saveButton.setBounds(760, 710, 130, 70);
+        createYourScheduleTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        createYourScheduleTitleLabel.setText("Create Your Schedule");
+        panelGradient1.add(createYourScheduleTitleLabel);
+        createYourScheduleTitleLabel.setBounds(490, 50, 740, 70);
+        scheduleNameTextField.setFont(new java.awt.Font("Canela", 0, 18)); // NOI18N
+        scheduleNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduleNameTextFieldActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(scheduleNameTextField);
+        scheduleNameTextField.setBounds(600, 160, 270, 50);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -250,14 +246,11 @@ public class CreateSchedule extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
         );
-
         pack();
     }// </editor-fold>                        
-
     private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
-       // testClicked.main(null);
+        //testClicked.main(null);
     }                                      
-
     private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
         homeLabel = (JLabel) evt.getComponent();
         //homeLabel.setText( String.format( "Home", "") );
@@ -266,27 +259,21 @@ public class CreateSchedule extends javax.swing.JFrame {
         homeLabel.setForeground( new Color(0, 0, 0) );
         homeLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                     
-
     private void homeLabelMouseEntered(java.awt.event.MouseEvent evt) {                                       
         //jLabel1.setBackground(Color.BLUE);
-
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
-
         homeLabel = (JLabel) evt.getComponent();
         //homeLabel.setForeground(new Color(255, 127, 80));
         homeLabel.setOpaque(true);
         homeLabel.setBackground(new Color(220,232,238));
         //homeLabel.setText( String.format( "Home", "") );
-
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         homeLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                      
-
     private void groupsLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        //testClicked.main(null);
-
+        this.dispose();
+    	GroupsPage.main(null);
     }                                        
-
     private void groupsLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
         groupsLabel = (JLabel) evt.getComponent();
         //homeLabel.setText( String.format( "Home", "") );
@@ -295,24 +282,19 @@ public class CreateSchedule extends javax.swing.JFrame {
         groupsLabel.setForeground( new Color(0, 0, 0) );
         groupsLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                       
-
     private void groupsLabelMouseEntered(java.awt.event.MouseEvent evt) {                                         
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
-
         groupsLabel = (JLabel) evt.getComponent();
         //homeLabel.setForeground(new Color(255, 127, 80));
         groupsLabel.setOpaque(true);
         groupsLabel.setBackground(new Color(220,232,238));
         //homeLabel.setText( String.format( "Home", "") );
-
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         groupsLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
-
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
         //testClicked.main(null);
     }                                         
-
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
         accountLabel = (JLabel) evt.getComponent();
         //homeLabel.setText( String.format( "Home", "") );
@@ -321,24 +303,19 @@ public class CreateSchedule extends javax.swing.JFrame {
         accountLabel.setForeground( new Color(0, 0, 0) );
         accountLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                        
-
     private void accountLabelMouseEntered(java.awt.event.MouseEvent evt) {                                          
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
-
         accountLabel = (JLabel) evt.getComponent();
         //homeLabel.setForeground(new Color(255, 127, 80));
         accountLabel.setOpaque(true);
         accountLabel.setBackground(new Color(220,232,238));
         //homeLabel.setText( String.format( "Home", "") );
-
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         accountLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                         
-
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
         //testClicked.main(null);
     }                                           
-
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
         schedulesLabel = (JLabel) evt.getComponent();
         //homeLabel.setText( String.format( "Home", "") );
@@ -347,39 +324,31 @@ public class CreateSchedule extends javax.swing.JFrame {
         schedulesLabel.setForeground( new Color(0, 0, 0) );
         schedulesLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                          
-
     private void schedulesLabelMouseEntered(java.awt.event.MouseEvent evt) {                                            
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
-
         schedulesLabel = (JLabel) evt.getComponent();
         //homeLabel.setForeground(new Color(255, 127, 80));
         schedulesLabel.setOpaque(true);
         schedulesLabel.setBackground(new Color(220,232,238));
         //homeLabel.setText( String.format( "Home", "") );
-
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         schedulesLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                           
-
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
         /*JLabel passwordMessage = new JLabel("Hi My Name is Error!", SwingConstants.CENTER);
         passwordMessage.setFont(new Font("Canela", 1, 30));
         passwordMessage.setOpaque(true);
         passwordMessage.setBackground(new Color(159, 204, 229));
-
         UIManager UI=new UIManager();
         UI.put("OptionPane.background",new ColorUIResource(159, 204, 229));
         UI.put("Panel.background",new ColorUIResource(159, 204, 229));
-
         //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
         JOptionPane.showConfirmDialog(null,
             passwordMessage,
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
-
     }                                        
-
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
         logoutLabel = (JLabel) evt.getComponent();
         //homeLabel.setText( String.format( "Home", "") );
@@ -388,48 +357,35 @@ public class CreateSchedule extends javax.swing.JFrame {
         logoutLabel.setForeground( new Color(0, 0, 0) );
         logoutLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                       
-
     private void logoutLabelMouseEntered(java.awt.event.MouseEvent evt) {                                         
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
-
         logoutLabel = (JLabel) evt.getComponent();
         //homeLabel.setForeground(new Color(255, 127, 80));
         logoutLabel.setOpaque(true);
         logoutLabel.setBackground(new Color(220,232,238));
         //homeLabel.setText( String.format( "Home", "") );
-
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
-
-    private Schedule saveButtonActionPerformed(java.awt.event.ActionEvent evt) {        
-    	
-    	Schedule input = new Schedule();
-    	Integer[][] result = new Integer[7][24];
-    	
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
        if (evt.getSource() == saveButton) 
        {
            numOfTimesPressed++;
             System.out.println(numOfTimesPressed + " Time Pressed");
             for (int i = 0; createYourScheduleJTable.getRowCount() > i; i++) {
-                for (int j = 1; createYourScheduleJTable.getColumnCount() > j; j++) 
+                for (int j = 0; createYourScheduleJTable.getColumnCount() > j; j++) 
                 {
-                    Boolean col = (Boolean) createYourScheduleJTable.getValueAt(i, j);
-                    if (col)
-                    	result[j - 1][i] = 1;
-                    else
-                    	result[j - 1][i] = 0;
+                    Object col = createYourScheduleJTable.getValueAt(i, j); 
                     System.out.println("Row " + i + ":  Col " + j + ": " + col);
                 }
                    
             }
-            System.out.println(result);
-            input.setDaysTimes(result);
-            
+            System.out.println();
        }
-       return input;
     }                                          
-
+    private void scheduleNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        // TODO add your handling code here:
+    }                                                     
     /**
      * @param args the command line arguments
      */
@@ -456,7 +412,6 @@ public class CreateSchedule extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -464,7 +419,6 @@ public class CreateSchedule extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify                     
     private javax.swing.JLabel accountLabel;
     private javax.swing.JTable createYourScheduleJTable;
@@ -476,7 +430,11 @@ public class CreateSchedule extends javax.swing.JFrame {
     private GUI.PanelGradient panelGradient1;
     private GUI.PanelGradient panelGradientForNavigationPanel;
     private javax.swing.JButton saveButton;
+    private javax.swing.JLabel scheduleNameLabel;
+    private javax.swing.JTextField scheduleNameTextField;
     private javax.swing.JLabel schedulesLabel;
+    private Object[][] arrayForDisplayingScheduleTable;
+    private String[] arrayForScheduleTableColumnTitles;
     // End of variables declaration                   
     private int numOfTimesPressed = 0;
 }
