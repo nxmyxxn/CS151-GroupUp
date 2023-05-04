@@ -18,7 +18,7 @@ GroupSchedule
       -updated diagrams
       -formatted the report into GitHub
   + Danilo
-    -code
+    - code
       -Day/Schedule/User/ErrorPopup/MysqlConn classes and all the exception classes, handled database and execptions.
       -Designed and normalized database in MySQL.
       -Wrote the MYsqlConn class which contains methods to insert, delete, and query information permanently stored in the database.
