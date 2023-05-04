@@ -92,7 +92,7 @@ GroupSchedule
   
   ![login](https://user-images.githubusercontent.com/72899436/236297958-73fa85eb-c354-49d6-8ccc-dbbd877425a7.PNG)
   
-  ![createScheduleWithCheck](https://user-images.githubusercontent.com/72899436/236298192-df33db90-955b-42c7-81e3-09b6229c189e.PNG)
+  ![createScheduleWithCheck](file:///Users/preethi/Desktop/Screenshots/Screen%20Shot%202023-05-04%20at%202.16.29%20PM.png)
 
 - **References**
   > - [1] https://calendar.google.com/ 
