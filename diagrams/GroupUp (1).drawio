@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net" modified="2023-05-04T07:33:59.493Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="lcx1nQlUdWwt16YZQ-Nh" version="21.2.6" type="google">
+  <diagram name="페이지-1" id="V8NefDBgOurUIaZ9DB0Y">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-1" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;User&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="360" width="510" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-2" value="- firstName : String&lt;br&gt;- lastName : String&lt;br&gt;- username : String&lt;br&gt;- email :String&lt;br&gt;- password : String&lt;br&gt;- ownedSchedules : Schedule[]&lt;br&gt;- friendList : ArrayList&amp;lt;User&amp;gt;&lt;br&gt;+ instance : User" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-1">
+          <mxGeometry y="26" width="510" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-1">
+          <mxGeometry y="160" width="510" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-4" value="+ User()&lt;br&gt;+ User(fame:String, lname:String, username:String, email.String, password:String)&lt;br&gt;+ addFriend(friendly: User) : void&lt;br&gt;+&amp;nbsp;deleteFriend(unfriendly: User) : void&lt;br&gt;+ getFirstName() : String&lt;br&gt;+&amp;nbsp;getLastName() : String&lt;br&gt;+ getName(fname: String, lname: String): void&lt;br&gt;+ getUsername() : String&lt;br&gt;+ getEmailAddress(): String&lt;br&gt;+ getEmail(email: String() : void&lt;br&gt;+ getPassword() : String&amp;nbsp;&lt;br&gt;+ getOwnedSchedules(): Schedule[]&lt;br&gt;+ getFriendList(): ArrayList&amp;lt;User&amp;gt;&lt;br&gt;+ getInstance(fname: String, lname: String, username: String, email: String, password: String)&lt;br&gt;+ getInstance() : User" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-1">
+          <mxGeometry y="168" width="510" height="232" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-5" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Schedule&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="360" width="350" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-6" value="-&amp;nbsp;dayAmount : int&lt;br&gt;- dyas : Day[]&lt;br&gt;# creator : User&lt;br&gt;- members : ArrayList&amp;lt;User&amp;gt;&lt;br&gt;- scheduleName&amp;nbsp; : String&lt;br&gt;- DaysTiems : Integer[][]&lt;br&gt;- scheduleID :&amp;nbsp; int&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-5">
+          <mxGeometry y="26" width="350" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-5">
+          <mxGeometry y="150" width="350" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-8" value="+ Schedule(daysCount: int, maker: User)&lt;br&gt;+ Schedule()&lt;br&gt;+ removeUser(target: User) : boolean&lt;br&gt;+ addUser(addition: User) : boolean&lt;br&gt;+ getDayAmount : int&lt;br&gt;+ setDayAmount(dayAmoount : int) : void&lt;br&gt;+ getDays() : Day[]&lt;br&gt;+ getCreator() : User&lt;br&gt;+ getMembers() : ArrayList&amp;lt;User&amp;gt;&lt;br&gt;+ getScheduleName() : String&lt;br&gt;+ setScheduleName(scheduleName: String) : void&lt;br&gt;+ setDaysTimes(times : Integer[][]) : void&lt;br&gt;+ getDayTimeValue(a: int, b: int) : int&lt;br&gt;+ getScheduleID() : int&lt;br&gt;+ setScheduleID(id: int) : void&lt;br&gt;+ setCreator(name: String) : void&lt;br&gt;+ printScheduleValues() : void&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-5">
+          <mxGeometry y="158" width="350" height="262" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-10" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Day&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="870" width="230" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-11" value="- blackout : Boolean&lt;br&gt;- availabilityScores : ArrayList&amp;lt;Integer&amp;gt;&lt;br&gt;- color : Color" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-10">
+          <mxGeometry y="26" width="230" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-12" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-10">
+          <mxGeometry y="90" width="230" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-13" value="+ Day()&lt;br&gt;+ getBlackout() : Boolean&amp;nbsp;&lt;br&gt;+ setBlackout(blackout: Boolean) : void&lt;br&gt;+ addScore(input : int)&lt;br&gt;+ getAvgAvailabilityScore() : double&lt;br&gt;+ getMedianAvailability(): Availability&lt;br&gt;+ getColor : Color&lt;br&gt;+ setColor : Color&lt;br&gt;+ setColor(color : Color) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-10">
+          <mxGeometry y="98" width="230" height="152" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-14" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;Availability&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="745" y="1160" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-15" value="PreferredDay&lt;br&gt;OkayDay&lt;br&gt;NotTheBestDay&lt;br&gt;OccupiedDay" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="uLCfF43tKAqa5X-lIGRB-14">
+          <mxGeometry y="26" width="160" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-22" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uLCfF43tKAqa5X-lIGRB-2" target="uLCfF43tKAqa5X-lIGRB-6">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="460" y="440" as="sourcePoint" />
+            <mxPoint x="630" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-23" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;*&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="535" y="423" width="30" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-24" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;*&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="598" y="423" width="30" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-31" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="827" y="1120" as="sourcePoint" />
+            <mxPoint x="827" y="1160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-33" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="824.29" y="780" as="sourcePoint" />
+            <mxPoint x="824" y="870" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-34" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="710" y="810" as="geometry">
+            <mxPoint x="127" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uLCfF43tKAqa5X-lIGRB-35" value="0..*" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="447.57698395552734" y="987" as="geometry">
+            <mxPoint x="410" y="-133" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
