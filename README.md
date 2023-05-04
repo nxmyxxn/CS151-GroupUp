@@ -12,33 +12,33 @@ GroupSchedule
 - **Code and Report Contributions**:  
   + Namyoon
     - code 
-      -login/signup
+      - login/signup
     - report
-      -wrote the state diagram
-      -updated diagrams
-      -formatted the report into GitHub
+      - wrote the state diagram
+      - updated diagrams
+      - formatted the report into GitHub
   + Danilo
     - code
-      -Day/Schedule/User/ErrorPopup/MysqlConn classes and all the exception classes, handled database and execptions.
-      -Designed and normalized database in MySQL.
-      -Wrote the MYsqlConn class which contains methods to insert, delete, and query information permanently stored in the database.
-      -Handled the Model and Controller aspects of the MVC design pattern.
-      -Formatted and implemented the Singleton design pattern in User.
-      -Enabled the code to create User and Schedule objects from user inputs and queried data to display in the UI and store in the database.
-      -Edited default GUI text fields and combo boxes to display queried information
-      -Edited the base personal schedule display made by Preethi to dislay time inputs previously saved by a user.
+      - Day/Schedule/User/ErrorPopup/MysqlConn classes and all the exception classes, handled database and execptions.
+      - Designed and normalized database in MySQL.
+      - Wrote the MYsqlConn class which contains methods to insert, delete, and query information permanently stored in the database.
+      - Handled the Model and Controller aspects of the MVC design pattern.
+      - Formatted and implemented the Singleton design pattern in User.
+      - Enabled the code to create User and Schedule objects from user inputs and queried data to display in the UI and store in the database.
+      - Edited default GUI text fields and combo boxes to display queried information
+      - Edited the base personal schedule display made by Preethi to dislay time inputs previously saved by a user.
     - report
-      -wrote the case diagram
-      -updated the specifics of the problem statement, existing applications, descriptions, and functionality.
+      - wrote the case diagram
+      - updated the specifics of the problem statement, existing applications, descriptions, and functionality.
   + Preethi  
     - code
-      -all main gui pages such as login/signup/dashboard/schedule.
-      -implemented editable calendars for the use to check boxes in.
-      -Handled fetching data from user inputs in a personal schedule upon save, and putting them into a Schedule obect.
-      -designed the primary visuals of all GUI classes.
-      -created text and passord fields, labels, and buttons for the user to interact with.
+      - all main gui pages such as login/signup/dashboard/schedule.
+      - implemented editable calendars for the use to check boxes in.
+      - Handled fetching data from user inputs in a personal schedule upon save, and putting them into a Schedule obect.
+      - designed the primary visuals of all GUI classes.
+      - created text and passord fields, labels, and buttons for the user to interact with.
     - report
-      -wrote the sequence diagram and usecase diagram
+      - wrote the sequence diagram and usecase diagram
   
 - **Problem/issue to resolve**  
   >  People face various difficulties in coordinating schedules for meetings, meetups, and other such events, where viewing everyone's schedule in one place is not usually an option and deciding availability is complicated. Oftentimes, people will simply coordinate over text or mail to share their own availabilities, which can be unorganized without a means of displaying availabilities together. People, mainly students and office workers/coworkers, need a way to ease the process of coordinating schedules and finding available times.   
