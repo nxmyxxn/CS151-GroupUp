@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import GroupUp.User;
+
 /**
  *
  * @author preethi
@@ -103,6 +105,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                            
 
     private void accountButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               

@@ -9,7 +9,6 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
-	//private icon;
 	private Schedule[] ownedSchedules;		//keeping it as a list in case we want to set a maximum number of owned schedules
 	private ArrayList<User> friendList;
 	
@@ -149,6 +148,11 @@ public class User {
 		if (instance == null)
 			instance = new User();
 		return instance;
+	}
+	public static void nullifyInstance()
+	{
+		if (instance != null)
+			instance = null;
 	}
 	
 	

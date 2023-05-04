@@ -18,6 +18,8 @@ import javax.swing.ListCellRenderer;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
+
+import GroupUp.User;
 /**
  *
  * @author preethi
@@ -385,6 +387,9 @@ public class GroupsPage extends javax.swing.JFrame {
                 null, 
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);
          
     }                                        
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        

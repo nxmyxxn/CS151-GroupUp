@@ -14,12 +14,18 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import GroupUp.MysqlConn;
+import GroupUp.Schedule;
+import GroupUp.User;
+
 /**
  *
  * @author preethi
  */
 public class SchedulesPage extends javax.swing.JFrame {
 
+	
+	ArrayList<Schedule> allPersonalSchedules = new ArrayList<>();
     /**
      * Creates new form SchedulesPage
      */
@@ -204,9 +210,14 @@ public class SchedulesPage extends javax.swing.JFrame {
         mySchedulesComboBox.setBackground(new java.awt.Color(159, 234, 234));
         mySchedulesComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
         //mySchedulesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        mySchedulesComboBox.addItem("mySchedule1");
-        mySchedulesComboBox.addItem("mySchedule2");
-        mySchedulesComboBox.addItem("mySchedule3");
+        allPersonalSchedules.addAll(MysqlConn.getPersonalSchedules());
+        for (int i = 0; i < allPersonalSchedules.size(); i++)
+        {
+        	mySchedulesComboBox.addItem(allPersonalSchedules.get(i).getScheduleName());
+        }
+        //mySchedulesComboBox.addItem("mySchedule1");
+        //mySchedulesComboBox.addItem("mySchedule2");
+        //mySchedulesComboBox.addItem("mySchedule3");
         
         
         mySchedulesComboBox.setBorder(null);
@@ -363,6 +374,9 @@ public class SchedulesPage extends javax.swing.JFrame {
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                        
 
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
@@ -391,15 +405,28 @@ public class SchedulesPage extends javax.swing.JFrame {
     	if(evt.getStateChange()==java.awt.event.ItemEvent.SELECTED)
         {
         	//this is how to get the value of the item that has been selected
-        	String groupSelected = String.valueOf(mySchedulesComboBox.getSelectedItem());
+        	//String groupSelected = String.valueOf(mySchedulesComboBox.getSelectedItem());
         	//System.out.println(groupSelected);
         	
-        	CreateSchedule.main(null);
+        	//CreateSchedule.main(null);
         }
     }                                                    
 
     private void mySchedulesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
+    	String groupSelected = String.valueOf(mySchedulesComboBox.getSelectedItem());
+    	//System.out.println(groupSelected);
+    	
+    	for (int i = 0; i < allPersonalSchedules.size(); i++)
+    	{
+    		if (allPersonalSchedules.get(i).getScheduleName().equals(groupSelected))
+    		{
+    			this.dispose();
+    			Schedule.focusSchedule = allPersonalSchedules.get(i);
+    			SampleMyPersonalSchedulePage.main(null);
+    		}
+    	}
+    	
     }                                                   
 
     /**

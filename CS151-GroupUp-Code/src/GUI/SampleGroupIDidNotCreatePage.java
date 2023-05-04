@@ -10,6 +10,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.table.JTableHeader;
 
+import GroupUp.User;
+
 /**
  *
  * @author preethi
@@ -371,6 +373,9 @@ public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                        
 
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        

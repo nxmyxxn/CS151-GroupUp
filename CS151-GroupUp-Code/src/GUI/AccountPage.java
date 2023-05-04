@@ -8,6 +8,8 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
+import GroupUp.User;
+
 /**
  *
  * @author preethi
@@ -186,12 +188,12 @@ public class AccountPage extends javax.swing.JFrame {
         firstNameLabel.setBounds(300, 170, 230, 60);
 
         userUsernameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userUsernameLabel.setText("my Username");
+        userUsernameLabel.setText(User.getInstance().getUsername());
         panelGradient1.add(userUsernameLabel);
         userUsernameLabel.setBounds(530, 470, 580, 60);
 
         userFirstNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userFirstNameLabel.setText("my First Name");
+        userFirstNameLabel.setText(User.getInstance().getFirstName());
         panelGradient1.add(userFirstNameLabel);
         userFirstNameLabel.setBounds(530, 170, 580, 60);
 
@@ -201,7 +203,7 @@ public class AccountPage extends javax.swing.JFrame {
         lastNameLabel.setBounds(300, 270, 230, 60);
 
         userLastNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userLastNameLabel.setText("my Last Name");
+        userLastNameLabel.setText(User.getInstance().getLastName());
         panelGradient1.add(userLastNameLabel);
         userLastNameLabel.setBounds(530, 270, 580, 60);
 
@@ -211,7 +213,7 @@ public class AccountPage extends javax.swing.JFrame {
         emailLabel.setBounds(300, 370, 230, 60);
 
         userEmailLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        userEmailLabel.setText("my Email");
+        userEmailLabel.setText(User.getInstance().getEmailAddress());
         panelGradient1.add(userEmailLabel);
         userEmailLabel.setBounds(530, 370, 580, 60);
 
@@ -311,6 +313,8 @@ public class AccountPage extends javax.swing.JFrame {
 
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
         //testClicked.main(null);
+    	this.dispose();
+    	SchedulesPage.main(null);
     }                                           
 
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
@@ -351,6 +355,9 @@ public class AccountPage extends javax.swing.JFrame {
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                        
 
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        

@@ -8,6 +8,9 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.table.JTableHeader;
+
+import GroupUp.MysqlConn;
+import GroupUp.Schedule;
 /**
  *
  * @author preethi
@@ -368,18 +371,27 @@ public class CreateSchedule extends javax.swing.JFrame {
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-       if (evt.getSource() == saveButton) 
-       {
-           numOfTimesPressed++;
+    	if (evt.getSource() == saveButton)
+        {
+        	Schedule tempPersonal = new Schedule();
+        	Integer[][] personalValues = new Integer[7][24];
+            numOfTimesPressed++;
             System.out.println(numOfTimesPressed + " Time Pressed");
             for (int i = 0; createYourScheduleJTable.getRowCount() > i; i++) {
-                for (int j = 0; createYourScheduleJTable.getColumnCount() > j; j++) 
+                for (int j = 1; createYourScheduleJTable.getColumnCount() > j; j++)
                 {
-                    Object col = createYourScheduleJTable.getValueAt(i, j); 
+                    Boolean col = (Boolean) createYourScheduleJTable.getValueAt(i, j);
                     System.out.println("Row " + i + ":  Col " + j + ": " + col);
+                    if (col)
+                    	personalValues[j - 1][i] = 1;
+                    else
+                    	personalValues[j - 1][i] = 0;
                 }
-                   
+
             }
+            tempPersonal.setDaysTimes(personalValues);
+            MysqlConn.initializePersonalSchedule(scheduleNameTextField.getText());
+            MysqlConn.updatePersonalSchedule(tempPersonal);
             System.out.println();
        }
     }                                          

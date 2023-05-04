@@ -4,6 +4,16 @@
  */
 package GUI;
 
+import GroupUp.MysqlConn;
+import GroupUp.User;
+import exceptions.LowerCaseCharacterMissing;
+import exceptions.Minimum8CharactersRequired;
+import exceptions.NumberCharacterMissing;
+import exceptions.PasswordTester;
+import exceptions.SpecialCharacterMissing;
+import exceptions.UpperCaseCharacterMissing;
+import exceptions.UserAlreadyExistsException;
+
 /**
  *
  * @author preethi
@@ -38,7 +48,7 @@ public class SignupPage extends javax.swing.JFrame {
         usernameLabel = new javax.swing.JLabel();
         lastNameTextField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
-        passwordTextField = new javax.swing.JTextField();
+        passwordTextField = new javax.swing.JPasswordField();
         goButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -182,7 +192,32 @@ public class SignupPage extends javax.swing.JFrame {
     }                                                 
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    	if (evt.getSource() == goButton) 
+        {
+     	   //following added by Danilo
+     	   String fnTest = firstNameTextField.getText();
+     	   String lnTest = lastNameTextField.getText();
+     	   String unTest = usernameTextField.getText();
+     	   String emailTest = emailTextField.getText();
+     	   String pwTest = new String((passwordTextField).getPassword());
+     	   
+     	   try
+     	   {
+     		   PasswordTester.isValid(pwTest);
+     		   User.getInstance(fnTest, lnTest, unTest, emailTest, pwTest);
+    			   MysqlConn.insertUserIntoDB(User.instance);			//insert the user's data into the database
+    			   AccountPage.main(null);
+    			   
+     	   }
+     	   catch (LowerCaseCharacterMissing | Minimum8CharactersRequired | NumberCharacterMissing | SpecialCharacterMissing | UpperCaseCharacterMissing | ClassNotFoundException | UserAlreadyExistsException e)
+     	   {
+     		   e.printStackTrace();
+     		   ErrorPopup.makePopup(e.getMessage());
+
+     	   } 
+     	    
+            
+        }
     }                                        
 
     /**
@@ -201,15 +236,9 @@ public class SignupPage extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SignupPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignupPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignupPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignupPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }   
         //</editor-fold>
 
         /* Create and display the form */
@@ -232,7 +261,7 @@ public class SignupPage extends javax.swing.JFrame {
     private javax.swing.JTextField lastNameTextField;
     private GUI.PanelGradient panelGradient1;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JTextField passwordTextField;
+    private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration                   

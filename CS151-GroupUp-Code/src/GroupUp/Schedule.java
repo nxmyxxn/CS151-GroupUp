@@ -13,6 +13,8 @@ public class Schedule {
 	private Integer[][] DaysTimes;
 	private int scheduleID;
 	
+	public static Schedule focusSchedule;
+	
 	public Schedule(int daysCount, User maker)
 	{
 		dayAmount = daysCount;
@@ -121,6 +123,14 @@ public class Schedule {
 	 * @param b
 	 * @return
 	 */
+	public Boolean getDayTimeBool(int a, int b)
+	{
+		if (DaysTimes[a][b] == 1)
+			return true;
+		return false;
+	}
+	
+	
 	public int getDayTimeValue(int a, int b)
 	{
 		return DaysTimes[a][b];

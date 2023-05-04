@@ -10,6 +10,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.table.JTableHeader;
 
+import GroupUp.MysqlConn;
+import GroupUp.Schedule;
+import GroupUp.User;
+
 /**
  *
  * @author preethi
@@ -44,7 +48,7 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         myScheduleJTable = new javax.swing.JTable();
         arrayForDisplayingMyPersonalScheduleTable = new Object [][] {
-            {"12 AM", false, false, false, false, false, false, false},
+            {"12 AM", Schedule.focusSchedule.getDayTimeBool(0, 0), Schedule.focusSchedule.getDayTimeBool(1, 0), Schedule.focusSchedule.getDayTimeBool(2, 0), Schedule.focusSchedule.getDayTimeBool(3, 0), Schedule.focusSchedule.getDayTimeBool(4, 0), Schedule.focusSchedule.getDayTimeBool(5, 0), Schedule.focusSchedule.getDayTimeBool(6, 0)},
             {"1 AM", false, false, false, false, false, false, false},
             {"2 AM", false, false, false, false, false, false, false},
             {"3 AM", false, false, false, false, false, false, false},
@@ -198,7 +202,7 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
 
         GroupICreatedPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        GroupICreatedPageTitle.setText("Schedule Name");
+        GroupICreatedPageTitle.setText(Schedule.focusSchedule.getScheduleName());
         panelGradient1.add(GroupICreatedPageTitle);
         GroupICreatedPageTitle.setBounds(300, 30, 800, 100);
 
@@ -383,6 +387,9 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                        
 
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
@@ -410,16 +417,24 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         if (evt.getSource() == saveButton)
         {
+        	Schedule tempPersonal = new Schedule();
+        	Integer[][] personalValues = new Integer[7][24];
             numOfTimesPressed++;
             System.out.println(numOfTimesPressed + " Time Pressed");
             for (int i = 0; myScheduleJTable.getRowCount() > i; i++) {
-                for (int j = 0; myScheduleJTable.getColumnCount() > j; j++)
+                for (int j = 1; myScheduleJTable.getColumnCount() > j; j++)
                 {
-                    Object col = myScheduleJTable.getValueAt(i, j);
+                    Boolean col = (Boolean) myScheduleJTable.getValueAt(i, j);
                     System.out.println("Row " + i + ":  Col " + j + ": " + col);
+                    if (col)
+                    	personalValues[j - 1][i] = 1;
+                    else
+                    	personalValues[j - 1][i] = 0;
                 }
 
             }
+            tempPersonal.setDaysTimes(personalValues);
+            MysqlConn.updatePersonalSchedule(tempPersonal);
             System.out.println();
         }
     }                                          

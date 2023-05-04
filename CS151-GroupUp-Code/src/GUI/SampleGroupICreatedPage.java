@@ -10,6 +10,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.table.JTableHeader;
 
+import GroupUp.User;
+
 /**
  *
  * @author preethi
@@ -449,6 +451,9 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                        
 
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
@@ -487,6 +492,7 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
 
     private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
+    	System.out.println("yo");
     }                                             
 
     private void addUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                 
@@ -509,15 +515,9 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SampleGroupICreatedPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SampleGroupICreatedPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SampleGroupICreatedPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SampleGroupICreatedPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }   
         //</editor-fold>
 
         /* Create and display the form */
