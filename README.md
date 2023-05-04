@@ -31,7 +31,11 @@ GroupSchedule
       -wrote the case diagram
   + Preethi  
     - code
-      -all main gui pages such as login/signup/dashboard/schedule 
+      -all main gui pages such as login/signup/dashboard/schedule.
+      -implemented editable calendars for the use to check boxes in.
+      -Handled fetching data from user inputs in a personal schedule upon save, and putting them into a Schedule obect.
+      -designed the primary visuals of all GUI classes.
+      -created text and passord fields, labels, and buttons for the user to interact with.
     - report
       -wrote the sequence diagram and usecase diagram
   
