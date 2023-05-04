@@ -319,12 +319,9 @@ public class MysqlConn {
 					rs = state.executeQuery("select * from personal_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + i + "\'");
 					while (rs.next())
 					{
-						System.out.println(result[1][1]);
 						for (int counter = 0; counter < 24; counter++)
 						{
 							result[i - 1][counter] = rs.getInt(timeDefinitions[counter]);
-							System.out.println(timeDefinitions[counter]);
-							System.out.println(result[i - 1][counter]);
 						}
 						
 					}
