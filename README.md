@@ -30,6 +30,7 @@ GroupSchedule
     - report
       - wrote the case diagram
       - updated the specifics of the problem statement, existing applications, descriptions, and functionality.
+      - updated the class diagram to better represent the msot recent code.
   + Preethi  
     - code
       - all main gui pages such as login/signup/dashboard/schedule.
