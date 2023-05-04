@@ -46,6 +46,7 @@ GroupSchedule
   > **Already existing websites**
     - Google Calendar [1]
     - When2meet [2]
+    
   >  **Problems with existing applications**
       -  Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner. When2meet users can share weekly and multi-day views, but is not appealing to the eye and users cannot easily access their information nor other scheudles.
 
@@ -66,8 +67,7 @@ GroupSchedule
     - make timetable
     - write schedule in the calendar
         
-    
-   > **Student/ Co worker who owns the schedule**
+     > **Student/ Co worker who owns the schedule**
     - Add member
 
 - **Solution**  
@@ -76,16 +76,18 @@ GroupSchedule
 - **Steps to run the code**
   1. Signup : It is possible only by entering a password that meets the conditions based on the exception code written. 
   2.  Login : Log in with the information that is registered as a member.
-  3.  Create a schedule : 
-  4.  Check the free time on the calendar :
-  5.  Check the common free time of group users.
+  3.  Create Own Schedule : On the Home page there is Schedules button. If you click that button, you can make there own schedules.
+      Check the checkboxs in the calendar when you are free.
+  4.  Create Group : On the Home page there is Create Group button. If you click that button, you can make their own group and see each other's schedules. 
+  5.  Check the free time on the calendar : You can just check the check boxed and click the save button.
+  6.  Check the common free time of your freinds or group users.
 
 - **Snapshot of the running program**
   ![initialWelcomePage](https://user-images.githubusercontent.com/72899436/236298065-8675a9aa-d959-4b65-a372-43dc861b1d68.PNG)
   
   ![home](https://user-images.githubusercontent.com/72899436/236298127-438581eb-c49b-4d99-82da-7cf119cb992a.PNG)
   
-  ![SignUp](https://user-images.githubusercontent.com/72899436/236297746-a36c1091-8e20-4bac-97fc-3e48826d1af6.PNG)
+  ![SignUp0](https://user-images.githubusercontent.com/72899436/236317735-21e83d15-60c7-4abe-965d-780ace11054a.PNG)
   
   ![login](https://user-images.githubusercontent.com/72899436/236297958-73fa85eb-c354-49d6-8ccc-dbbd877425a7.PNG)
   
