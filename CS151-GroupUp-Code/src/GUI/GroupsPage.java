@@ -491,7 +491,7 @@ public class GroupsPage extends javax.swing.JFrame {
 
     private void createGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         this.dispose();
-        SampleGroupICreatedPage.main(null);
+        CreateGroup.main(null);
     }                                                 
 
     /**

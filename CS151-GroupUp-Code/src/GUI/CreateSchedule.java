@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
 import GroupUp.MysqlConn;
@@ -42,6 +44,7 @@ public class CreateSchedule extends javax.swing.JFrame {
         saveButton = new javax.swing.JButton();
         createYourScheduleTitleLabel = new javax.swing.JLabel();
         scheduleNameTextField = new javax.swing.JTextField();
+        cancelButton = new javax.swing.JButton();
         arrayForDisplayingScheduleTable = new Object [][] {
             {"12 AM", false, false, false, false, false, false, false},
             {"1 AM", false, false, false, false, false, false, false},
@@ -241,6 +244,18 @@ public class CreateSchedule extends javax.swing.JFrame {
         panelGradient1.add(scheduleNameTextField);
         scheduleNameTextField.setBounds(600, 160, 270, 50);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        
+        cancelButton.setBackground(new java.awt.Color(13, 165, 165));
+        cancelButton.setFont(new java.awt.Font("Canela", 1, 36)); // NOI18N
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(cancelButton);
+        cancelButton.setBounds(1270, 20, 150, 70);
+        
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,7 +419,29 @@ public class CreateSchedule extends javax.swing.JFrame {
     }                                          
     private void scheduleNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
-    }                                                     
+    }  
+    
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        JLabel cancelMessage = new JLabel("Are you sure you want to cancel?", SwingConstants.CENTER);
+        cancelMessage.setFont(new Font("Canela", 1, 30));
+        cancelMessage.setOpaque(true);
+        
+        //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
+         int value = JOptionPane.showConfirmDialog(null,
+                cancelMessage,
+                null, 
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+         
+         //if yes option is selected, the new schedule will be discarded
+         if (value == JOptionPane.YES_OPTION) {
+            //newly created schedule should be deleted from database
+             
+            this.dispose();
+            SchedulesPage.main(null);
+            }
+    }   
+    
     /**
      * @param args the command line arguments
      */
@@ -440,6 +477,7 @@ public class CreateSchedule extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify                     
     private javax.swing.JLabel accountLabel;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTable createYourScheduleJTable;
     private javax.swing.JLabel createYourScheduleTitleLabel;
     private javax.swing.JLabel groupsLabel;

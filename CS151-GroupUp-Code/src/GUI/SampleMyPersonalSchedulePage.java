@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
 import GroupUp.MysqlConn;
@@ -47,6 +49,7 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
         saveButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         myScheduleJTable = new javax.swing.JTable();
+        deleteScheduleButton = new javax.swing.JButton();
         arrayForDisplayingMyPersonalScheduleTable = new Object [][] {
             {"12 AM", Schedule.focusSchedule.getDayTimeBool(0, 0), Schedule.focusSchedule.getDayTimeBool(1, 0), Schedule.focusSchedule.getDayTimeBool(2, 0), Schedule.focusSchedule.getDayTimeBool(3, 0), Schedule.focusSchedule.getDayTimeBool(4, 0), Schedule.focusSchedule.getDayTimeBool(5, 0), Schedule.focusSchedule.getDayTimeBool(6, 0)},
             {"1 AM", false, false, false, false, false, false, false},
@@ -250,6 +253,17 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
 
         panelGradient1.add(jScrollPane1);
         jScrollPane1.setBounds(300, 150, 1080, 540);
+        
+        deleteScheduleButton.setBackground(new java.awt.Color(13, 165, 165));
+        deleteScheduleButton.setFont(new java.awt.Font("Canela", 1, 36)); // NOI18N
+        deleteScheduleButton.setText("Delete Schedule");
+        deleteScheduleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteScheduleButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(deleteScheduleButton);
+        deleteScheduleButton.setBounds(1100, 20, 320, 70);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -443,6 +457,27 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
         }
     }                                          
 
+    private void deleteScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        JLabel cancelMessage = new JLabel("Are you sure you want to delete your schedule?", SwingConstants.CENTER);
+        cancelMessage.setFont(new Font("Canela", 1, 20));
+        cancelMessage.setOpaque(true);
+
+        //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
+        int value = JOptionPane.showConfirmDialog(null,
+            cancelMessage,
+            null,
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE);
+
+        //if yes option is selected, the schedule will be discarded
+        if (value == JOptionPane.YES_OPTION) {
+            //personal schedule should be deleted from database
+            
+            this.dispose();
+            SchedulesPage.main(null);
+        }
+    }         
+    
     /**
      * @param args the command line arguments
      */
@@ -481,6 +516,7 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JLabel GroupICreatedPageTitle;
     private javax.swing.JLabel accountLabel;
+    private javax.swing.JButton deleteScheduleButton;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
     private javax.swing.JScrollPane jScrollPane1;
