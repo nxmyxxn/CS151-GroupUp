@@ -513,7 +513,7 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify                  
     private javax.swing.JLabel GroupICreatedPageTitle;
     private javax.swing.JLabel accountLabel;
     private javax.swing.JButton deleteScheduleButton;
