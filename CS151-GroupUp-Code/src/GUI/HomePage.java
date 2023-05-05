@@ -104,22 +104,37 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-    	this.dispose();
-    	User.nullifyInstance();
-    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
+    	if (evt.getSource() == logoutButton) 
+        {
+    		this.dispose();
+        	User.nullifyInstance();
+        	InitialWelcomePage.main(null); //go back to welcome page on logout and set User instance to null.
+        }
+    			
     }                                            
 
     private void accountButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
+    	if (evt.getSource() == accountButton1) 
+        {
+        	this.dispose();
+        	AccountPage.main(null);
+        }
     }                                              
 
     private void schedulesButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
+    	if (evt.getSource() == schedulesButton) 
+        {
+        	this.dispose();
+        	SchedulesPage.main(null);
+        }
     }                                               
 
     private void groupsButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
+    	if (evt.getSource() == groupsButton) 
+        {
+        	this.dispose();
+        	GroupsPage.main(null);
+        }
     }                                            
 
     /**

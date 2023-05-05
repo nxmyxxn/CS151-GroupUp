@@ -232,7 +232,8 @@ public class AccountPage extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
-        //testClicked.main(null);
+    	this.dispose();
+    	HomePage.main(null);
     }                                      
 
     private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
@@ -260,7 +261,8 @@ public class AccountPage extends javax.swing.JFrame {
     }                                      
 
     private void groupsLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        GroupsPage.main(null);
+        this.dispose();
+    	GroupsPage.main(null);
     }                                        
 
     private void groupsLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
@@ -286,7 +288,8 @@ public class AccountPage extends javax.swing.JFrame {
     }                                        
 
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        //testClicked.main(null);
+    	this.dispose();
+        AccountPage.main(null);
     }                                         
 
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         

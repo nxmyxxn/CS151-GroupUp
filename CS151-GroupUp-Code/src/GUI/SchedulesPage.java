@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import GroupUp.User;
+
 /**
  *
  * @author preethi
@@ -253,8 +255,10 @@ public class SchedulesPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
-        //testClicked.main(null);
+    private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) 
+    {                                       
+    	this.dispose();
+    	HomePage.main(null);
     }                                      
 
     private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
@@ -282,7 +286,8 @@ public class SchedulesPage extends javax.swing.JFrame {
     }                                      
 
     private void groupsLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        GroupsPage.main(null);
+    	this.dispose();
+    	GroupsPage.main(null);
     }                                        
 
     private void groupsLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
@@ -308,7 +313,8 @@ public class SchedulesPage extends javax.swing.JFrame {
     }                                        
 
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        //testClicked.main(null);
+    	this.dispose();
+    	AccountPage.main(null);
     }                                         
 
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
@@ -334,7 +340,8 @@ public class SchedulesPage extends javax.swing.JFrame {
     }                                         
 
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
-        //testClicked.main(null);
+    	this.dispose();
+    	SchedulesPage.main(null);
     }                                           
 
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
@@ -375,6 +382,9 @@ public class SchedulesPage extends javax.swing.JFrame {
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);	
     }                                        
 
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        

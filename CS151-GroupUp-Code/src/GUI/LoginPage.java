@@ -50,7 +50,7 @@ public class LoginPage extends javax.swing.JFrame {
         usernameLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(0, 0, 0));
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usernameLabel.setText("Username");
+        usernameLabel.setText("Username:");
 
         usernameInputTextField.setFont(new java.awt.Font("Canela", 0, 20)); // NOI18N
         usernameInputTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +62,7 @@ public class LoginPage extends javax.swing.JFrame {
         passwordLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         passwordLabel.setForeground(new java.awt.Color(0, 0, 0));
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        passwordLabel.setText("Password");
+        passwordLabel.setText("Password:");
 
         passwordInputTextField.setFont(new java.awt.Font("Canela", 0, 20)); // NOI18N
         passwordInputTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -194,9 +194,10 @@ public class LoginPage extends javax.swing.JFrame {
     }                                        
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        if (evt.getSource() == exitButton) 
+    	if (evt.getSource() == exitButton) 
         {
-            this.dispose();
+        	this.dispose();
+        	InitialWelcomePage.main(null);
         }
     }                                          
 

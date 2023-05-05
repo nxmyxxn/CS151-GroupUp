@@ -167,8 +167,13 @@ public class SignupPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                           
+    	if (evt.getSource() == exitButton) 
+        {
+        	this.dispose();
+        	InitialWelcomePage.main(null);
+        }
     }                                          
 
     private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                   

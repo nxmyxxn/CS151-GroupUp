@@ -21,6 +21,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
+import GroupUp.User;
+
 /**
  *
  * @author preethi
@@ -311,8 +313,10 @@ public class GroupsPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
-        //testClicked.main(null);
+    private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) 
+    {                                       
+    	this.dispose();
+    	HomePage.main(null);
     }                                      
 
     private void homeLabelMouseEntered(java.awt.event.MouseEvent evt) {                                       
@@ -340,7 +344,8 @@ public class GroupsPage extends javax.swing.JFrame {
     }                                     
 
     private void groupsLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        //testClicked.main(null);
+    	this.dispose();
+    	GroupsPage.main(null);
         
     }                                        
 
@@ -367,7 +372,8 @@ public class GroupsPage extends javax.swing.JFrame {
     }                                        
 
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        //testClicked.main(null);
+        this.dispose();
+    	AccountPage.main(null);
     }                                         
 
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
@@ -393,7 +399,8 @@ public class GroupsPage extends javax.swing.JFrame {
     }                                         
 
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
-         
+    	this.dispose();
+    	SchedulesPage.main(null);
     }                                           
 
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
@@ -435,6 +442,9 @@ public class GroupsPage extends javax.swing.JFrame {
                 null, 
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);	
          
     }                                        
 

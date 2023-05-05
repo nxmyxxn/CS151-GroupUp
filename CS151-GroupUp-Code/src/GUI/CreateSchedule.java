@@ -11,6 +11,7 @@ import javax.swing.table.JTableHeader;
 
 import GroupUp.MysqlConn;
 import GroupUp.Schedule;
+import GroupUp.User;
 /**
  *
  * @author preethi
@@ -252,7 +253,8 @@ public class CreateSchedule extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
     private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
-        //testClicked.main(null);
+    	this.dispose();
+    	HomePage.main(null);
     }                                      
     private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
         homeLabel = (JLabel) evt.getComponent();
@@ -296,7 +298,8 @@ public class CreateSchedule extends javax.swing.JFrame {
         groupsLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        //testClicked.main(null);
+    	this.dispose();
+    	AccountPage.main(null);
     }                                         
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
         accountLabel = (JLabel) evt.getComponent();
@@ -317,7 +320,8 @@ public class CreateSchedule extends javax.swing.JFrame {
         accountLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                         
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
-        //testClicked.main(null);
+    	this.dispose();
+    	SchedulesPage.main(null);
     }                                           
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
         schedulesLabel = (JLabel) evt.getComponent();
@@ -351,6 +355,9 @@ public class CreateSchedule extends javax.swing.JFrame {
             null,
             JOptionPane.DEFAULT_OPTION,
             JOptionPane.ERROR_MESSAGE);*/
+    	this.dispose();
+    	User.nullifyInstance();
+    	InitialWelcomePage.main(null);
     }                                        
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
         logoutLabel = (JLabel) evt.getComponent();

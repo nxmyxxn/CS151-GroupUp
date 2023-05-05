@@ -139,27 +139,29 @@ public class InitialWelcomePage extends javax.swing.JFrame {
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    	this.dispose();			//will close and dispose of the initial welcome page when pressing the exit button
+    this.dispose();			//will close and dispose of the initial welcome page when pressing the exit button
     }                                          
 
     private void signupButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                              
         if (evt.getSource() == signupButton1) 
         {
-            SignupPage.main(null);
+        	this.dispose();
+        	SignupPage.main(null);
         }
     }                                             
 
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                             
         if (evt.getSource() == loginButton1) 
         {
-            LoginPage.main(null);
+        	this.dispose();
+        	LoginPage.main(null);
         }
     }                                            
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
