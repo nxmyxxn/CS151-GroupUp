@@ -31,6 +31,13 @@ public class Schedule {
 		daysTimes = new Integer[7][24];
 	}
 	
+	public Schedule(Integer[][] dayTimes, int id, String name)
+	{
+		this.daysTimes = dayTimes; 
+		this.scheduleID = id;
+		this.scheduleName = name;
+	}
+	
 	/**
 	 * method to remove a user from a schedule's array of members
 	 * @param target the User to find and remove
@@ -168,6 +175,8 @@ public class Schedule {
 	{
 		return daysTimes;
 	}
+	
+	
 	
 	
 }

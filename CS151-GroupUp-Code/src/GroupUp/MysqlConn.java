@@ -291,7 +291,6 @@ public class MysqlConn {
 	 */
 	public static ArrayList<Schedule> getPersonalSchedules()
 	{
-		Integer[][] result = new Integer[7][24];
 		ArrayList<Integer> tempID = new ArrayList<>();
 		ArrayList<Schedule> schedules = new ArrayList<>();
 		ArrayList<String> names = new ArrayList<>();
@@ -310,6 +309,7 @@ public class MysqlConn {
 			}
 			for (int s = 0; s < tempID.size(); s++)
 			{
+				Integer[][] result = new Integer[7][24];
 				for (int i = 1; i < 8; i++)
 				{	
 					rs = state.executeQuery("select * from personal_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + i + "\'");
@@ -318,17 +318,11 @@ public class MysqlConn {
 						for (int counter = 0; counter < 24; counter++)
 						{
 							result[i - 1][counter] = rs.getInt(timeDefinitions[counter]);
-							//System.out.println(result[i - 1][counter]);
 						}
 						
 					}
 				}
-				Schedule returnedSchedule = new Schedule();
-				returnedSchedule.setDaysTimes(result);
-				returnedSchedule.printScheduleValues();
-				returnedSchedule.setScheduleID(tempID.get(s));
-				returnedSchedule.setScheduleName(names.get(s));
-				schedules.add(returnedSchedule);
+				schedules.add(new Schedule(result, tempID.get(s), names.get(s)));
 			}
 	
 			sqlConn.close();
@@ -338,9 +332,6 @@ public class MysqlConn {
 		{
 			e.printStackTrace();
 		}
-		
-		for (int d = 0; d < 3; d++)
-			schedules.get(d).printScheduleValues();
 		return schedules;
 	}
 	
