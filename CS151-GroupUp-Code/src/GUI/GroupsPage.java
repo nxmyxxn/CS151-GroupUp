@@ -256,12 +256,12 @@ public class GroupsPage extends javax.swing.JFrame {
         groupsIDidNotCreateLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
         groupsIDidNotCreateLabel.setText("Groups I Did Not Create:");
         panelGradient1.add(groupsIDidNotCreateLabel);
-        groupsIDidNotCreateLabel.setBounds(390, 440, 460, 60);
+        groupsIDidNotCreateLabel.setBounds(390, 440, 465, 60);
 
         groupsICreatedLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
         groupsICreatedLabel.setText("Groups  I Created:");
         panelGradient1.add(groupsICreatedLabel);
-        groupsICreatedLabel.setBounds(510, 350, 340, 60);
+        groupsICreatedLabel.setBounds(510, 350, 350, 60);
 
         groupsICreatedComboBox.setBackground(new java.awt.Color(159, 234, 234));
         groupsICreatedComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
@@ -510,15 +510,9 @@ public class GroupsPage extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GroupsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GroupsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GroupsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GroupsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }   
         //</editor-fold>
 
         /* Create and display the form */

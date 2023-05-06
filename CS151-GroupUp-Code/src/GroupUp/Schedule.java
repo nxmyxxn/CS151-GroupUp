@@ -6,11 +6,10 @@ import java.util.ArrayList;
 public class Schedule {
 
 	private int dayAmount;
-	private Day[] days;
 	protected User creator;
 	private ArrayList<User> members;
 	private String scheduleName;
-	private Integer[][] DaysTimes;
+	private Integer[][] daysTimes;
 	private int scheduleID;
 	
 	public static Schedule focusSchedule;
@@ -19,9 +18,8 @@ public class Schedule {
 	{
 		dayAmount = daysCount;
 		creator = maker;
-		days = new Day[dayAmount];
 		members = new ArrayList<User>();
-		DaysTimes = new Integer[7][24];
+		daysTimes = new Integer[7][24];
 	}
 	
 	/**
@@ -30,7 +28,7 @@ public class Schedule {
 	public Schedule() {
 		// TODO Auto-generated constructor stub
 		members = new ArrayList<User>();
-		DaysTimes = new Integer[7][24];
+		daysTimes = new Integer[7][24];
 	}
 	
 	/**
@@ -81,12 +79,7 @@ public class Schedule {
 	public void setDayAmount(int dayAmount) {
 		this.dayAmount = dayAmount;
 	}
-	/**
-	 * @return the days
-	 */
-	public Day[] getDays() {
-		return days;
-	}
+	
 	/**
 	 * @return the creator
 	 */
@@ -114,7 +107,7 @@ public class Schedule {
 
 	public void setDaysTimes(Integer[][] times) {
 		// TODO Auto-generated method stub
-		this.DaysTimes = times;
+		this.daysTimes = times;
 	}
 	
 	/**
@@ -125,7 +118,7 @@ public class Schedule {
 	 */
 	public Boolean getDayTimeBool(int a, int b)
 	{
-		if (DaysTimes[a][b] == 1)
+		if (daysTimes[a][b] == 1)
 			return true;
 		return false;
 	}
@@ -133,7 +126,7 @@ public class Schedule {
 	
 	public int getDayTimeValue(int a, int b)
 	{
-		return DaysTimes[a][b];
+		return daysTimes[a][b];
 	}
 
 	public int getScheduleID() {
@@ -157,13 +150,23 @@ public class Schedule {
 	{
 		int col;
 		
-		for (int i = 0; DaysTimes.length > i; i++) {
-            for (int j = 0; DaysTimes[0].length > j; j++) 
+		for (int i = 0; daysTimes.length > i; i++) {
+            for (int j = 0; daysTimes[0].length > j; j++) 
             {
-                col = DaysTimes[i][j];
+                col = daysTimes[i][j];
                 System.out.println("Row " + i + ":  Col " + j + ": " + col);
             }
 		}
+	}
+	
+	public static void setFocusSchedule(Schedule refocus)
+	{
+		focusSchedule = refocus;
+	}
+	
+	public Integer[][] getDaysTimes()
+	{
+		return daysTimes;
 	}
 	
 	

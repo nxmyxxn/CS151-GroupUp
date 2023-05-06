@@ -183,6 +183,7 @@ public class LoginPage extends javax.swing.JFrame {
     		try 
     		{
 				MysqlConn.findUserPW(testUsername, testPassword);
+				this.dispose();
 				AccountPage.main(null);
 			} 
     		catch (ClassNotFoundException | UserNotFoundException e) 

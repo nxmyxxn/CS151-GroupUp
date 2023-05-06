@@ -209,9 +209,9 @@ public class SignupPage extends javax.swing.JFrame {
      	   try
      	   {
      		   PasswordTester.isValid(pwTest);
-     		   User.getInstance(fnTest, lnTest, unTest, emailTest, pwTest);
-    			   MysqlConn.insertUserIntoDB(User.instance);			//insert the user's data into the database
-    			   AccountPage.main(null);
+    		   MysqlConn.insertUserIntoDB(unTest, fnTest, lnTest, emailTest, pwTest);			//insert the user's data into the database
+    		   User.getInstance(fnTest, lnTest, unTest, emailTest, pwTest);
+    		   AccountPage.main(null);
     			   
      	   }
      	   catch (LowerCaseCharacterMissing | Minimum8CharactersRequired | NumberCharacterMissing | SpecialCharacterMissing | UpperCaseCharacterMissing | ClassNotFoundException | UserAlreadyExistsException e)

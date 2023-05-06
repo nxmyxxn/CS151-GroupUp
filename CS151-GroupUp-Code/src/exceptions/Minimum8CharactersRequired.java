@@ -8,7 +8,7 @@ public class Minimum8CharactersRequired extends PasswordException {
 	 */
 	public Minimum8CharactersRequired()
 	{
-		super("password should contain at least 8 chartacters");
+		super("password should contain at least 8 characters");
 	}
 
 }

@@ -4,9 +4,10 @@
  */
 package GUI;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.Component;
 import java.util.ArrayList;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
@@ -14,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import GroupUp.MysqlConn;
+import GroupUp.Schedule;
 import GroupUp.User;
 
 /**
@@ -22,6 +25,8 @@ import GroupUp.User;
  */
 public class SchedulesPage extends javax.swing.JFrame {
 
+	
+	public ArrayList<Schedule> allPersonalSchedules = new ArrayList<>();
     /**
      * Creates new form SchedulesPage
      */
@@ -172,10 +177,10 @@ public class SchedulesPage extends javax.swing.JFrame {
         panelGradient1.add(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
 
-        SchedulesPageTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        SchedulesPageTitleLabel.setFont(new Font("Canela", 1, 70)); // NOI18N
         SchedulesPageTitleLabel.setText("My Schedules");
         panelGradient1.add(SchedulesPageTitleLabel);
-        SchedulesPageTitleLabel.setBounds(590, 40, 440, 100);
+        SchedulesPageTitleLabel.setBounds(590, 40, 470, 100);
         
       //source: http://www.java2s.com/Tutorials/Java/Swing_How_to/JComboBox/Change_the_colour_of_JComboBox_s_selected_Item.htm
         class TwoDecimalRenderer extends DefaultListCellRenderer {
@@ -211,6 +216,12 @@ public class SchedulesPage extends javax.swing.JFrame {
         mySchedulesComboBox.setBorder(null);
         mySchedulesComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         
+        allPersonalSchedules.addAll(MysqlConn.getPersonalSchedules());
+        for (int i = 0; i < allPersonalSchedules.size(); i++)
+        {
+        	mySchedulesComboBox.addItem(allPersonalSchedules.get(i).getScheduleName());
+        	//System.out.println(allPersonalSchedules.get(i).getScheduleID());
+        }
         //mySchedulesComboBox.addItem("mySchedule1");
         //mySchedulesComboBox.addItem("mySchedule2");
         //mySchedulesComboBox.addItem("mySchedule3");
@@ -415,7 +426,24 @@ public class SchedulesPage extends javax.swing.JFrame {
 
     private void mySchedulesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
-    }                                                   
+    	String groupSelected = String.valueOf(mySchedulesComboBox.getSelectedItem());
+    	//System.out.println(groupSelected);
+
+    	for (int i = 0; i < allPersonalSchedules.size(); i++)
+    	{
+    		if (allPersonalSchedules.get(i).getScheduleName().equals(groupSelected))
+    		{
+    			Schedule.focusSchedule = allPersonalSchedules.get(i);
+    			System.out.println(Schedule.focusSchedule.getScheduleID());
+    			Schedule.focusSchedule.setDaysTimes(allPersonalSchedules.get(i).getDaysTimes());
+    			for (int j = 0; j < 7; j++)
+    				System.out.println(Schedule.focusSchedule.getDayTimeValue(j, 0));
+    			this.dispose();
+    			SampleMyPersonalSchedulePage.main(null);
+    		}
+    	}
+
+    }                                                                        
 
     private void createScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         this.dispose();

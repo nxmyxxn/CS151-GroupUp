@@ -220,7 +220,7 @@ public class CreateSchedule extends javax.swing.JFrame {
         scheduleNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
         scheduleNameLabel.setText("Schedule Name:");
         panelGradient1.add(scheduleNameLabel);
-        scheduleNameLabel.setBounds(300, 150, 300, 60);
+        scheduleNameLabel.setBounds(300, 150, 310, 60);
         saveButton.setBackground(new java.awt.Color(13, 165, 165));
         saveButton.setFont(new java.awt.Font("Canela", 0, 40)); // NOI18N
         saveButton.setText("Save");
@@ -395,15 +395,16 @@ public class CreateSchedule extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
     	if (evt.getSource() == saveButton)
         {
-        	Schedule tempPersonal = new Schedule();
+        	Schedule.focusSchedule = MysqlConn.initializePersonalSchedule(scheduleNameTextField.getText());
+        	//System.out.println(Schedule.focusSchedule.getScheduleID());
         	Integer[][] personalValues = new Integer[7][24];
             numOfTimesPressed++;
-            System.out.println(numOfTimesPressed + " Time Pressed");
+            //System.out.println(numOfTimesPressed + " Time Pressed");
             for (int i = 0; createYourScheduleJTable.getRowCount() > i; i++) {
                 for (int j = 1; createYourScheduleJTable.getColumnCount() > j; j++)
                 {
                     Boolean col = (Boolean) createYourScheduleJTable.getValueAt(i, j);
-                    System.out.println("Row " + i + ":  Col " + j + ": " + col);
+                    //System.out.println("Row " + i + ":  Col " + j + ": " + col);
                     if (col)
                     	personalValues[j - 1][i] = 1;
                     else
@@ -411,10 +412,11 @@ public class CreateSchedule extends javax.swing.JFrame {
                 }
 
             }
-            tempPersonal.setDaysTimes(personalValues);
-            MysqlConn.initializePersonalSchedule(scheduleNameTextField.getText());
-            MysqlConn.updatePersonalSchedule(tempPersonal);
-            System.out.println();
+            Schedule.focusSchedule.setDaysTimes(personalValues);
+            MysqlConn.updatePersonalSchedule(Schedule.focusSchedule);
+            //System.out.println();
+            this.dispose();
+            SampleMyPersonalSchedulePage.main(null);
        }
     }                                          
     private void scheduleNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
