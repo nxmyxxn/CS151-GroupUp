@@ -363,17 +363,12 @@ public class SchedulesPage extends javax.swing.JFrame {
 
     private void mySchedulesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                    
     	String groupSelected = String.valueOf(mySchedulesComboBox.getSelectedItem());
-    	//System.out.println(groupSelected);
 
     	for (int i = 0; i < allPersonalSchedules.size(); i++)
     	{
     		if (allPersonalSchedules.get(i).getScheduleName().equals(groupSelected))
     		{
     			Schedule.focusSchedule = allPersonalSchedules.get(i);
-    			System.out.println(Schedule.focusSchedule.getScheduleID());
-    			Schedule.focusSchedule.setDaysTimes(allPersonalSchedules.get(i).getDaysTimes());
-    			for (int j = 0; j < 7; j++)
-    				System.out.println(Schedule.focusSchedule.getDayTimeValue(j, 0));
     			this.dispose();
     			SampleMyPersonalSchedulePage.main(null);
     		}
