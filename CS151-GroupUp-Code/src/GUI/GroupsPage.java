@@ -18,11 +18,16 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
+import GroupUp.MysqlConn;
+import GroupUp.Schedule;
 import GroupUp.User;
 
 
 public class GroupsPage extends javax.swing.JFrame {
 
+	
+	public ArrayList<Schedule> allCreatedGroups = new ArrayList<>();
+	public ArrayList<Schedule> allJoinedGroups = new ArrayList<>();
     /**
      * Creates new form GroupsPage
      */
@@ -258,6 +263,12 @@ public class GroupsPage extends javax.swing.JFrame {
         //groupsICreatedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         groupsICreatedComboBox.setBorder(null);
         groupsICreatedComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        allCreatedGroups.addAll(MysqlConn.findCreatedSchedules());
+        for (int i = 0; i < allCreatedGroups.size(); i++)
+        {
+        	groupsICreatedComboBox.addItem(allCreatedGroups.get(i).getScheduleName());
+        	//System.out.println(allPersonalSchedules.get(i).getScheduleID());
+        }
         
         //groupsICreatedComboBox.addItem("mySchedule1");
         //groupsICreatedComboBox.addItem("mySchedule2");

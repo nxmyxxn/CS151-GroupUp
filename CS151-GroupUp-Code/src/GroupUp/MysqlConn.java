@@ -97,6 +97,7 @@ public class MysqlConn {
 	 */
 	public static void insertUserIntoDB(String user, String f, String l, String email, String pass) throws ClassNotFoundException, UserAlreadyExistsException
 	{
+		String tempUserInput = userInsert;
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -106,8 +107,8 @@ public class MysqlConn {
 			while (rs.next())
 				throw new UserAlreadyExistsException();			//a user's username is a unique identifier; no two users should have the same username
 			
-			userInsert += "\'" + user + "\', \'" + pass + "\', \'" + f + "\', \'" + l + "\', \'" + email + "\')";
-			state.execute(userInsert);
+			tempUserInput += "\'" + user + "\', \'" + pass + "\', \'" + f + "\', \'" + l + "\', \'" + email + "\')";
+			state.execute(tempUserInput);
 			
 			
 			sqlConn.close();
@@ -266,18 +267,41 @@ public class MysqlConn {
 	 * @return an ArrayList of created schedule names
 	 * @throws ClassNotFoundException
 	 */
-	public static ArrayList<String> findCreatedSchedules()
+	public static ArrayList<Schedule> findCreatedSchedules()
 	{
-		ArrayList<String> schedules = new ArrayList<>();
+		ArrayList<Integer> tempID = new ArrayList<>();
+		ArrayList<Schedule> schedules = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<>();
 		
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
-			rs = state.executeQuery("select scheduleName from 7dayschedule where creator = \'" + User.getInstance().getUsername() + "\'");
+			
+			rs = state.executeQuery("select scheduleID, scheduleName from 7dayschedule where creator = \'" + User.getInstance().getUsername() + "\' and accessibility = \'group\'");
 			while (rs.next())
-				schedules.add(rs.getString("scheduleID"));
+			{
+				names.add(rs.getString("scheduleName"));
+				tempID.add(rs.getInt("scheduleID")); 
+			}
+			for (int s = 0; s < tempID.size(); s++)
+			{
+				Integer[][] result = new Integer[7][24];
+				for (int i = 1; i < 8; i++)
+				{	
+					rs = state.executeQuery("select * from personal_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + i + "\'");
+					while (rs.next())
+					{
+						for (int counter = 0; counter < 24; counter++)
+						{
+							result[i - 1][counter] = rs.getInt(timeDefinitions[counter]);
+						}
+						
+					}
+				}
+				schedules.add(new Schedule(result, tempID.get(s), names.get(s), User.getInstance()));
+			}
 	
 			sqlConn.close();
 			
@@ -286,7 +310,6 @@ public class MysqlConn {
 		{
 			e.printStackTrace();
 		}
-		
 		return schedules;
 	}
 	
@@ -388,6 +411,7 @@ public class MysqlConn {
 	{
 		
 		Schedule initialized = new Schedule();
+		String tempInsterStatement = insertPersonalSchedule;
 		
 		try
 		{
@@ -395,8 +419,8 @@ public class MysqlConn {
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
 			
-			insertPersonalSchedule += "\'" + User.getInstance().getUsername() + "\', \'" + name + "\', \'personal\')";
-			state.execute(insertPersonalSchedule);
+			tempInsterStatement += "\'" + User.getInstance().getUsername() + "\', \'" + name + "\', \'personal\')";
+			state.execute(tempInsterStatement);
 			Statement state2 = sqlConn.createStatement();
 			ResultSet temprs = state2.executeQuery("select scheduleID, creator, scheduleName from 7dayschedule where creator = \'" + User.getInstance().getUsername() + "\' and accessibility = \'personal\' and scheduleName = \'" + name + "\'");
 			while (temprs.next())
