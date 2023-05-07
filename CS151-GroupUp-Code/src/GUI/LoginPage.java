@@ -53,11 +53,6 @@ public class LoginPage extends javax.swing.JFrame {
         usernameLabel.setText("Username:");
 
         usernameInputTextField.setFont(new java.awt.Font("Canela", 0, 20)); // NOI18N
-        usernameInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameInputTextFieldActionPerformed(evt);
-            }
-        });
 
         passwordLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         passwordLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -65,11 +60,6 @@ public class LoginPage extends javax.swing.JFrame {
         passwordLabel.setText("Password:");
 
         passwordInputTextField.setFont(new java.awt.Font("Canela", 0, 20)); // NOI18N
-        passwordInputTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordInputTextFieldActionPerformed(evt);
-            }
-        });
 
         goButton.setBackground(new java.awt.Color(13, 165, 165));
         goButton.setFont(new java.awt.Font("Canela", 1, 60)); // NOI18N
@@ -164,15 +154,7 @@ public class LoginPage extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
-
-    private void usernameInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        // TODO add your handling code here:
-    }                                                   
-
-    private void passwordInputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        // TODO add your handling code here:
-    }                                                   
+    }// </editor-fold>                                                                  
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         if (evt.getSource() == goButton) 
@@ -184,7 +166,7 @@ public class LoginPage extends javax.swing.JFrame {
     		{
 				MysqlConn.findUserPW(testUsername, testPassword);
 				this.dispose();
-				AccountPage.main(null);
+				HomePage.main(null);
 			} 
     		catch (ClassNotFoundException | UserNotFoundException e) 
     		{
@@ -236,8 +218,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
     }
-
-    // Variables declaration - do not modify                     
+       
     private javax.swing.JButton exitButton;
     private javax.swing.JTextField usernameInputTextField;
     private javax.swing.JPasswordField passwordInputTextField;
@@ -245,6 +226,5 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel loginLabel;
     private GUI.PanelGradient panelGradient1;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JLabel usernameLabel;
-    // End of variables declaration                   
+    private javax.swing.JLabel usernameLabel;                 
 }

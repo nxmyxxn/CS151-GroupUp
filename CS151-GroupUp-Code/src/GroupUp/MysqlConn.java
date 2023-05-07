@@ -27,7 +27,7 @@ import exceptions.UserNotFoundException;
 public class MysqlConn {
 	
 	private static final String myUsername = "root";			//default username for mySQL
-	private static final String myPassword = "Screw_HW-4";			//programmers are prompted to create a password along with the 'root' username
+	private static final String myPassword = "%Msq23Cs151*";			//programmers are prompted to create a password along with the 'root' username
 	private static final String database = "jdbc:mysql://localhost:3306/151projconnector";
 	private String allQuery = "select * from account";			//SQL code to retrieve all values from every column in table user
 	private static String userInsert = "insert into account values (";			//incomplete SQL code to insert a user's details into the table
@@ -45,6 +45,7 @@ public class MysqlConn {
 	
 	static Connection sqlConn = null;
 	static Statement state = null;
+	static PreparedStatement preparedState = null;
 	static ResultSet rs = null;			//results of a query
 	
 	/**
@@ -207,9 +208,13 @@ public class MysqlConn {
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			//PreparedStatement preparedState = sqlConn.prepareStatement("DELETE FROM 7dayschedule WHERE scheduleName = ?");
+			//preparedState.setString(1, scheduleName);
+			//preparedState.executeUpdate();
 			state = sqlConn.createStatement();
 			state.execute(scheduleDelete + scheduleName + "\' and creator = \'" + username + "\'");
-			
+			//String theString = state.toString();
+			//System.out.println(theString);
 			
 			sqlConn.close();
 		}
