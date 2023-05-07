@@ -229,6 +229,13 @@ public class GroupsPage extends javax.swing.JFrame {
         groupsIDidNotCreateComboBox.setBorder(null);
         groupsIDidNotCreateComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         
+        allJoinedGroups.addAll(MysqlConn.findJoinedSchedules());
+        for (int i = 0; i < allJoinedGroups.size(); i++)
+        {
+        	groupsIDidNotCreateComboBox.addItem(allJoinedGroups.get(i).getScheduleName());
+        	//System.out.println(allPersonalSchedules.get(i).getScheduleID());
+        }
+        
         //groupsIDidNotCreateComboBox.addItem("mySchedule1");
         //groupsIDidNotCreateComboBox.addItem("mySchedule2");
         //groupsIDidNotCreateComboBox.addItem("mySchedule3");
@@ -431,7 +438,17 @@ public class GroupsPage extends javax.swing.JFrame {
     }                                        
 
     private void groupsIDidNotCreateComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                            
-        // TODO add your handling code here:
+    	String groupSelected = String.valueOf(groupsIDidNotCreateComboBox.getSelectedItem());
+
+    	for (int i = 0; i < allJoinedGroups.size(); i++)
+    	{
+    		if (allJoinedGroups.get(i).getScheduleName().equals(groupSelected))
+    		{
+    			Schedule.focusSchedule = allJoinedGroups.get(i);
+    			this.dispose();
+    			SampleGroupICreatedPage.main(null);
+    		}
+    	}
     }                                                           
 
     private void groupsIDidNotCreateComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                                             
@@ -446,7 +463,17 @@ public class GroupsPage extends javax.swing.JFrame {
     }                                                       
 
     private void groupsICreatedComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                       
-        // TODO add your handling code here:
+    	String groupSelected = String.valueOf(groupsICreatedComboBox.getSelectedItem());
+
+    	for (int i = 0; i < allCreatedGroups.size(); i++)
+    	{
+    		if (allCreatedGroups.get(i).getScheduleName().equals(groupSelected))
+    		{
+    			Schedule.focusSchedule = allCreatedGroups.get(i);
+    			this.dispose();
+    			SampleGroupICreatedPage.main(null);
+    		}
+    	}
     }                                                      
 
     private void createGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  

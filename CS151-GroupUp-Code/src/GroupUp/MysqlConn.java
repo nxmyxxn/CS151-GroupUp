@@ -27,7 +27,7 @@ import exceptions.UserNotFoundException;
 public class MysqlConn {
 	
 	private static final String myUsername = "root";			//default username for mySQL
-	private static final String myPassword = "%Msq23Cs151*";			//programmers are prompted to create a password along with the 'root' username
+	private static final String myPassword = "Screw_HW-4";			//programmers are prompted to create a password along with the 'root' username
 	private static final String database = "jdbc:mysql://localhost:3306/151projconnector";
 	private String allQuery = "select * from account";			//SQL code to retrieve all values from every column in table user
 	private static String userInsert = "insert into account values (";			//incomplete SQL code to insert a user's details into the table
@@ -230,10 +230,12 @@ public class MysqlConn {
 	 * @return scheduleIDs an ArrayList of schedule names
 	 * @throws ClassNotFoundException
 	 */
-	public static ArrayList<String> findJoinedSchedules()
+	public static ArrayList<Schedule> findJoinedSchedules()
 	{
-		ArrayList<String> schedules = new ArrayList<>();
-		ArrayList<Integer> scheduleIDs = new ArrayList<>();
+		ArrayList<Schedule> schedules = new ArrayList<>();
+		ArrayList<Integer> allscheduleIDs = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<>();
+		ArrayList<Integer> tempID = new ArrayList<>();
 		
 		try
 		{
@@ -242,12 +244,32 @@ public class MysqlConn {
 			state = sqlConn.createStatement();
 			rs = state.executeQuery("select scheduleID from account_schedule where username = \'" + User.getInstance().getUsername() + "\'");
 			while (rs.next())
-				scheduleIDs.add(rs.getInt("scheduleID"));
-			for (int i = 0; i < scheduleIDs.size(); i++)
+				allscheduleIDs.add(rs.getInt("scheduleID"));
+			for (int i = 0; i < allscheduleIDs.size(); i++)
 			{
-				rs = state.executeQuery("select scheduleName from 7dayschedule where scheduleID = \'" + scheduleIDs.get(i) + "\' and accessibility = \'group\'");
+				rs = state.executeQuery("select scheduleID, scheduleName from 7dayschedule where creator <> \'" + User.getInstance().getUsername() + "\' and accessibility = \'group\' and scheduleID = " + allscheduleIDs.get(i));
 				while (rs.next())
-					schedules.add(rs.getString("scheduleName"));
+				{
+					names.add(rs.getString("scheduleName"));
+					tempID.add(rs.getInt("scheduleID")); 
+				}
+				for (int s = 0; s < tempID.size(); s++)
+				{
+					Integer[][] result = new Integer[7][24];
+					for (int j = 1; j < 8; j++)
+					{	
+						rs = state.executeQuery("select * from group_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + j + "\'");
+						while (rs.next())
+						{
+							for (int counter = 0; counter < 24; counter++)
+							{
+								result[j - 1][counter] += rs.getInt(timeDefinitions[counter]);
+							}
+							
+						}
+					}
+					schedules.add(new Schedule(result, tempID.get(s), names.get(s), User.getInstance()));
+				}
 			}
 	
 			sqlConn.close();
@@ -288,14 +310,21 @@ public class MysqlConn {
 			for (int s = 0; s < tempID.size(); s++)
 			{
 				Integer[][] result = new Integer[7][24];
+				for (int a = 0; a < 7; a++)
+				{
+					for (int b = 0; b < 24; b++)
+					{
+						result[a][b] = 0;
+					}
+				}
 				for (int i = 1; i < 8; i++)
 				{	
-					rs = state.executeQuery("select * from personal_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + i + "\'");
+					rs = state.executeQuery("select * from group_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + i + "\'");
 					while (rs.next())
 					{
 						for (int counter = 0; counter < 24; counter++)
 						{
-							result[i - 1][counter] = rs.getInt(timeDefinitions[counter]);
+							result[i - 1][counter] += rs.getInt(timeDefinitions[counter]);
 						}
 						
 					}
@@ -411,7 +440,7 @@ public class MysqlConn {
 	{
 		
 		Schedule initialized = new Schedule();
-		String tempInsterStatement = insertPersonalSchedule;
+		String tempInsertStatement = insertPersonalSchedule;
 		
 		try
 		{
@@ -419,8 +448,8 @@ public class MysqlConn {
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
 			
-			tempInsterStatement += "\'" + User.getInstance().getUsername() + "\', \'" + name + "\', \'personal\')";
-			state.execute(tempInsterStatement);
+			tempInsertStatement += "\'" + User.getInstance().getUsername() + "\', \'" + name + "\', \'personal\')";
+			state.execute(tempInsertStatement);
 			Statement state2 = sqlConn.createStatement();
 			ResultSet temprs = state2.executeQuery("select scheduleID, creator, scheduleName from 7dayschedule where creator = \'" + User.getInstance().getUsername() + "\' and accessibility = \'personal\' and scheduleName = \'" + name + "\'");
 			while (temprs.next())
@@ -459,6 +488,163 @@ public class MysqlConn {
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public static Schedule initializeGroupSchedule(String name)
+	{
+		
+		Schedule initialized = new Schedule();
+		String tempInsertStatement = insertPersonalSchedule;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			state = sqlConn.createStatement();
+			
+			tempInsertStatement += "\'" + User.getInstance().getUsername() + "\', \'" + name + "\', \'group\')";
+			state.execute(tempInsertStatement);
+			Statement state2 = sqlConn.createStatement();
+			ResultSet temprs = state2.executeQuery("select scheduleID, creator, scheduleName from 7dayschedule where creator = \'" + User.getInstance().getUsername() + "\' and accessibility = \'group\' and scheduleName = \'" + name + "\'");
+			while (temprs.next())
+			{
+				initialized.setScheduleID(temprs.getInt("scheduleID"));
+				initialized.setCreator(temprs.getString("creator"));
+				initialized.setScheduleName(name);
+			}
+			insertIntoAccountSchedule(User.getInstance().getUsername(), initialized);
+			
+			sqlConn.close();
+		}
+		catch (SQLException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return initialized;
+	}
+	
+	
+	public static void inviteMemberSchedule(String username, String addedSchedule, Schedule schedule) throws UserNotFoundException
+	{
+		int tempID = 0;
+		int dayNum = 1;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			state = sqlConn.createStatement();
+			
+			state.execute("insert into account_schedule values(\'" + username + "\', \'" + schedule.getScheduleID() + "\')");
+			
+			rs = state.executeQuery("select scheduleID from 7dayschedule where creator = \'" + username + "\' and scheduleName = \'" + addedSchedule + "\' and accessibility = \'personal\'");
+			while (rs.next())
+				tempID = rs.getInt("scheduleID");
+			if (tempID == 0)
+				throw new UserNotFoundException();
+			Integer[][] result = new Integer[7][24];
+			
+			for (int j = 1; j < 8; j++)
+			{	
+				rs = state.executeQuery("select * from personal_day where scheduleID = \'" + tempID + "\' and dayNum = \'" + j + "\'");
+				while (rs.next())
+				{
+					for (int counter = 0; counter < 24; counter++)
+					{
+						result[j - 1][counter] = rs.getInt(timeDefinitions[counter]);
+					}
+					
+				}
+			}
+			
+			while (dayNum < 8)
+			{
+				scheduleInsert = "insert into group_day (scheduleID, dayNum, member, 12am, 1am, 2am, 3am, 4am, 5am, 6am, 7am, 8am, 9am, 10am, 11am, 12pm, 1pm, 2pm, 3pm, 4pm, 5pm, 6pm, 7pm, 8pm, 9pm, 10pm, 11pm) values (" + "\'" + schedule.getScheduleID() + "\', \'" + dayNum + "\', \'" + username + "\', ";
+				int counter2 = 0;
+				while (counter2 < 23)
+				{
+					scheduleInsert +="\'" +  result[dayNum - 1][counter2] + "\', ";
+					counter2 ++;
+				}
+				scheduleInsert += result[dayNum - 1][23] + ")";
+				System.out.println(scheduleInsert);
+				state.execute(scheduleInsert);
+				dayNum ++;
+				
+			}
+			
+			sqlConn.close();
+		}
+		catch (SQLException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public static void addOwnScheduleToGroup(Schedule schedule)
+	{
+		int counter = 0;
+		int dayNum = 1;
+		int soughtID = 0;
+		
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			state = sqlConn.createStatement();
+			//int tempID = 0;
+			//rs = state.executeQuery("select scheduleID from 7dayschedule where scheduleName = \'" + schedule.getScheduleName() + "\'");
+			//while(rs.next())
+			//	tempID = rs.getInt("scheduleID");
+			int tempID = schedule.getScheduleID();
+			
+			while (dayNum < 8)
+			{
+				scheduleInsert = "insert into group_day (scheduleID, dayNum, member, 12am, 1am, 2am, 3am, 4am, 5am, 6am, 7am, 8am, 9am, 10am, 11am, 12pm, 1pm, 2pm, 3pm, 4pm, 5pm, 6pm, 7pm, 8pm, 9pm, 10pm, 11pm) values (" + "\'" + tempID + "\', \'" + dayNum + "\', \'" + User.getInstance().getUsername() + "\', ";
+				counter = 0;
+				while (counter < 23)
+				{
+					scheduleInsert +="\'" +  schedule.getDayTimeValue(dayNum - 1, counter) + "\', ";
+					counter ++;
+				}
+				scheduleInsert += schedule.getDayTimeValue(dayNum - 1, 23) + ")";
+				System.out.println(scheduleInsert);
+				state.execute(scheduleInsert);
+				dayNum ++;
+				
+			}
+			
+			sqlConn.close();
+		}
+		catch (SQLException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+	
+public static void kickMember(Schedule schedule, String username) throws SQLException, ClassNotFoundException {
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			//PreparedStatement preparedState = sqlConn.prepareStatement("DELETE FROM 7dayschedule WHERE scheduleName = ?");
+			//preparedState.setString(1, scheduleName);
+			//preparedState.executeUpdate();
+			state = sqlConn.createStatement();
+			state.execute("delete from group_day where scheudleID = " + schedule.getScheduleID() + " and member = \'" + username + "\'");
+			//String theString = state.toString();
+			//System.out.println(theString);
+			
+			sqlConn.close();
+		}
+		catch (SQLException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		} 	
 	}
 	
 	/**

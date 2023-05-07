@@ -3,12 +3,17 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+import GroupUp.MysqlConn;
+import GroupUp.Schedule;
 import GroupUp.User;
+import exceptions.UserNotFoundException;
 
 
 public class CreateGroup extends javax.swing.JFrame {
@@ -408,6 +413,35 @@ public class CreateGroup extends javax.swing.JFrame {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         if (evt.getSource() == doneButton) 
         {
+        	Schedule.focusSchedule = MysqlConn.initializeGroupSchedule(groupNameTextField.getText());
+        	
+        	ArrayList<Schedule> allCreatedGroups = new ArrayList<>();
+        	allCreatedGroups.addAll(MysqlConn.findCreatedSchedules());
+        	for (int i = 0; i < allCreatedGroups.size(); i++)
+            {
+        		if (addMyScheduleTextField.getText().equals(allCreatedGroups.get(i).getScheduleName()))
+        		{
+        			MysqlConn.addOwnScheduleToGroup(allCreatedGroups.get(i));
+        			break;
+        		}
+        			
+            }
+        	try {
+				MysqlConn.inviteMemberSchedule(addUserTextField.getText(), addUserScheduleTextField.getText(), Schedule.focusSchedule);
+			} catch (UserNotFoundException e) {
+				ErrorPopup.makePopup(e.getMessage());
+			}
+        	
+        	allCreatedGroups.addAll(MysqlConn.findCreatedSchedules());
+        	for (int i = 0; i < allCreatedGroups.size(); i++)
+            {
+        		if (addMyScheduleTextField.getText().equals(allCreatedGroups.get(i).getScheduleName()))
+        		{
+        			Schedule.focusSchedule = allCreatedGroups.get(i);
+        			break;
+        		}
+            }
+        	SampleGroupICreatedPage.main(null);
         	this.dispose();
         	//GroupsPage.main(null);
         }
