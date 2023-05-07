@@ -31,11 +31,12 @@ public class Schedule {
 		daysTimes = new Integer[7][24];
 	}
 	
-	public Schedule(Integer[][] dayTimes, int id, String name)
+	public Schedule(Integer[][] dayTimes, int id, String name, User creator)
 	{
 		this.daysTimes = dayTimes; 
 		this.scheduleID = id;
 		this.scheduleName = name;
+		this.creator = creator;
 	}
 	
 	/**

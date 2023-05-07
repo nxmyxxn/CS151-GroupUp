@@ -27,7 +27,7 @@ import exceptions.UserNotFoundException;
 public class MysqlConn {
 	
 	private static final String myUsername = "root";			//default username for mySQL
-	private static final String myPassword = "%Msq23Cs151*";			//programmers are prompted to create a password along with the 'root' username
+	private static final String myPassword = "Screw_HW-4";			//programmers are prompted to create a password along with the 'root' username
 	private static final String database = "jdbc:mysql://localhost:3306/151projconnector";
 	private String allQuery = "select * from account";			//SQL code to retrieve all values from every column in table user
 	private static String userInsert = "insert into account values (";			//incomplete SQL code to insert a user's details into the table
@@ -327,7 +327,7 @@ public class MysqlConn {
 						
 					}
 				}
-				schedules.add(new Schedule(result, tempID.get(s), names.get(s)));
+				schedules.add(new Schedule(result, tempID.get(s), names.get(s), User.getInstance()));
 			}
 	
 			sqlConn.close();

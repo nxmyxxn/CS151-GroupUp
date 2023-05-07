@@ -380,7 +380,7 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         if (evt.getSource() == saveButton)
         {
-        	Schedule tempPersonal = new Schedule();
+        	//Schedule tempPersonal = new Schedule();
         	Integer[][] personalValues = new Integer[7][24];
             numOfTimesPressed++;
             System.out.println(numOfTimesPressed + " Time Pressed");
@@ -396,8 +396,8 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
                 }
 
             }
-            tempPersonal.setDaysTimes(personalValues);
-            MysqlConn.updatePersonalSchedule(tempPersonal);
+            Schedule.focusSchedule.setDaysTimes(personalValues);
+            MysqlConn.updatePersonalSchedule(Schedule.focusSchedule);
             System.out.println();
         }
     }                                          
@@ -417,11 +417,11 @@ public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
         //if yes option is selected, the schedule will be discarded
         if (value == JOptionPane.YES_OPTION) {
             //personal schedule should be deleted from database
-        	Schedule tempPersonal = new Schedule();
-        	String theScheduleName = tempPersonal.getScheduleName();
-        	String theUsername = User.getInstance().getUsername();
+        	//Schedule tempPersonal = new Schedule();
+        	//String theScheduleName = tempPersonal.getScheduleName();
+        	//String theUsername = User.getInstance().getUsername();
         	try {
-				MysqlConn.deleteSchedule(theScheduleName, theUsername);
+				MysqlConn.deleteSchedule(Schedule.focusSchedule.getScheduleName(), Schedule.focusSchedule.getCreator().getUsername());
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
