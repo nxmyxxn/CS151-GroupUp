@@ -310,6 +310,13 @@ public class MysqlConn {
 			for (int s = 0; s < tempID.size(); s++)
 			{
 				Integer[][] result = new Integer[7][24];
+				for (int a = 0; a < 7; a++)
+				{
+					for (int b = 0; b < 24; b++)
+					{
+						result[a][b] = 0;
+					}
+				}
 				for (int i = 1; i < 8; i++)
 				{	
 					rs = state.executeQuery("select * from group_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + i + "\'");
@@ -553,7 +560,7 @@ public class MysqlConn {
 			
 			while (dayNum < 8)
 			{
-				scheduleInsert = "insert into group_day (scheduleID, dayNum, 12am, 1am, 2am, 3am, 4am, 5am, 6am, 7am, 8am, 9am, 10am, 11am, 12pm, 1pm, 2pm, 3pm, 4pm, 5pm, 6pm, 7pm, 8pm, 9pm, 10pm, 11pm) values (" + "\'" + schedule.getScheduleID() + "\', \'" + dayNum + "\', ";
+				scheduleInsert = "insert into group_day (scheduleID, dayNum, member, 12am, 1am, 2am, 3am, 4am, 5am, 6am, 7am, 8am, 9am, 10am, 11am, 12pm, 1pm, 2pm, 3pm, 4pm, 5pm, 6pm, 7pm, 8pm, 9pm, 10pm, 11pm) values (" + "\'" + schedule.getScheduleID() + "\', \'" + dayNum + "\', \'" + username + "\', ";
 				int counter2 = 0;
 				while (counter2 < 23)
 				{
@@ -573,6 +580,71 @@ public class MysqlConn {
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public static void addOwnScheduleToGroup(Schedule schedule)
+	{
+		int counter = 0;
+		int dayNum = 1;
+		int soughtID = 0;
+		
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			state = sqlConn.createStatement();
+			//int tempID = 0;
+			//rs = state.executeQuery("select scheduleID from 7dayschedule where scheduleName = \'" + schedule.getScheduleName() + "\'");
+			//while(rs.next())
+			//	tempID = rs.getInt("scheduleID");
+			int tempID = schedule.getScheduleID();
+			
+			while (dayNum < 8)
+			{
+				scheduleInsert = "insert into group_day (scheduleID, dayNum, member, 12am, 1am, 2am, 3am, 4am, 5am, 6am, 7am, 8am, 9am, 10am, 11am, 12pm, 1pm, 2pm, 3pm, 4pm, 5pm, 6pm, 7pm, 8pm, 9pm, 10pm, 11pm) values (" + "\'" + tempID + "\', \'" + dayNum + "\', \'" + User.getInstance().getUsername() + "\', ";
+				counter = 0;
+				while (counter < 23)
+				{
+					scheduleInsert +="\'" +  schedule.getDayTimeValue(dayNum - 1, counter) + "\', ";
+					counter ++;
+				}
+				scheduleInsert += schedule.getDayTimeValue(dayNum - 1, 23) + ")";
+				System.out.println(scheduleInsert);
+				state.execute(scheduleInsert);
+				dayNum ++;
+				
+			}
+			
+			sqlConn.close();
+		}
+		catch (SQLException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+	
+public static void kickMember(Schedule schedule, String username) throws SQLException, ClassNotFoundException {
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			//PreparedStatement preparedState = sqlConn.prepareStatement("DELETE FROM 7dayschedule WHERE scheduleName = ?");
+			//preparedState.setString(1, scheduleName);
+			//preparedState.executeUpdate();
+			state = sqlConn.createStatement();
+			state.execute("delete from group_day where scheudleID = " + schedule.getScheduleID() + " and member = \'" + username + "\'");
+			//String theString = state.toString();
+			//System.out.println(theString);
+			
+			sqlConn.close();
+		}
+		catch (SQLException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		} 	
 	}
 	
 	/**

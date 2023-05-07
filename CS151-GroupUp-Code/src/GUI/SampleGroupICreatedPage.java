@@ -2,12 +2,16 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
+import GroupUp.MysqlConn;
+import GroupUp.Schedule;
 import GroupUp.User;
 
 public class SampleGroupICreatedPage extends javax.swing.JFrame {
@@ -45,30 +49,30 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
         addUserTextField = new javax.swing.JTextField();
         deleteGroupButton = new javax.swing.JButton();
         arrayForDisplayingGroupScheduleTable = new Object [][] {
-            {"12 AM", null, null, null, null, null, null, null},
-            {"1 AM", null, null, null, null, null, null, null},
-            {"2 AM", null, null, null, null, null, null, null},
-            {"3 AM", null, null, null, null, null, null, null},
-            {"4 AM", null, null, null, null, null, null, null},
-            {"5 AM", null, null, null, null, null, null, null},
-            {"6 AM", null, null, null, null, null, null, null},
-            {"7 AM", null, null, null, null, null, null, null},
-            {"8 AM", null, null, null, null, null, null, null},
-            {"9 AM", null, null, null, null, null, null, null},
-            {"10 AM", null, null, null, null, null, null, null},
-            {"11 AM", null, null, null, null, null, null, null},
-            {"12 PM", null, null, null, null, null, null, null},
-            {"1 PM", null, null, null, null, null, null, null},
-            {"2 PM", null, null, null, null, null, null, null},
-            {"3 PM", null, null, null, null, null, null, null},
-            {"4 PM", null, null, null, null, null, null, null},
-            {"5 PM", null, null, null, null, null, null, null},
-            {"6 PM", null, null, null, null, null, null, null},
-            {"7 PM", null, null, null, null, null, null, null},
-            {"8 PM", null, null, null, null, null, null, null},
-            {"9 PM", null, null, null, null, null, null, null},
-            {"10 PM", null, null, null, null, null, null, null},
-            {"11 PM", null, null, null, null, null, null, null}
+            {"12 AM", Schedule.focusSchedule.getDayTimeValue(0, 0), Schedule.focusSchedule.getDayTimeValue(1, 0), Schedule.focusSchedule.getDayTimeValue(2, 0), Schedule.focusSchedule.getDayTimeValue(3, 0), Schedule.focusSchedule.getDayTimeValue(4, 0), Schedule.focusSchedule.getDayTimeValue(5, 0), Schedule.focusSchedule.getDayTimeValue(6, 0)},
+            {"1 AM", Schedule.focusSchedule.getDayTimeValue(0, 1), Schedule.focusSchedule.getDayTimeValue(1, 1), Schedule.focusSchedule.getDayTimeValue(2, 1), Schedule.focusSchedule.getDayTimeValue(3, 1), Schedule.focusSchedule.getDayTimeValue(4, 1), Schedule.focusSchedule.getDayTimeValue(5, 1), Schedule.focusSchedule.getDayTimeValue(6, 1)},
+            {"2 AM", Schedule.focusSchedule.getDayTimeValue(0, 2), Schedule.focusSchedule.getDayTimeValue(1, 2), Schedule.focusSchedule.getDayTimeValue(2, 2), Schedule.focusSchedule.getDayTimeValue(3, 2), Schedule.focusSchedule.getDayTimeValue(4, 2), Schedule.focusSchedule.getDayTimeValue(5, 2), Schedule.focusSchedule.getDayTimeValue(6, 2)},
+            {"3 AM", Schedule.focusSchedule.getDayTimeValue(0, 3), Schedule.focusSchedule.getDayTimeValue(1, 3), Schedule.focusSchedule.getDayTimeValue(2, 3), Schedule.focusSchedule.getDayTimeValue(3, 3), Schedule.focusSchedule.getDayTimeValue(4, 3), Schedule.focusSchedule.getDayTimeValue(5, 3), Schedule.focusSchedule.getDayTimeValue(6, 3)},
+            {"4 AM", Schedule.focusSchedule.getDayTimeValue(0, 4), Schedule.focusSchedule.getDayTimeValue(1, 4), Schedule.focusSchedule.getDayTimeValue(2, 4), Schedule.focusSchedule.getDayTimeValue(3, 4), Schedule.focusSchedule.getDayTimeValue(4, 4), Schedule.focusSchedule.getDayTimeValue(5, 4), Schedule.focusSchedule.getDayTimeValue(6, 4)},
+            {"5 AM", Schedule.focusSchedule.getDayTimeValue(0, 5), Schedule.focusSchedule.getDayTimeValue(1, 5), Schedule.focusSchedule.getDayTimeValue(2, 5), Schedule.focusSchedule.getDayTimeValue(3, 5), Schedule.focusSchedule.getDayTimeValue(4, 5), Schedule.focusSchedule.getDayTimeValue(5, 5), Schedule.focusSchedule.getDayTimeValue(6, 5)},
+            {"6 AM", Schedule.focusSchedule.getDayTimeValue(0, 6), Schedule.focusSchedule.getDayTimeValue(1, 6), Schedule.focusSchedule.getDayTimeValue(2, 6), Schedule.focusSchedule.getDayTimeValue(3, 6), Schedule.focusSchedule.getDayTimeValue(4, 6), Schedule.focusSchedule.getDayTimeValue(5, 6), Schedule.focusSchedule.getDayTimeValue(6, 6)},
+            {"7 AM", Schedule.focusSchedule.getDayTimeValue(0, 7), Schedule.focusSchedule.getDayTimeValue(1, 7), Schedule.focusSchedule.getDayTimeValue(2, 7), Schedule.focusSchedule.getDayTimeValue(3, 7), Schedule.focusSchedule.getDayTimeValue(4, 7), Schedule.focusSchedule.getDayTimeValue(5, 7), Schedule.focusSchedule.getDayTimeValue(6, 7)},
+            {"8 AM", Schedule.focusSchedule.getDayTimeValue(0, 8), Schedule.focusSchedule.getDayTimeValue(1, 8), Schedule.focusSchedule.getDayTimeValue(2, 8), Schedule.focusSchedule.getDayTimeValue(3, 8), Schedule.focusSchedule.getDayTimeValue(4, 8), Schedule.focusSchedule.getDayTimeValue(5, 8), Schedule.focusSchedule.getDayTimeValue(6, 8)},
+            {"9 AM", Schedule.focusSchedule.getDayTimeValue(0, 9), Schedule.focusSchedule.getDayTimeValue(1, 9), Schedule.focusSchedule.getDayTimeValue(2, 9), Schedule.focusSchedule.getDayTimeValue(3, 9), Schedule.focusSchedule.getDayTimeValue(4, 9), Schedule.focusSchedule.getDayTimeValue(5, 9), Schedule.focusSchedule.getDayTimeValue(6, 9)},
+            {"10 AM", Schedule.focusSchedule.getDayTimeValue(0, 10), Schedule.focusSchedule.getDayTimeValue(1, 10), Schedule.focusSchedule.getDayTimeValue(2, 10), Schedule.focusSchedule.getDayTimeValue(3, 10), Schedule.focusSchedule.getDayTimeValue(4, 10), Schedule.focusSchedule.getDayTimeValue(5, 10), Schedule.focusSchedule.getDayTimeValue(6, 10)},
+            {"11 AM", Schedule.focusSchedule.getDayTimeValue(0, 11), Schedule.focusSchedule.getDayTimeValue(1, 11), Schedule.focusSchedule.getDayTimeValue(2, 11), Schedule.focusSchedule.getDayTimeValue(3, 11), Schedule.focusSchedule.getDayTimeValue(4, 11), Schedule.focusSchedule.getDayTimeValue(5, 11), Schedule.focusSchedule.getDayTimeValue(6, 11)},
+            {"12 PM", Schedule.focusSchedule.getDayTimeValue(0, 12), Schedule.focusSchedule.getDayTimeValue(1, 12), Schedule.focusSchedule.getDayTimeValue(2, 12), Schedule.focusSchedule.getDayTimeValue(3, 12), Schedule.focusSchedule.getDayTimeValue(4, 12), Schedule.focusSchedule.getDayTimeValue(5, 12), Schedule.focusSchedule.getDayTimeValue(6, 12)},
+            {"1 PM", Schedule.focusSchedule.getDayTimeValue(0, 13), Schedule.focusSchedule.getDayTimeValue(1, 13), Schedule.focusSchedule.getDayTimeValue(2, 13), Schedule.focusSchedule.getDayTimeValue(3, 13), Schedule.focusSchedule.getDayTimeValue(4, 13), Schedule.focusSchedule.getDayTimeValue(5, 13), Schedule.focusSchedule.getDayTimeValue(6, 13)},
+            {"2 PM", Schedule.focusSchedule.getDayTimeValue(0, 14), Schedule.focusSchedule.getDayTimeValue(1, 14), Schedule.focusSchedule.getDayTimeValue(2, 14), Schedule.focusSchedule.getDayTimeValue(3, 14), Schedule.focusSchedule.getDayTimeValue(4, 14), Schedule.focusSchedule.getDayTimeValue(5, 14), Schedule.focusSchedule.getDayTimeValue(6, 14)},
+            {"3 PM", Schedule.focusSchedule.getDayTimeValue(0, 15), Schedule.focusSchedule.getDayTimeValue(1, 15), Schedule.focusSchedule.getDayTimeValue(2, 15), Schedule.focusSchedule.getDayTimeValue(3, 15), Schedule.focusSchedule.getDayTimeValue(4, 15), Schedule.focusSchedule.getDayTimeValue(5, 15), Schedule.focusSchedule.getDayTimeValue(6, 15)},
+            {"4 PM", Schedule.focusSchedule.getDayTimeValue(0, 16), Schedule.focusSchedule.getDayTimeValue(1, 16), Schedule.focusSchedule.getDayTimeValue(2, 16), Schedule.focusSchedule.getDayTimeValue(3, 16), Schedule.focusSchedule.getDayTimeValue(4, 16), Schedule.focusSchedule.getDayTimeValue(5, 16), Schedule.focusSchedule.getDayTimeValue(6, 16)},
+            {"5 PM", Schedule.focusSchedule.getDayTimeValue(0, 17), Schedule.focusSchedule.getDayTimeValue(1, 17), Schedule.focusSchedule.getDayTimeValue(2, 17), Schedule.focusSchedule.getDayTimeValue(3, 17), Schedule.focusSchedule.getDayTimeValue(4, 17), Schedule.focusSchedule.getDayTimeValue(5, 17), Schedule.focusSchedule.getDayTimeValue(6, 17)},
+            {"6 PM", Schedule.focusSchedule.getDayTimeValue(0, 18), Schedule.focusSchedule.getDayTimeValue(1, 18), Schedule.focusSchedule.getDayTimeValue(2, 18), Schedule.focusSchedule.getDayTimeValue(3, 18), Schedule.focusSchedule.getDayTimeValue(4, 18), Schedule.focusSchedule.getDayTimeValue(5, 18), Schedule.focusSchedule.getDayTimeValue(6, 18)},
+            {"7 PM", Schedule.focusSchedule.getDayTimeValue(0, 19), Schedule.focusSchedule.getDayTimeValue(1, 19), Schedule.focusSchedule.getDayTimeValue(2, 19), Schedule.focusSchedule.getDayTimeValue(3, 19), Schedule.focusSchedule.getDayTimeValue(4, 19), Schedule.focusSchedule.getDayTimeValue(5, 19), Schedule.focusSchedule.getDayTimeValue(6, 19)},
+            {"8 PM", Schedule.focusSchedule.getDayTimeValue(0, 20), Schedule.focusSchedule.getDayTimeValue(1, 20), Schedule.focusSchedule.getDayTimeValue(2, 20), Schedule.focusSchedule.getDayTimeValue(3, 20), Schedule.focusSchedule.getDayTimeValue(4, 20), Schedule.focusSchedule.getDayTimeValue(5, 20), Schedule.focusSchedule.getDayTimeValue(6, 20)},
+            {"9 PM", Schedule.focusSchedule.getDayTimeValue(0, 21), Schedule.focusSchedule.getDayTimeValue(1, 21), Schedule.focusSchedule.getDayTimeValue(2, 21), Schedule.focusSchedule.getDayTimeValue(3, 21), Schedule.focusSchedule.getDayTimeValue(4, 21), Schedule.focusSchedule.getDayTimeValue(5, 21), Schedule.focusSchedule.getDayTimeValue(6, 21)},
+            {"10 PM", Schedule.focusSchedule.getDayTimeValue(0, 22), Schedule.focusSchedule.getDayTimeValue(1, 22), Schedule.focusSchedule.getDayTimeValue(2, 22), Schedule.focusSchedule.getDayTimeValue(3, 22), Schedule.focusSchedule.getDayTimeValue(4, 22), Schedule.focusSchedule.getDayTimeValue(5, 22), Schedule.focusSchedule.getDayTimeValue(6, 22)},
+            {"11 PM", Schedule.focusSchedule.getDayTimeValue(0, 23), Schedule.focusSchedule.getDayTimeValue(1, 23), Schedule.focusSchedule.getDayTimeValue(2, 23), Schedule.focusSchedule.getDayTimeValue(3, 23), Schedule.focusSchedule.getDayTimeValue(4, 23), Schedule.focusSchedule.getDayTimeValue(5, 23), Schedule.focusSchedule.getDayTimeValue(6, 23)}
         };
         
         arrayForGroupScheduleTableColumnTitles = new String [] {
@@ -478,7 +482,11 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
         //if yes option is selected, the group will be discarded
         if (value == JOptionPane.YES_OPTION) {
             //group schedule should be deleted from database
-            
+        	try {
+				MysqlConn.deleteSchedule(Schedule.focusSchedule.getScheduleName(), Schedule.focusSchedule.getCreator().getUsername());
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
             this.dispose();
             GroupsPage.main(null);
         }

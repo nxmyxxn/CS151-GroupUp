@@ -4,7 +4,7 @@ public class UserNotFoundException extends Exception {
 	
 	public UserNotFoundException()
 	{
-		super("Incorrect username or password");
+		super("Incorrect credentials");
 	}
 
 }
