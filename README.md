@@ -46,7 +46,7 @@ GroupSchedule
       - updated the sequence and usecase diagrams
       - updated some sentences in the report
 
-- **Project Contributions**:  
+- **Presentation Contributions**:  
   + Namyoon: created the slides, formatted them, wrote some information on them, and wrote few speaker notes  
   + Preethi: edited slides and wrote most speaker notes
 
