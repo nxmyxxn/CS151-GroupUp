@@ -5,41 +5,51 @@ GroupSchedule
 - **Project title** : Group Up
 - **Team #4** : Namyoon Cho, Danilo Makarewycz, Preethi Mohan
 - **Proposal Contributions**:   
-  Namyoon made an idea of pfoject, wrote Operations for each user and formatted the README file.
-  Danilo wrote High-level description of solution, Functionality, Previous works.
-  Preethi Mohan wrote Problems/issue to resolve, Description of assumptions / operating environments / intended usage.
+  Namyoon came up with the idea for the project, wrote operations for each user and formatted the README file.
+  Danilo wrote the high-level description of solution, functionality, and previous works.
+  Preethi wrote the problems/issue to resolve, and description of assumptions / operating environments / intended usage.
   
 - **Code and Report Contributions**:  
   + Namyoon
     - code 
-      - login/signup
+      - intial login/signup page
     - report
       - wrote the state diagram
-      - updated diagrams
+      - updated state diagram
       - formatted the report into GitHub
   + Danilo
     - code
-      - Day/Schedule/User/ErrorPopup/MysqlConn classes and all the exception classes, handled database and execptions.
-      - Designed and normalized database in MySQL.
-      - Wrote the MYsqlConn class which contains methods to insert, delete, and query information permanently stored in the database.
-      - Handled the Model and Controller aspects of the MVC design pattern.
-      - Formatted and implemented the Singleton design pattern in User.
-      - Enabled the code to create User and Schedule objects from user inputs and queried data to display in the UI and store in the database.
+      - Day/Schedule/User/ErrorPopup/MysqlConn classes and all the exception classes, handled database and execptions
+      - Designed and normalized database in MySQL
+      - Wrote the MYsqlConn class which contains methods to insert, delete, and query information permanently stored in the database
+      - Handled the Model and Controller aspects of the MVC design pattern
+      - Formatted and implemented the Singleton design pattern in User
+      - Enabled the code to create User and Schedule objects from user inputs and queried data to display in the UI and store in the database
       - Edited default GUI text fields and combo boxes to display queried information
-      - Edited the base personal schedule display made by Preethi to dislay time inputs previously saved by a user.
+      - Edited the base personal schedule display made by Preethi to dislay time inputs previously saved by a user
     - report
-      - wrote the case diagram
-      - updated the specifics of the problem statement, existing applications, descriptions, and functionality.
+      - wrote the class diagram
+      - updated the class diagram
+      - updated the specifics of the problem statement, existing applications, descriptions, and functionality
   + Preethi  
     - code
-      - all main gui pages such as login/signup/dashboard/schedule.
-      - implemented editable calendars for the use to check boxes in.
-      - Handled fetching data from user inputs in a personal schedule upon save, and putting them into a Schedule obect.
-      - designed the primary visuals of all GUI classes.
-      - created text and passord fields, labels, and buttons for the user to interact with.
+      - new/current login and signup pages
+      - all main GUI pages such as intial welcome page, login, signup, home page, account page, schedules page, and groups page
+      - implemented base editable schedules for the user to check boxes in
+      - implemented base uneditable schedules for group schedule
+      - implemented GUI for "popup" dialog box that would display if any errors occured when logging in or signing up
+      - Handled fetching data from user inputs in a personal schedule upon save, and putting them into a Schedule object
+      - designed the primary visuals of all GUI classes
+      - created text and passord fields, labels, and buttons for the user to interact with
     - report
       - wrote the sequence diagram and usecase diagram
-  
+      - updated the sequence and usecase diagrams
+      - updated some sentences in the report
+
+- **Project Contributions**:  
+  + Namyoon: created the slides, formatted them, wrote some information on them, and wrote few speaker notes  
+  + Preethi: edited slides and wrote most speaker notes
+
 - **Problem/issue to resolve**  
   >  People face various difficulties in coordinating schedules for meetings, meetups, and other such events, where viewing everyone's schedule in one place is not usually an option and deciding availability is complicated. Oftentimes, people will simply coordinate over text or mail to share their own availabilities, which can be unorganized without a means of displaying availabilities together. People, mainly students and office workers/coworkers, need a way to ease the process of coordinating schedules and finding available times.   
 
@@ -49,7 +59,7 @@ GroupSchedule
     - When2meet [2]</br></br>
     
   >  **Problems with existing applications**
-      -  Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner. When2meet users can share weekly and multi-day views, but is not appealing to the eye and users cannot easily access their information nor other scheudles.
+      -  Google calendar has a shared calendar option, but is mainly meant for workspaces, and events can only be created by the owner. When2meet users can share weekly and multi-day views, but is not appealing to the eye and users cannot easily access their information or other schedules.
 
  
 - **Description of assumptions / operating environments / intended usage**
@@ -66,7 +76,9 @@ GroupSchedule
     - create account
     - log in/ log out
     - create schedule
-    - write schedule in the calendar</br></br>
+    - write schedule in the calendar
+    - create group
+    - view groups they are part of</br></br>
         
      > **Student/ Co worker who owns the schedule**
     - Add member
@@ -76,13 +88,15 @@ GroupSchedule
   When users create groups and display their free time on the calendar, they can see the free time in common, making it easier to make appointments or share schedules with each other.
 
 - **Steps to run the code**
-  1. Welcome page : There are signup and login buttons. If you have account you can login, if not you can sign up for a new member.
-  2.  Login : Log in with the information that is registered as a member.
-  3.  Create Own Schedule : On the Home page there is Schedules button. If you click that button, you can make there own schedules.
-      Check the checkboxs in the calendar when you are free.
-  4.  Create Group : On the Home page there is Create Group button. If you click that button, you can make their own group and see each other's schedules. 
-  5.  Check the free time on the calendar : You can just check the check boxed and click the save button.
-  6.  Check the common free time of your freinds or group users.
+  1. Make sure MySQL and MySQL Workbench are installed and working. 
+  2. Run the "IntialWelcomePage.java" file.
+  3. Welcome page : There are signup and login buttons. If you have account you can login, if not you can sign up for a new member.
+  4. Login : Log in with the information that is registered as a member.
+  5. Create Own Schedule : In the Schedules page there is Schedules button. If you click that button, you can make your own schedules.
+     Check the checkboxes in the calendar to indicate when you are free.
+  4. Create Group : On the Groups page there is Create Group button. If you click that button, you can make your own group and see each other's schedules. 
+  5. Edit Your Own Schedule : Check the check boxes for your available times and click the save button.
+  6. A Group (Schedule) : Check the common free time of your friends or group users.
 
 - **Snapshot of the running program**
   ![initialWelcomePage](https://user-images.githubusercontent.com/72899436/236298065-8675a9aa-d959-4b65-a372-43dc861b1d68.PNG)
