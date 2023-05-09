@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 
 import exceptions.NoDuplicateScheduleNamesException;
 import exceptions.NoSuchScheduleExistsException;
+import exceptions.RequireScheduleNameException;
 import groupup.MysqlConn;
 import groupup.Schedule;
 import groupup.User;
@@ -419,6 +420,8 @@ public class CreateGroup extends javax.swing.JFrame {
         	allPersonalSchedules.addAll(MysqlConn.getPersonalSchedules());
         	try
         	{
+        		if (groupNameTextField.getText().isEmpty())
+    				throw new RequireScheduleNameException();
         		for (int i = 0; i < allPersonalSchedules.size(); i++)
         		{
         			if (addMyScheduleTextField.getText().equals(allPersonalSchedules.get(i).getScheduleName()))
@@ -431,7 +434,7 @@ public class CreateGroup extends javax.swing.JFrame {
         		if (Boolean.FALSE.equals(hasSchedule))
         			throw new NoSuchScheduleExistsException();
         	}
-        	catch (NoSuchScheduleExistsException | NoDuplicateScheduleNamesException e)
+        	catch (NoSuchScheduleExistsException | NoDuplicateScheduleNamesException | RequireScheduleNameException e)
         	{
         		ErrorPopup.makePopup(e.getMessage());
         		return;
