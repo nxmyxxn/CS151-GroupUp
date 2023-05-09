@@ -72,7 +72,7 @@ GroupSchedule
   [Link to UML diagrams](https://github.com/nxmyxxn/CS151-GroupUp/blob/8f3f47d045004c48dd663e8f9beba15b6ea77914/updated%20diagrams/README.md)
 
 - **Functionality**
-  > This application will allow users to create schedules, edit personal schedules, and view group schedules in one place. Creating a personal schedule will involve a user going to a schedule creation page and checking boxes on a table representing their availabilities over a week. Later, the user can view created personal schedules. Creating a group schedule will involve initializing the schedule name and adding user personal schedules. Before adding any users, the group schedule will only show the numerical availability scores from their own schedule. Any users added will add to the availability scores at the corresponding times and days. Added users can also view these schedules, but do not have the option to add users. In addition, on other panels users can see their account information and all panels have a button to log out, which will bring the user back to the initial welcome page. 
+  > This application will allow users to create schedules, edit personal schedules, and view group schedules in one place. Creating a personal schedule will involve a user going to a schedule creation page and checking boxes on a table representing their availabilities over a week. Later, the user can view created personal schedules. Creating a group schedule will involve initializing the schedule name and adding user personal schedules. Before adding any users, the group schedule will only show the numerical availability scores from their own schedule. Any users added will add to the availability scores at the corresponding times and days. Added users can also view these schedules, but do not have the option to add users, delete users, or delete the schedule. In addition, on other panels users can see their account information and all panels have a button to log out, which will bring the user back to the initial welcome page. 
 
 - **Operations for each user**  
   > **Student/ Co-workers**  
@@ -92,10 +92,11 @@ GroupSchedule
 
 - **Steps to run the code**
   1. Make sure MySQL and MySQL Workbench are installed and working. 
-  2. Run the "IntialWelcomePage.java" file.
-  3. Welcome page : There are signup and login buttons. If you have account you can login, if not you can sign up for a new member.
-  4. Login : Log in with the information that is registered as a member.
-  5. Create Own Schedule : In the Schedules page there is Schedules button. If you click that button, you can make your own schedules.
+  2. Within MySQL Workbench, create a new database called 151projconnector" using the same password found in the myPassword variable in the MysqlConn class.
+  3. Run the "IntialWelcomePage.java" file.
+  4. Welcome page : There are signup and login buttons. If you have account you can login, if not you can sign up under a new account.
+  5. Login : Log in with the information that is registered in an account.
+  6. Create Own Schedule : In the Schedules page there is Schedules button. If you click that button, you can make your own schedules.
      Check the checkboxes in the calendar to indicate when you are free.
   4. Create Group : On the Groups page there is Create Group button. If you click that button, you can make your own group and see each other's schedules. 
   5. Edit Your Own Schedule : Check the check boxes for your available times and click the save button.
