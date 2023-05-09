@@ -120,6 +120,7 @@ GroupSchedule
 <img width="1440" alt="schedulePMO" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/777976cf-e1cd-40b6-ad17-b01a714cf1ca">
 
 <img width="1440" alt="groups(didnotcreate)" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/72b70688-e2a0-45ca-8212-145c11ca7ad9">
+<img width="1440" alt="TheGroup1fianl" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/a2b9fb09-5e6e-43db-84e6-1f21d71e6413">
 
 
 
