@@ -127,4 +127,9 @@ GroupSchedule
 - **References**
   > - [1] https://calendar.google.com/ 
   > - [2] 8 Degrees, LLC “when2meet” https://www.when2meet.com/.
+
+- **External Source Code**
+  > - https://www.tutorialspoint.com/jdbc/jdbc-quick-guide.htm#
+  > - https://www.youtube.com/watch?v=bmv5SLrEQ-M
+  > - https://www.youtube.com/watch?v=6PvKTg9NXkU
  
