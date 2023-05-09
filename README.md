@@ -109,10 +109,10 @@ GroupSchedule
 
 <img width="1440" alt="logIn" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/2350d048-fa32-4bf5-b670-0a5720f40b91">
 
-<img width="1440" alt="createschedule" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/a3ae2df6-d831-43fd-bb2d-f2cd1b7e812a">
+<img width="1440" alt="createPMOschedule" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/c23f551f-204b-4825-b74c-bd2def4543b7">
 <img width="1440" alt="schedulePMO" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/777976cf-e1cd-40b6-ad17-b01a714cf1ca">
 
-<img width="1437" alt="groups" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/454ae56d-c9a6-4f65-b6a9-e60b52834247">
+<img width="1440" alt="groups(didnotcreate)" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/72b70688-e2a0-45ca-8212-145c11ca7ad9">
 
 
 
