@@ -1,4 +1,4 @@
-package GroupUp;
+package groupup;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import exceptions.UserAlreadyExistsException;
+import exceptions.UserIsAlreadyAMemberException;
 import exceptions.UserNotFoundException;
+import gui.ErrorPopup;
 
 /**
  * connects the java program to a mysql database on my computer.
@@ -20,7 +22,7 @@ import exceptions.UserNotFoundException;
  * https://www.tutorialspoint.com/jdbc/jdbc-quick-guide.htm#
  * https://www.youtube.com/watch?v=bmv5SLrEQ-M
  * https://www.youtube.com/watch?v=6PvKTg9NXkU
- * much of this code is copied / takes inspiration from Danilo's homework 4 code
+ * a segment of this code is copied from Danilo's homework 4 code, and most expands upon it
  * @author dmaka
  *
  */
@@ -91,7 +93,11 @@ public class MysqlConn {
 	/**
 	 * inserts a user into the database by adding their attributes into the userInsert String, which results in a complete SQL code
 	 * It will not add a user's details to the database if their email can already be found in it
-	 * @param focus the input user object
+	 * @param user user's username
+	 * @param f the first name
+	 * @param l the last name
+	 * @param email the email
+	 * @param pass the password
 	 * @throws ClassNotFoundException
 	 * @throws UserAlreadyExistsException
 	 */
@@ -175,16 +181,11 @@ public class MysqlConn {
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
 			
-			System.out.println(specQuery);
 			rs = state.executeQuery(specQuery);
 			
 			while (rs.next())
 			{
 				User.getInstance(rs.getString("firstName"), rs.getString("lastName"), rs.getString("username"), rs.getString("email"), rs.getString("password"));
-				//results.setUsername(rs.getString("username"));
-				//results.setName(rs.getString("firstName"), rs.getString("lastName"));
-				//results.setEmail(rs.getString("email"));
-				//results.setPassword(rs.getString("password"));
 			}
 			sqlConn.close();
 		}
@@ -209,13 +210,8 @@ public class MysqlConn {
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
-			//PreparedStatement preparedState = sqlConn.prepareStatement("DELETE FROM 7dayschedule WHERE scheduleName = ?");
-			//preparedState.setString(1, scheduleName);
-			//preparedState.executeUpdate();
 			state = sqlConn.createStatement();
 			state.execute(scheduleDelete + scheduleName + "\' and creator = \'" + username + "\'");
-			//String theString = state.toString();
-			//System.out.println(theString);
 			
 			sqlConn.close();
 		}
@@ -256,6 +252,13 @@ public class MysqlConn {
 				for (int s = 0; s < tempID.size(); s++)
 				{
 					Integer[][] result = new Integer[7][24];
+					for (int a = 0; a < 7; a++)
+					{
+						for (int b = 0; b < 24; b++)
+						{
+							result[a][b] = 0;
+						}
+					}
 					for (int j = 1; j < 8; j++)
 					{	
 						rs = state.executeQuery("select * from group_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + j + "\'");
@@ -284,8 +287,7 @@ public class MysqlConn {
 	}
 	
 	/**
-	 * a method which returns the names of the schedules created by a specified user
-	 * @param focus the specified user
+	 * a method which returns the schedule groups created by a specified user
 	 * @return an ArrayList of created schedule names
 	 * @throws ClassNotFoundException
 	 */
@@ -343,7 +345,7 @@ public class MysqlConn {
 	}
 	
 	/**
-	 * fetches information about a schedule from the database
+	 * fetches information about the current user's personal schedules from the database
 	 * @return
 	 */
 	public static ArrayList<Schedule> getPersonalSchedules()
@@ -392,6 +394,11 @@ public class MysqlConn {
 		return schedules;
 	}
 	
+	/**
+	 * updates the current user's personal schedule by first deleting the original schedule's day-time data from 
+	 * the database, then inserts the new day-time data in its place
+	 * @param schedule the schedule object containing the new schedule information
+	 */
 	public static void updatePersonalSchedule(Schedule schedule)
 	{
 		int counter = 0;
@@ -404,10 +411,6 @@ public class MysqlConn {
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
-			//int tempID = 0;
-			//rs = state.executeQuery("select scheduleID from 7dayschedule where scheduleName = \'" + schedule.getScheduleName() + "\'");
-			//while(rs.next())
-			//	tempID = rs.getInt("scheduleID");
 			int tempID = schedule.getScheduleID();
 			state.execute("delete from personal_day where scheduleID = " + tempID);
 			
@@ -436,6 +439,11 @@ public class MysqlConn {
 		
 	}
 	
+	/**
+	 * initializes a personal schedule in the database according to the current user
+	 * @param name the current user's username
+	 * @return the newly-initialized scheule object, which has yet to contain day-time data
+	 */
 	public static Schedule initializePersonalSchedule(String name)
 	{
 		
@@ -471,7 +479,11 @@ public class MysqlConn {
 		return initialized;
 	}
 	
-	
+	/**
+	 * inserts a row in the account_schedule table in the database to show that a certain user is connected to a certain schedule
+	 * @param username the username of the user to be added
+	 * @param schedule the schedule whose ID is to be added alongside the usename
+	 */
 	public static void insertIntoAccountSchedule(String username, Schedule schedule)
 	{
 		try
@@ -490,6 +502,11 @@ public class MysqlConn {
 		}
 	}
 	
+	/**
+	 * initializes a schedule group according to user information
+	 * @param name the name of the new schedule group
+	 * @return the newly-initialized schedule group, which has yet to contain any day-time data
+	 */
 	public static Schedule initializeGroupSchedule(String name)
 	{
 		
@@ -525,8 +542,13 @@ public class MysqlConn {
 		return initialized;
 	}
 	
-	
-	public static void inviteMemberSchedule(String username, String addedSchedule, Schedule schedule) throws UserNotFoundException
+	/**
+	 * adds another user to a schedule group, as long as the parameters match a user and their personal schedule, and as long as they are not already a member
+	 * @param username the username of the user to be added
+	 * @param addedSchedule the name of the personal schedule to be added
+	 * @param schedule the schedule that the user is being aded to 
+	 */
+	public static void inviteMemberSchedule(String username, String addedSchedule, Schedule schedule)
 	{
 		int tempID = 0;
 		int dayNum = 1;
@@ -535,7 +557,22 @@ public class MysqlConn {
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
-			
+			try
+			{
+				String userHere = null;
+				rs = state.executeQuery("select member from group_day where scheduleID = \'" + schedule.getScheduleID() + "\' and member = \'" + username + "\' and dayNum = \'1\'");
+				while (rs.next())
+				{
+					userHere = rs.getString("member");
+				}
+				if (userHere != null)
+					throw new UserIsAlreadyAMemberException();
+			}
+			catch (UserIsAlreadyAMemberException e)
+			{
+				ErrorPopup.makePopup(e.getMessage());
+				return;
+			}
 			state.execute("insert into account_schedule values(\'" + username + "\', \'" + schedule.getScheduleID() + "\')");
 			
 			rs = state.executeQuery("select scheduleID from 7dayschedule where creator = \'" + username + "\' and scheduleName = \'" + addedSchedule + "\' and accessibility = \'personal\'");
@@ -557,6 +594,7 @@ public class MysqlConn {
 					
 				}
 			}
+			
 			
 			while (dayNum < 8)
 			{
@@ -580,33 +618,33 @@ public class MysqlConn {
 		{
 			e.printStackTrace();
 		}
+		catch (UserNotFoundException e)
+		{
+			ErrorPopup.makePopup(e.getMessage());
+		}
 	}
 	
+	/**
+	 * adds the current user's own personal schedule to the schedule group
+	 * @param schedule the current user's schedule to be added
+	 */
 	public static void addOwnScheduleToGroup(Schedule schedule)
 	{
 		int counter = 0;
 		int dayNum = 1;
-		int soughtID = 0;
-		
-		
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
-			//int tempID = 0;
-			//rs = state.executeQuery("select scheduleID from 7dayschedule where scheduleName = \'" + schedule.getScheduleName() + "\'");
-			//while(rs.next())
-			//	tempID = rs.getInt("scheduleID");
-			int tempID = schedule.getScheduleID();
-			
 			while (dayNum < 8)
 			{
-				scheduleInsert = "insert into group_day (scheduleID, dayNum, member, 12am, 1am, 2am, 3am, 4am, 5am, 6am, 7am, 8am, 9am, 10am, 11am, 12pm, 1pm, 2pm, 3pm, 4pm, 5pm, 6pm, 7pm, 8pm, 9pm, 10pm, 11pm) values (" + "\'" + tempID + "\', \'" + dayNum + "\', \'" + User.getInstance().getUsername() + "\', ";
+				scheduleInsert = "insert into group_day (scheduleID, dayNum, member, 12am, 1am, 2am, 3am, 4am, 5am, 6am, 7am, 8am, 9am, 10am, 11am, 12pm, 1pm, 2pm, 3pm, 4pm, 5pm, 6pm, 7pm, 8pm, 9pm, 10pm, 11pm) values (" + "\'" + Schedule.focusSchedule.getScheduleID() + "\', \'" + dayNum + "\', \'" + User.getInstance().getUsername() + "\', ";
 				counter = 0;
 				while (counter < 23)
 				{
 					scheduleInsert +="\'" +  schedule.getDayTimeValue(dayNum - 1, counter) + "\', ";
+					System.out.println(schedule.getDayTimeValue(dayNum - 1, counter));
 					counter ++;
 				}
 				scheduleInsert += schedule.getDayTimeValue(dayNum - 1, 23) + ")";
@@ -625,19 +663,31 @@ public class MysqlConn {
 		
 	}
 	
-public static void kickMember(Schedule schedule, String username) throws SQLException, ClassNotFoundException {
+	/**
+	 * removes a user from a schedule group, as long as they are a member of the group already
+	 * @param schedule the schedule the user is being kicked from 
+	 * @param username the username of the user to be removed
+	 */
+	public static void kickMember(Schedule schedule, String username) {
 		
 		try
 		{
+			String userInGroupDay = null;
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
-			//PreparedStatement preparedState = sqlConn.prepareStatement("DELETE FROM 7dayschedule WHERE scheduleName = ?");
-			//preparedState.setString(1, scheduleName);
-			//preparedState.executeUpdate();
 			state = sqlConn.createStatement();
-			state.execute("delete from group_day where scheudleID = " + schedule.getScheduleID() + " and member = \'" + username + "\'");
-			//String theString = state.toString();
-			//System.out.println(theString);
+			rs = state.executeQuery("select * from group_day where scheduleID = " + schedule.getScheduleID() + " and member = \'" + username + "\' and dayNum = \'1\'");
+			while(rs.next())
+			{
+				userInGroupDay = rs.getString("member");
+			}
+			if (userInGroupDay != null)
+			{
+				state.execute("delete from group_day where scheduleID = " + schedule.getScheduleID() + " and member = \'" + username + "\'");
+				state.execute("delete from account_schedule where username = \'" + username + "\' and scheduleID = \'" + schedule.getScheduleID() + "\'");
+			}
+			else
+				throw new UserNotFoundException();
 			
 			sqlConn.close();
 		}
@@ -645,6 +695,10 @@ public static void kickMember(Schedule schedule, String username) throws SQLExce
 		{
 			e.printStackTrace();
 		} 	
+		catch (UserNotFoundException e)
+		{
+			ErrorPopup.makePopup(e.getMessage());
+		}
 	}
 	
 	/**
@@ -665,12 +719,26 @@ public static void kickMember(Schedule schedule, String username) throws SQLExce
 		System.out.println(retrievedPW.toString());
 		//attempt1.deleteSchedule("2022Meet", "MrMister");
 		//attempt1.insertUserIntoDB(new User("Prthi", "Mohan", "prmo", "prthi.mohan@sjsu.edu", "passord"));
-		User.getInstance("Danilo", "Makarewycz", "Dmaka", "danilo.makarewycz@sjsu.edu", "inconspicuous");
-		ArrayList<Schedule> scheduleTester = attempt1.getPersonalSchedules();
-		Schedule first = scheduleTester.get(0);
-		System.out.println(first);
-		for (int i = 0; i < scheduleTester.size(); i++)
-			scheduleTester.get(i).printScheduleValues();
+		//User.getInstance("Danilo", "Makarewycz", "Dmaka", "danilo.makarewycz@sjsu.edu", "inconspicuous");
+		//ArrayList<Schedule> scheduleTester = attempt1.getPersonalSchedules();
+		//Schedule first = scheduleTester.get(0);
+		//System.out.println(first);
+		//for (int i = 0; i < scheduleTester.size(); i++)
+		//	scheduleTester.get(i).printScheduleValues();
+		
+		User.getInstance("one", "Sammysam", "two", "email", "Password8)");
+		ArrayList<Schedule> allCreatedGroups = new ArrayList<>();
+    	allCreatedGroups.addAll(MysqlConn.getPersonalSchedules());
+    	for (int i = 0; i < allCreatedGroups.size(); i++)
+        {
+    		System.out.println(allCreatedGroups.get(i).getScheduleName());
+    		if (allCreatedGroups.get(i).getScheduleName().equals("tryAdd"))
+    		{
+    			MysqlConn.addOwnScheduleToGroup(allCreatedGroups.get(i));
+    			break;
+    		}
+    			
+        }
 		
 	}
 }

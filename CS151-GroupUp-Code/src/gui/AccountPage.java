@@ -1,10 +1,10 @@
-package GUI;
+package gui;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
-import GroupUp.User;
+import groupup.User;
 
 
 public class AccountPage extends javax.swing.JFrame {
@@ -21,8 +21,8 @@ public class AccountPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        panelGradient1 = new GUI.PanelGradient();
-        panelGradientForNavigationPanel = new GUI.PanelGradient();
+        panelGradient1 = new gui.PanelGradient();
+        panelGradientForNavigationPanel = new gui.PanelGradient();
         homeLabel = new javax.swing.JLabel();
         groupsLabel = new javax.swing.JLabel();
         accountLabel = new javax.swing.JLabel();
@@ -377,8 +377,8 @@ public class AccountPage extends javax.swing.JFrame {
     private javax.swing.JLabel homeLabel;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JLabel logoutLabel;
-    private GUI.PanelGradient panelGradient1;
-    private GUI.PanelGradient panelGradientForNavigationPanel;
+    private gui.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradientForNavigationPanel;
     private javax.swing.JLabel schedulesLabel;
     private javax.swing.JLabel userEmailLabel;
     private javax.swing.JLabel userFirstNameLabel;

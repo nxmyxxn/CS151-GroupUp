@@ -1,7 +1,8 @@
-package GroupUp;
+package groupup;
 
-import java.time.YearMonth;			//keeping this here for now. although its not being used, it could help in the GUI when displaying a month
 import java.util.ArrayList;
+
+import groupup.MysqlConn;
 
 public class Schedule {
 
@@ -138,18 +139,15 @@ public class Schedule {
 	}
 
 	public int getScheduleID() {
-		// TODO Auto-generated method stub
 		return scheduleID;
 	}
 
 	public void setScheduleID(int id) {
-		// TODO Auto-generated method stub
 		this.scheduleID = id;
 		
 	}
 
 	public void setCreator(String name) throws ClassNotFoundException {
-		// TODO Auto-generated method stub
 		this.creator = MysqlConn.getDetails(name);
 		
 	}

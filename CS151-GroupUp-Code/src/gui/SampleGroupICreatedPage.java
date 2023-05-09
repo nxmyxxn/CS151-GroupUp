@@ -1,8 +1,9 @@
-package GUI;
+package gui;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -10,9 +11,10 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
-import GroupUp.MysqlConn;
-import GroupUp.Schedule;
-import GroupUp.User;
+import exceptions.DontDeleteYourselfException;
+import groupup.MysqlConn;
+import groupup.Schedule;
+import groupup.User;
 
 public class SampleGroupICreatedPage extends javax.swing.JFrame {
 
@@ -28,8 +30,8 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        panelGradient1 = new GUI.PanelGradient();
-        panelGradientForNavigationPanel = new GUI.PanelGradient();
+        panelGradient1 = new gui.PanelGradient();
+        panelGradientForNavigationPanel = new gui.PanelGradient();
         homeLabel = new javax.swing.JLabel();
         groupsLabel = new javax.swing.JLabel();
         accountLabel = new javax.swing.JLabel();
@@ -203,14 +205,9 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
 
         GroupICreatedPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        GroupICreatedPageTitle.setText("Group Name");
+        GroupICreatedPageTitle.setText(Schedule.focusSchedule.getScheduleName());
         panelGradient1.add(GroupICreatedPageTitle);
         GroupICreatedPageTitle.setBounds(290, 30, 800, 100);
-
-        GroupICreatedPageTitle1.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        GroupICreatedPageTitle1.setText("Group Name");
-        panelGradient1.add(GroupICreatedPageTitle1);
-        GroupICreatedPageTitle1.setBounds(290, 30, 800, 100);
 
         deleteUserLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
         deleteUserLabel.setText("Delete user:");
@@ -455,12 +452,39 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
     }                                                        
 
     private void deleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
+        if (User.getInstance().getUsername().equals(deleteUserTextField.getText()))
+        	ErrorPopup.makePopup(new DontDeleteYourselfException().getMessage());
+		else
+			MysqlConn.kickMember(Schedule.focusSchedule, deleteUserTextField.getText());
+        ArrayList<Schedule> allCreatedGroups = new ArrayList<>();
+    	allCreatedGroups.addAll(MysqlConn.findCreatedSchedules());
+    	for (int i = 0; i < allCreatedGroups.size(); i++)
+        {
+    		if (Schedule.focusSchedule.getScheduleName().equals(allCreatedGroups.get(i).getScheduleName()))
+    		{
+    			Schedule.focusSchedule = allCreatedGroups.get(i);
+    			break;
+    		}
+        }
+    	SampleGroupICreatedPage.main(null);
+    	this.dispose();
     }                                                
 
     private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
-    	System.out.println("yo");
+    	MysqlConn.inviteMemberSchedule(addUserTextField.getText(), addUserScheduleTextField.getText(), Schedule.focusSchedule);
+    	ArrayList<Schedule> allCreatedGroups = new ArrayList<>();
+    	allCreatedGroups.addAll(MysqlConn.findCreatedSchedules());
+    	for (int i = 0; i < allCreatedGroups.size(); i++)
+        {
+    		if (Schedule.focusSchedule.getScheduleName().equals(allCreatedGroups.get(i).getScheduleName()))
+    		{
+    			Schedule.focusSchedule = allCreatedGroups.get(i);
+    			break;
+    		}
+        }
+    	SampleGroupICreatedPage.main(null);
+    	this.dispose();
     }                                             
 
     private void addUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                 
@@ -537,8 +561,8 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
     private javax.swing.JLabel homeLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutLabel;
-    private GUI.PanelGradient panelGradient1;
-    private GUI.PanelGradient panelGradientForNavigationPanel;
+    private gui.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradientForNavigationPanel;
     private javax.swing.JTable scheduleForGroupICreatedJTable;
     private javax.swing.JLabel schedulesLabel;
     private Object[][] arrayForDisplayingGroupScheduleTable;

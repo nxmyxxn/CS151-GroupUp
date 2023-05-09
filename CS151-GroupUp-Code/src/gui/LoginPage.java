@@ -1,8 +1,8 @@
-package GUI;
+package gui;
 
-import GroupUp.MysqlConn;
-import GroupUp.User;
 import exceptions.UserNotFoundException;
+import groupup.MysqlConn;
+import groupup.User;
 
 /**
  *
@@ -28,7 +28,7 @@ public class LoginPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        panelGradient1 = new GUI.PanelGradient();
+        panelGradient1 = new gui.PanelGradient();
         loginLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
         usernameInputTextField = new javax.swing.JTextField();
@@ -224,7 +224,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordInputTextField;
     private javax.swing.JButton goButton;
     private javax.swing.JLabel loginLabel;
-    private GUI.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradient1;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel usernameLabel;                 
 }

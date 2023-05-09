@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,7 @@ public class InitialWelcomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        panelGradient1 = new GUI.PanelGradient();
+        panelGradient1 = new gui.PanelGradient();
         welcomeLabel = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         signupButton1 = new javax.swing.JButton();
@@ -176,7 +176,7 @@ public class InitialWelcomePage extends javax.swing.JFrame {
                    
     private javax.swing.JButton exitButton;
     private javax.swing.JButton loginButton1;
-    private GUI.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradient1;
     private javax.swing.JButton signupButton1;
     private javax.swing.JLabel welcomeLabel;          
 }

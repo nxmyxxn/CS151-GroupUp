@@ -1,68 +1,76 @@
 
-package GUI;
-
+package gui;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
-import java.awt.font.TextAttribute;
-import java.text.AttributedString;
-import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.ListCellRenderer;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.table.JTableHeader;
 
-import GroupUp.MysqlConn;
-import GroupUp.Schedule;
-import GroupUp.User;
+import groupup.MysqlConn;
+import groupup.Schedule;
+import groupup.User;
 
-
-public class GroupsPage extends javax.swing.JFrame {
-
-	
-	public ArrayList<Schedule> allCreatedGroups = new ArrayList<>();
-	public ArrayList<Schedule> allJoinedGroups = new ArrayList<>();
-    /**
-     * Creates new form GroupsPage
-     */
-    public GroupsPage() {
+public class CreateSchedule extends javax.swing.JFrame {
+    
+	/** Creates new form CreateSchedule */
+    public CreateSchedule() {
         initComponents();
     }
-
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
-        panelGradient1 = new GUI.PanelGradient();
-        navigationPanel = new javax.swing.JPanel();
-        panelGradientForNavigationPanel = new GUI.PanelGradient();
+        panelGradient1 = new gui.PanelGradient();
+        panelGradientForNavigationPanel = new gui.PanelGradient();
         homeLabel = new javax.swing.JLabel();
         groupsLabel = new javax.swing.JLabel();
         accountLabel = new javax.swing.JLabel();
         schedulesLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
-        GroupsPageTitle = new javax.swing.JLabel();
-        groupsIDidNotCreateComboBox = new javax.swing.JComboBox<>();
-        groupsIDidNotCreateLabel = new javax.swing.JLabel();
-        groupsICreatedLabel = new javax.swing.JLabel();
-        groupsICreatedComboBox = new javax.swing.JComboBox<>();
-        createGroupButton = new javax.swing.JButton();
-
+        jScrollPane1 = new javax.swing.JScrollPane();
+        createYourScheduleJTable = new javax.swing.JTable();
+        scheduleNameLabel = new javax.swing.JLabel();
+        saveButton = new javax.swing.JButton();
+        createYourScheduleTitleLabel = new javax.swing.JLabel();
+        scheduleNameTextField = new javax.swing.JTextField();
+        cancelButton = new javax.swing.JButton();
+        arrayForDisplayingScheduleTable = new Object [][] {
+            {"12 AM", false, false, false, false, false, false, false},
+            {"1 AM", false, false, false, false, false, false, false},
+            {"2 AM", false, false, false, false, false, false, false},
+            {"3 AM", false, false, false, false, false, false, false},
+            {"4 AM", false, false, false, false, false, false, false},
+            {"5 AM", false, false, false, false, false, false, false},
+            {"6 AM", false, false, false, false, false, false, false},
+            {"7 AM", false, false, false, false, false, false, false},
+            {"8 AM", false, false, false, false, false, false, false},
+            {"9 AM", false, false, false, false, false, false, false},
+            {"10 AM", false, false, false, false, false, false, false},
+            {"11 AM", false, false, false, false, false, false, false},
+            {"12 PM", false, false, false, false, false, false, false},
+            {"1 PM", false, false, false, false, false, false, false},
+            {"2 PM", false, false, false, false, false, false, false},
+            {"3 PM", false, false, false, false, false, false, false},
+            {"4 PM", false, false, false, false, false, false, false},
+            {"5 PM", false, false, false, false, false, false, false},
+            {"6 PM", false, false, false, false, false, false, false},
+            {"7 PM", false, false, false, false, false, false, false},
+            {"8 PM", false, false, false, false, false, false, false},
+            {"9 PM", false, false, false, false, false, false, false},
+            {"10 PM", false, false, false, false, false, false, false},
+            {"11 PM", false, false, false, false, false, false, false}
+        };
+        
+        arrayForScheduleTableColumnTitles = new String [] {
+                "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            };
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         panelGradient1.setColorPrimario(new java.awt.Color(159, 234, 234));
         panelGradient1.setColorSecundario(new java.awt.Color(13, 165, 165));
-
         panelGradientForNavigationPanel.setColorPrimario(new java.awt.Color(159, 204, 229));
         panelGradientForNavigationPanel.setColorSecundario(new java.awt.Color(13, 145, 171));
-
         homeLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         homeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         homeLabel.setText("Home");
@@ -78,7 +86,6 @@ public class GroupsPage extends javax.swing.JFrame {
                 homeLabelMouseEntered(evt);
             }
         });
-
         groupsLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         groupsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         groupsLabel.setText("Groups");
@@ -94,7 +101,6 @@ public class GroupsPage extends javax.swing.JFrame {
                 groupsLabelMouseEntered(evt);
             }
         });
-
         accountLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         accountLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         accountLabel.setText("Account");
@@ -110,7 +116,6 @@ public class GroupsPage extends javax.swing.JFrame {
                 accountLabelMouseEntered(evt);
             }
         });
-
         schedulesLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         schedulesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         schedulesLabel.setText("Schedules");
@@ -126,7 +131,6 @@ public class GroupsPage extends javax.swing.JFrame {
                 schedulesLabelMouseEntered(evt);
             }
         });
-
         logoutLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         logoutLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logoutLabel.setText("Logout");
@@ -142,13 +146,11 @@ public class GroupsPage extends javax.swing.JFrame {
                 logoutLabelMouseEntered(evt);
             }
         });
-
         panelGradientForNavigationPanel.setLayer(homeLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(groupsLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(accountLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(schedulesLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(logoutLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout panelGradientForNavigationPanelLayout = new javax.swing.GroupLayout(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setLayout(panelGradientForNavigationPanelLayout);
         panelGradientForNavigationPanelLayout.setHorizontalGroup(
@@ -172,142 +174,79 @@ public class GroupsPage extends javax.swing.JFrame {
                 .addComponent(groupsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout navigationPanelLayout = new javax.swing.GroupLayout(navigationPanel);
-        navigationPanel.setLayout(navigationPanelLayout);
-        navigationPanelLayout.setHorizontalGroup(
-            navigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradientForNavigationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        navigationPanelLayout.setVerticalGroup(
-            navigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navigationPanelLayout.createSequentialGroup()
-                .addComponent(panelGradientForNavigationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        panelGradient1.add(navigationPanel);
-        navigationPanel.setBounds(0, 0, 250, 830);
-
-        GroupsPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        GroupsPageTitle.setText("Groups");
-        panelGradient1.add(GroupsPageTitle);
-        GroupsPageTitle.setBounds(700, 40, 270, 100);
+        panelGradient1.add(panelGradientForNavigationPanel);
+        panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
+        createYourScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
+        JTableHeader tableHeader = createYourScheduleJTable.getTableHeader();
+        Font headerFont = new Font("Canela", 1, 17);
+        tableHeader.setFont(headerFont);
+        createYourScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17));
         
-        //source: http://www.java2s.com/Tutorials/Java/Swing_How_to/JComboBox/Change_the_colour_of_JComboBox_s_selected_Item.htm
-        class TwoDecimalRenderer extends DefaultListCellRenderer {
-      	  private ListCellRenderer defaultRenderer;
-      	  public TwoDecimalRenderer(ListCellRenderer defaultRenderer) {
-      	    this.defaultRenderer = defaultRenderer;
-      	  }
-      	  @Override
-      	  public Component getListCellRendererComponent(JList list, Object value,
-      	      int index, boolean isSelected, boolean cellHasFocus) {
-      	    Component c = defaultRenderer.getListCellRendererComponent(list, value,
-      	        index, isSelected, cellHasFocus);
-      	    if (c instanceof JLabel) {
-      	      if (isSelected) {
-      	        c.setBackground(new Color(159,234,234));
-      	        c.setForeground(Color.black);
-      	      } else {
-      	        c.setBackground(Color.white);
-      	      }
-      	    } else {
-      	      c.setBackground(Color.white);
-      	      c = super.getListCellRendererComponent(list, value, index, isSelected,
-      	          cellHasFocus);
-      	    }
-      	    return c;
-      	  }
-      	}
-
-        groupsIDidNotCreateComboBox.setBackground(new java.awt.Color(159, 234, 234));
-        groupsIDidNotCreateComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
-        //groupsIDidNotCreateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        groupsIDidNotCreateComboBox.setBorder(null);
-        groupsIDidNotCreateComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        
-        allJoinedGroups.addAll(MysqlConn.findJoinedSchedules());
-        for (int i = 0; i < allJoinedGroups.size(); i++)
+        createYourScheduleJTable.setModel(new javax.swing.table.DefaultTableModel(
+        		arrayForDisplayingScheduleTable, arrayForScheduleTableColumnTitles) 
         {
-        	groupsIDidNotCreateComboBox.addItem(allJoinedGroups.get(i).getScheduleName());
-        	//System.out.println(allPersonalSchedules.get(i).getScheduleID());
-        }
-        
-        //groupsIDidNotCreateComboBox.addItem("mySchedule1");
-        //groupsIDidNotCreateComboBox.addItem("mySchedule2");
-        //groupsIDidNotCreateComboBox.addItem("mySchedule3");
-        
-        groupsIDidNotCreateComboBox.setRenderer(new TwoDecimalRenderer(groupsIDidNotCreateComboBox.getRenderer()));
-        
-        groupsIDidNotCreateComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                groupsIDidNotCreateComboBoxItemStateChanged(evt);
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true
+            };
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        groupsIDidNotCreateComboBox.addActionListener(new java.awt.event.ActionListener() {
+        createYourScheduleJTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        createYourScheduleJTable.setRowHeight(40);
+        createYourScheduleJTable.setSelectionBackground(new java.awt.Color(0, 204, 204));
+        createYourScheduleJTable.setShowGrid(true);
+        createYourScheduleJTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(createYourScheduleJTable);
+        panelGradient1.add(jScrollPane1);
+        jScrollPane1.setBounds(300, 230, 1060, 460);
+        scheduleNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
+        scheduleNameLabel.setText("Schedule Name:");
+        panelGradient1.add(scheduleNameLabel);
+        scheduleNameLabel.setBounds(300, 150, 310, 60);
+        saveButton.setBackground(new java.awt.Color(13, 165, 165));
+        saveButton.setFont(new java.awt.Font("Canela", 0, 40)); // NOI18N
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                groupsIDidNotCreateComboBoxActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
-        panelGradient1.add(groupsIDidNotCreateComboBox);
-        groupsIDidNotCreateComboBox.setBounds(860, 450, 300, 50);
-
-        groupsIDidNotCreateLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        groupsIDidNotCreateLabel.setText("Groups I Did Not Create:");
-        panelGradient1.add(groupsIDidNotCreateLabel);
-        groupsIDidNotCreateLabel.setBounds(390, 440, 465, 60);
-
-        groupsICreatedLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        groupsICreatedLabel.setText("Groups  I Created:");
-        panelGradient1.add(groupsICreatedLabel);
-        groupsICreatedLabel.setBounds(510, 350, 350, 60);
-
-        groupsICreatedComboBox.setBackground(new java.awt.Color(159, 234, 234));
-        groupsICreatedComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
-        //groupsICreatedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        groupsICreatedComboBox.setBorder(null);
-        groupsICreatedComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        allCreatedGroups.addAll(MysqlConn.findCreatedSchedules());
-        for (int i = 0; i < allCreatedGroups.size(); i++)
-        {
-        	groupsICreatedComboBox.addItem(allCreatedGroups.get(i).getScheduleName());
-        	//System.out.println(allPersonalSchedules.get(i).getScheduleID());
-        }
-        
-        //groupsICreatedComboBox.addItem("mySchedule1");
-        //groupsICreatedComboBox.addItem("mySchedule2");
-        //groupsICreatedComboBox.addItem("mySchedule3");
-        
-        groupsICreatedComboBox.setRenderer(new TwoDecimalRenderer(groupsICreatedComboBox.getRenderer()));
-        
-        groupsICreatedComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                groupsICreatedComboBoxItemStateChanged(evt);
-            }
-        });
-        groupsICreatedComboBox.addActionListener(new java.awt.event.ActionListener() {
+        panelGradient1.add(saveButton);
+        saveButton.setBounds(760, 710, 130, 70);
+        createYourScheduleTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        createYourScheduleTitleLabel.setText("Create Your Schedule");
+        panelGradient1.add(createYourScheduleTitleLabel);
+        createYourScheduleTitleLabel.setBounds(490, 50, 740, 70);
+        scheduleNameTextField.setFont(new java.awt.Font("Canela", 0, 18)); // NOI18N
+        scheduleNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                groupsICreatedComboBoxActionPerformed(evt);
+                scheduleNameTextFieldActionPerformed(evt);
             }
         });
-        panelGradient1.add(groupsICreatedComboBox);
-        groupsICreatedComboBox.setBounds(860, 360, 300, 50);
-
-        createGroupButton.setBackground(new java.awt.Color(13, 165, 165));
-        createGroupButton.setFont(new java.awt.Font("Canela", 1, 48)); // NOI18N
-        createGroupButton.setText("Create Group");
-        createGroupButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createGroupButtonActionPerformed(evt);
-            }
-        });
-        panelGradient1.add(createGroupButton);
-        createGroupButton.setBounds(600, 210, 460, 110);
-
+        panelGradient1.add(scheduleNameTextField);
+        scheduleNameTextField.setBounds(600, 160, 270, 50);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        
+        cancelButton.setBackground(new java.awt.Color(13, 165, 165));
+        cancelButton.setFont(new java.awt.Font("Canela", 1, 36)); // NOI18N
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(cancelButton);
+        cancelButton.setBounds(1270, 20, 150, 70);
+        
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,18 +256,19 @@ public class GroupsPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
         );
-
         pack();
     }// </editor-fold>                        
-
-    private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) 
-    {                                       
+    private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
     	this.dispose();
     	HomePage.main(null);
     }                                      
-
+    private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
+        homeLabel = (JLabel) evt.getComponent();
+        homeLabel.setOpaque(false);
+        homeLabel.setForeground( new Color(0, 0, 0) );
+        homeLabel.setBorder(BorderFactory.createEmptyBorder());
+    }                                     
     private void homeLabelMouseEntered(java.awt.event.MouseEvent evt) {                                       
-        
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         homeLabel = (JLabel) evt.getComponent();
         homeLabel.setOpaque(true);
@@ -337,27 +277,16 @@ public class GroupsPage extends javax.swing.JFrame {
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         homeLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                      
-
-    private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
-        homeLabel = (JLabel) evt.getComponent();
-        homeLabel.setOpaque(false);
-        homeLabel.setForeground( new Color(0, 0, 0) );
-        homeLabel.setBorder(BorderFactory.createEmptyBorder());
-    }                                     
-
     private void groupsLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
-    	this.dispose();
+        this.dispose();
     	GroupsPage.main(null);
-        
     }                                        
-
     private void groupsLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
         groupsLabel = (JLabel) evt.getComponent();
         groupsLabel.setOpaque(false);
         groupsLabel.setForeground( new Color(0, 0, 0) );
         groupsLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                       
-
     private void groupsLabelMouseEntered(java.awt.event.MouseEvent evt) {                                         
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         groupsLabel = (JLabel) evt.getComponent();
@@ -367,22 +296,18 @@ public class GroupsPage extends javax.swing.JFrame {
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         groupsLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
-
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
-        this.dispose();
+    	this.dispose();
     	AccountPage.main(null);
     }                                         
-
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
         accountLabel = (JLabel) evt.getComponent();
         accountLabel.setOpaque(false);
         accountLabel.setForeground( new Color(0, 0, 0) );
         accountLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                        
-
     private void accountLabelMouseEntered(java.awt.event.MouseEvent evt) {                                          
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
-        
         accountLabel = (JLabel) evt.getComponent();
         accountLabel.setOpaque(true);
         accountLabel.setBackground(new Color(220,232,238));
@@ -390,21 +315,18 @@ public class GroupsPage extends javax.swing.JFrame {
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         accountLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                         
-
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
     	this.dispose();
     	SchedulesPage.main(null);
     }                                           
-
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
         schedulesLabel = (JLabel) evt.getComponent();
         schedulesLabel.setOpaque(false);
         schedulesLabel.setForeground( new Color(0, 0, 0) );
         schedulesLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                          
-
     private void schedulesLabelMouseEntered(java.awt.event.MouseEvent evt) {                                            
-       //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
+        //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         schedulesLabel = (JLabel) evt.getComponent();
         schedulesLabel.setOpaque(true);
         schedulesLabel.setBackground(new Color(220,232,238));
@@ -412,21 +334,17 @@ public class GroupsPage extends javax.swing.JFrame {
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         schedulesLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                           
-
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
     	this.dispose();
     	User.nullifyInstance();
-    	InitialWelcomePage.main(null);	
-         
+    	InitialWelcomePage.main(null);
     }                                        
-
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
         logoutLabel = (JLabel) evt.getComponent();
         logoutLabel.setOpaque(false);
         logoutLabel.setForeground( new Color(0, 0, 0) );
         logoutLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                       
-
     private void logoutLabelMouseEntered(java.awt.event.MouseEvent evt) {                                         
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         logoutLabel = (JLabel) evt.getComponent();
@@ -436,51 +354,56 @@ public class GroupsPage extends javax.swing.JFrame {
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
-
-    private void groupsIDidNotCreateComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                            
-    	String groupSelected = String.valueOf(groupsIDidNotCreateComboBox.getSelectedItem());
-
-    	for (int i = 0; i < allJoinedGroups.size(); i++)
-    	{
-    		if (allJoinedGroups.get(i).getScheduleName().equals(groupSelected))
-    		{
-    			Schedule.focusSchedule = allJoinedGroups.get(i);
-    			this.dispose();
-    			SampleGroupICreatedPage.main(null);
-    		}
-    	}
-    }                                                           
-
-    private void groupsIDidNotCreateComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                                             
-        if(evt.getStateChange()==java.awt.event.ItemEvent.SELECTED)
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    	if (evt.getSource() == saveButton)
         {
-            CreateSchedule.main(null);
-        }
-    }                                                            
+        	Schedule.focusSchedule = MysqlConn.initializePersonalSchedule(scheduleNameTextField.getText());
+        	//System.out.println(Schedule.focusSchedule.getScheduleID());
+        	Integer[][] personalValues = new Integer[7][24];
+            numOfTimesPressed++;
+            //System.out.println(numOfTimesPressed + " Time Pressed");
+            for (int i = 0; createYourScheduleJTable.getRowCount() > i; i++) {
+                for (int j = 1; createYourScheduleJTable.getColumnCount() > j; j++)
+                {
+                    Boolean col = (Boolean) createYourScheduleJTable.getValueAt(i, j);
+                    //System.out.println("Row " + i + ":  Col " + j + ": " + col);
+                    if (col)
+                    	personalValues[j - 1][i] = 1;
+                    else
+                    	personalValues[j - 1][i] = 0;
+                }
 
-    private void groupsICreatedComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                                        
+            }
+            Schedule.focusSchedule.setDaysTimes(personalValues);
+            MysqlConn.updatePersonalSchedule(Schedule.focusSchedule);
+            //System.out.println();
+            this.dispose();
+            SampleMyPersonalSchedulePage.main(null);
+       }
+    }                                          
+    private void scheduleNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // TODO add your handling code here:
-    }                                                       
-
-    private void groupsICreatedComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                                       
-    	String groupSelected = String.valueOf(groupsICreatedComboBox.getSelectedItem());
-
-    	for (int i = 0; i < allCreatedGroups.size(); i++)
-    	{
-    		if (allCreatedGroups.get(i).getScheduleName().equals(groupSelected))
-    		{
-    			Schedule.focusSchedule = allCreatedGroups.get(i);
-    			this.dispose();
-    			SampleGroupICreatedPage.main(null);
-    		}
-    	}
-    }                                                      
-
-    private void createGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        this.dispose();
-        CreateGroup.main(null);
-    }                                                 
-
+    }  
+    
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        JLabel cancelMessage = new JLabel("Are you sure you want to cancel?", SwingConstants.CENTER);
+        cancelMessage.setFont(new Font("Canela", 1, 30));
+        cancelMessage.setOpaque(true);
+        
+        //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
+         int value = JOptionPane.showConfirmDialog(null,
+                cancelMessage,
+                null, 
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+         
+         //if yes option is selected, the new schedule will be discarded
+         if (value == JOptionPane.YES_OPTION) {
+            this.dispose();
+            SchedulesPage.main(null);
+            }
+    }   
+    
     /**
      * @param args the command line arguments
      */
@@ -497,33 +420,40 @@ public class GroupsPage extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GroupsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }   
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GroupsPage().setVisible(true);
+                new CreateSchedule().setVisible(true);
             }
         });
     }
-                  
-    private javax.swing.JLabel GroupsPageTitle;
+                   
     private javax.swing.JLabel accountLabel;
-    private javax.swing.JButton createGroupButton;
-    private javax.swing.JComboBox<String> groupsICreatedComboBox;
-    private javax.swing.JLabel groupsICreatedLabel;
-    private javax.swing.JComboBox<String> groupsIDidNotCreateComboBox;
-    private javax.swing.JLabel groupsIDidNotCreateLabel;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JTable createYourScheduleJTable;
+    private javax.swing.JLabel createYourScheduleTitleLabel;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutLabel;
-    private javax.swing.JPanel navigationPanel;
-    private GUI.PanelGradient panelGradient1;
-    private GUI.PanelGradient panelGradientForNavigationPanel;
+    private gui.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradientForNavigationPanel;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JLabel scheduleNameLabel;
+    private javax.swing.JTextField scheduleNameTextField;
     private javax.swing.JLabel schedulesLabel;
-    private ArrayList<String> theStringList;
+    private Object[][] arrayForDisplayingScheduleTable;
+    private String[] arrayForScheduleTableColumnTitles;
                   
+    private int numOfTimesPressed = 0;
 }

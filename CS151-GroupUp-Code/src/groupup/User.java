@@ -1,4 +1,4 @@
-package GroupUp;
+package groupup;
 
 import java.util.ArrayList;
 

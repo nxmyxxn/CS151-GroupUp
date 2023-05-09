@@ -1,7 +1,5 @@
-package GUI;
+package gui;
 
-import GroupUp.MysqlConn;
-import GroupUp.User;
 import exceptions.LowerCaseCharacterMissing;
 import exceptions.Minimum8CharactersRequired;
 import exceptions.NumberCharacterMissing;
@@ -9,6 +7,8 @@ import exceptions.PasswordTester;
 import exceptions.SpecialCharacterMissing;
 import exceptions.UpperCaseCharacterMissing;
 import exceptions.UserAlreadyExistsException;
+import groupup.MysqlConn;
+import groupup.User;
 
 public class SignupPage extends javax.swing.JFrame {
 
@@ -23,7 +23,7 @@ public class SignupPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        panelGradient1 = new GUI.PanelGradient();
+        panelGradient1 = new gui.PanelGradient();
         SignupPageLabel = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         firstNameLabel = new javax.swing.JLabel();
@@ -211,7 +211,7 @@ public class SignupPage extends javax.swing.JFrame {
     private javax.swing.JButton goButton;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField usernameTextField;
-    private GUI.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradient1;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JLabel usernameLabel;

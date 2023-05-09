@@ -1,76 +1,78 @@
+package gui;
 
-package GUI;
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
-import GroupUp.MysqlConn;
-import GroupUp.Schedule;
-import GroupUp.User;
+import groupup.Schedule;
+import groupup.User;
 
-public class CreateSchedule extends javax.swing.JFrame {
-    
-	/** Creates new form CreateSchedule */
-    public CreateSchedule() {
+
+public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
+
+    /**
+     * Creates new form SampleGroupIDidNotCreatePage
+     */
+    public SampleGroupIDidNotCreatePage() {
         initComponents();
     }
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-        panelGradient1 = new GUI.PanelGradient();
-        panelGradientForNavigationPanel = new GUI.PanelGradient();
+
+        panelGradient1 = new gui.PanelGradient();
+        panelGradientForNavigationPanel = new gui.PanelGradient();
         homeLabel = new javax.swing.JLabel();
         groupsLabel = new javax.swing.JLabel();
         accountLabel = new javax.swing.JLabel();
         schedulesLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
+        GroupICreatedPageTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        createYourScheduleJTable = new javax.swing.JTable();
-        scheduleNameLabel = new javax.swing.JLabel();
-        saveButton = new javax.swing.JButton();
-        createYourScheduleTitleLabel = new javax.swing.JLabel();
-        scheduleNameTextField = new javax.swing.JTextField();
-        cancelButton = new javax.swing.JButton();
-        arrayForDisplayingScheduleTable = new Object [][] {
-            {"12 AM", false, false, false, false, false, false, false},
-            {"1 AM", false, false, false, false, false, false, false},
-            {"2 AM", false, false, false, false, false, false, false},
-            {"3 AM", false, false, false, false, false, false, false},
-            {"4 AM", false, false, false, false, false, false, false},
-            {"5 AM", false, false, false, false, false, false, false},
-            {"6 AM", false, false, false, false, false, false, false},
-            {"7 AM", false, false, false, false, false, false, false},
-            {"8 AM", false, false, false, false, false, false, false},
-            {"9 AM", false, false, false, false, false, false, false},
-            {"10 AM", false, false, false, false, false, false, false},
-            {"11 AM", false, false, false, false, false, false, false},
-            {"12 PM", false, false, false, false, false, false, false},
-            {"1 PM", false, false, false, false, false, false, false},
-            {"2 PM", false, false, false, false, false, false, false},
-            {"3 PM", false, false, false, false, false, false, false},
-            {"4 PM", false, false, false, false, false, false, false},
-            {"5 PM", false, false, false, false, false, false, false},
-            {"6 PM", false, false, false, false, false, false, false},
-            {"7 PM", false, false, false, false, false, false, false},
-            {"8 PM", false, false, false, false, false, false, false},
-            {"9 PM", false, false, false, false, false, false, false},
-            {"10 PM", false, false, false, false, false, false, false},
-            {"11 PM", false, false, false, false, false, false, false}
+        scheduleForGroupIDidNotCreateJTable = new javax.swing.JTable();
+        
+        arrayForDisplayingGroupScheduleTable = new Object [][] {
+            {"12 AM", Schedule.focusSchedule.getDayTimeValue(0, 0), Schedule.focusSchedule.getDayTimeValue(1, 0), Schedule.focusSchedule.getDayTimeValue(2, 0), Schedule.focusSchedule.getDayTimeValue(3, 0), Schedule.focusSchedule.getDayTimeValue(4, 0), Schedule.focusSchedule.getDayTimeValue(5, 0), Schedule.focusSchedule.getDayTimeValue(6, 0)},
+            {"1 AM", Schedule.focusSchedule.getDayTimeValue(0, 1), Schedule.focusSchedule.getDayTimeValue(1, 1), Schedule.focusSchedule.getDayTimeValue(2, 1), Schedule.focusSchedule.getDayTimeValue(3, 1), Schedule.focusSchedule.getDayTimeValue(4, 1), Schedule.focusSchedule.getDayTimeValue(5, 1), Schedule.focusSchedule.getDayTimeValue(6, 1)},
+            {"2 AM", Schedule.focusSchedule.getDayTimeValue(0, 2), Schedule.focusSchedule.getDayTimeValue(1, 2), Schedule.focusSchedule.getDayTimeValue(2, 2), Schedule.focusSchedule.getDayTimeValue(3, 2), Schedule.focusSchedule.getDayTimeValue(4, 2), Schedule.focusSchedule.getDayTimeValue(5, 2), Schedule.focusSchedule.getDayTimeValue(6, 2)},
+            {"3 AM", Schedule.focusSchedule.getDayTimeValue(0, 3), Schedule.focusSchedule.getDayTimeValue(1, 3), Schedule.focusSchedule.getDayTimeValue(2, 3), Schedule.focusSchedule.getDayTimeValue(3, 3), Schedule.focusSchedule.getDayTimeValue(4, 3), Schedule.focusSchedule.getDayTimeValue(5, 3), Schedule.focusSchedule.getDayTimeValue(6, 3)},
+            {"4 AM", Schedule.focusSchedule.getDayTimeValue(0, 4), Schedule.focusSchedule.getDayTimeValue(1, 4), Schedule.focusSchedule.getDayTimeValue(2, 4), Schedule.focusSchedule.getDayTimeValue(3, 4), Schedule.focusSchedule.getDayTimeValue(4, 4), Schedule.focusSchedule.getDayTimeValue(5, 4), Schedule.focusSchedule.getDayTimeValue(6, 4)},
+            {"5 AM", Schedule.focusSchedule.getDayTimeValue(0, 5), Schedule.focusSchedule.getDayTimeValue(1, 5), Schedule.focusSchedule.getDayTimeValue(2, 5), Schedule.focusSchedule.getDayTimeValue(3, 5), Schedule.focusSchedule.getDayTimeValue(4, 5), Schedule.focusSchedule.getDayTimeValue(5, 5), Schedule.focusSchedule.getDayTimeValue(6, 5)},
+            {"6 AM", Schedule.focusSchedule.getDayTimeValue(0, 6), Schedule.focusSchedule.getDayTimeValue(1, 6), Schedule.focusSchedule.getDayTimeValue(2, 6), Schedule.focusSchedule.getDayTimeValue(3, 6), Schedule.focusSchedule.getDayTimeValue(4, 6), Schedule.focusSchedule.getDayTimeValue(5, 6), Schedule.focusSchedule.getDayTimeValue(6, 6)},
+            {"7 AM", Schedule.focusSchedule.getDayTimeValue(0, 7), Schedule.focusSchedule.getDayTimeValue(1, 7), Schedule.focusSchedule.getDayTimeValue(2, 7), Schedule.focusSchedule.getDayTimeValue(3, 7), Schedule.focusSchedule.getDayTimeValue(4, 7), Schedule.focusSchedule.getDayTimeValue(5, 7), Schedule.focusSchedule.getDayTimeValue(6, 7)},
+            {"8 AM", Schedule.focusSchedule.getDayTimeValue(0, 8), Schedule.focusSchedule.getDayTimeValue(1, 8), Schedule.focusSchedule.getDayTimeValue(2, 8), Schedule.focusSchedule.getDayTimeValue(3, 8), Schedule.focusSchedule.getDayTimeValue(4, 8), Schedule.focusSchedule.getDayTimeValue(5, 8), Schedule.focusSchedule.getDayTimeValue(6, 8)},
+            {"9 AM", Schedule.focusSchedule.getDayTimeValue(0, 9), Schedule.focusSchedule.getDayTimeValue(1, 9), Schedule.focusSchedule.getDayTimeValue(2, 9), Schedule.focusSchedule.getDayTimeValue(3, 9), Schedule.focusSchedule.getDayTimeValue(4, 9), Schedule.focusSchedule.getDayTimeValue(5, 9), Schedule.focusSchedule.getDayTimeValue(6, 9)},
+            {"10 AM", Schedule.focusSchedule.getDayTimeValue(0, 10), Schedule.focusSchedule.getDayTimeValue(1, 10), Schedule.focusSchedule.getDayTimeValue(2, 10), Schedule.focusSchedule.getDayTimeValue(3, 10), Schedule.focusSchedule.getDayTimeValue(4, 10), Schedule.focusSchedule.getDayTimeValue(5, 10), Schedule.focusSchedule.getDayTimeValue(6, 10)},
+            {"11 AM", Schedule.focusSchedule.getDayTimeValue(0, 11), Schedule.focusSchedule.getDayTimeValue(1, 11), Schedule.focusSchedule.getDayTimeValue(2, 11), Schedule.focusSchedule.getDayTimeValue(3, 11), Schedule.focusSchedule.getDayTimeValue(4, 11), Schedule.focusSchedule.getDayTimeValue(5, 11), Schedule.focusSchedule.getDayTimeValue(6, 11)},
+            {"12 PM", Schedule.focusSchedule.getDayTimeValue(0, 12), Schedule.focusSchedule.getDayTimeValue(1, 12), Schedule.focusSchedule.getDayTimeValue(2, 12), Schedule.focusSchedule.getDayTimeValue(3, 12), Schedule.focusSchedule.getDayTimeValue(4, 12), Schedule.focusSchedule.getDayTimeValue(5, 12), Schedule.focusSchedule.getDayTimeValue(6, 12)},
+            {"1 PM", Schedule.focusSchedule.getDayTimeValue(0, 13), Schedule.focusSchedule.getDayTimeValue(1, 13), Schedule.focusSchedule.getDayTimeValue(2, 13), Schedule.focusSchedule.getDayTimeValue(3, 13), Schedule.focusSchedule.getDayTimeValue(4, 13), Schedule.focusSchedule.getDayTimeValue(5, 13), Schedule.focusSchedule.getDayTimeValue(6, 13)},
+            {"2 PM", Schedule.focusSchedule.getDayTimeValue(0, 14), Schedule.focusSchedule.getDayTimeValue(1, 14), Schedule.focusSchedule.getDayTimeValue(2, 14), Schedule.focusSchedule.getDayTimeValue(3, 14), Schedule.focusSchedule.getDayTimeValue(4, 14), Schedule.focusSchedule.getDayTimeValue(5, 14), Schedule.focusSchedule.getDayTimeValue(6, 14)},
+            {"3 PM", Schedule.focusSchedule.getDayTimeValue(0, 15), Schedule.focusSchedule.getDayTimeValue(1, 15), Schedule.focusSchedule.getDayTimeValue(2, 15), Schedule.focusSchedule.getDayTimeValue(3, 15), Schedule.focusSchedule.getDayTimeValue(4, 15), Schedule.focusSchedule.getDayTimeValue(5, 15), Schedule.focusSchedule.getDayTimeValue(6, 15)},
+            {"4 PM", Schedule.focusSchedule.getDayTimeValue(0, 16), Schedule.focusSchedule.getDayTimeValue(1, 16), Schedule.focusSchedule.getDayTimeValue(2, 16), Schedule.focusSchedule.getDayTimeValue(3, 16), Schedule.focusSchedule.getDayTimeValue(4, 16), Schedule.focusSchedule.getDayTimeValue(5, 16), Schedule.focusSchedule.getDayTimeValue(6, 16)},
+            {"5 PM", Schedule.focusSchedule.getDayTimeValue(0, 17), Schedule.focusSchedule.getDayTimeValue(1, 17), Schedule.focusSchedule.getDayTimeValue(2, 17), Schedule.focusSchedule.getDayTimeValue(3, 17), Schedule.focusSchedule.getDayTimeValue(4, 17), Schedule.focusSchedule.getDayTimeValue(5, 17), Schedule.focusSchedule.getDayTimeValue(6, 17)},
+            {"6 PM", Schedule.focusSchedule.getDayTimeValue(0, 18), Schedule.focusSchedule.getDayTimeValue(1, 18), Schedule.focusSchedule.getDayTimeValue(2, 18), Schedule.focusSchedule.getDayTimeValue(3, 18), Schedule.focusSchedule.getDayTimeValue(4, 18), Schedule.focusSchedule.getDayTimeValue(5, 18), Schedule.focusSchedule.getDayTimeValue(6, 18)},
+            {"7 PM", Schedule.focusSchedule.getDayTimeValue(0, 19), Schedule.focusSchedule.getDayTimeValue(1, 19), Schedule.focusSchedule.getDayTimeValue(2, 19), Schedule.focusSchedule.getDayTimeValue(3, 19), Schedule.focusSchedule.getDayTimeValue(4, 19), Schedule.focusSchedule.getDayTimeValue(5, 19), Schedule.focusSchedule.getDayTimeValue(6, 19)},
+            {"8 PM", Schedule.focusSchedule.getDayTimeValue(0, 20), Schedule.focusSchedule.getDayTimeValue(1, 20), Schedule.focusSchedule.getDayTimeValue(2, 20), Schedule.focusSchedule.getDayTimeValue(3, 20), Schedule.focusSchedule.getDayTimeValue(4, 20), Schedule.focusSchedule.getDayTimeValue(5, 20), Schedule.focusSchedule.getDayTimeValue(6, 20)},
+            {"9 PM", Schedule.focusSchedule.getDayTimeValue(0, 21), Schedule.focusSchedule.getDayTimeValue(1, 21), Schedule.focusSchedule.getDayTimeValue(2, 21), Schedule.focusSchedule.getDayTimeValue(3, 21), Schedule.focusSchedule.getDayTimeValue(4, 21), Schedule.focusSchedule.getDayTimeValue(5, 21), Schedule.focusSchedule.getDayTimeValue(6, 21)},
+            {"10 PM", Schedule.focusSchedule.getDayTimeValue(0, 22), Schedule.focusSchedule.getDayTimeValue(1, 22), Schedule.focusSchedule.getDayTimeValue(2, 22), Schedule.focusSchedule.getDayTimeValue(3, 22), Schedule.focusSchedule.getDayTimeValue(4, 22), Schedule.focusSchedule.getDayTimeValue(5, 22), Schedule.focusSchedule.getDayTimeValue(6, 22)},
+            {"11 PM", Schedule.focusSchedule.getDayTimeValue(0, 23), Schedule.focusSchedule.getDayTimeValue(1, 23), Schedule.focusSchedule.getDayTimeValue(2, 23), Schedule.focusSchedule.getDayTimeValue(3, 23), Schedule.focusSchedule.getDayTimeValue(4, 23), Schedule.focusSchedule.getDayTimeValue(5, 23), Schedule.focusSchedule.getDayTimeValue(6, 23)}
         };
         
-        arrayForScheduleTableColumnTitles = new String [] {
+        arrayForGroupScheduleTableColumnTitles = new String [] {
                 "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
             };
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         panelGradient1.setColorPrimario(new java.awt.Color(159, 234, 234));
         panelGradient1.setColorSecundario(new java.awt.Color(13, 165, 165));
+
         panelGradientForNavigationPanel.setColorPrimario(new java.awt.Color(159, 204, 229));
         panelGradientForNavigationPanel.setColorSecundario(new java.awt.Color(13, 145, 171));
+
         homeLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         homeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         homeLabel.setText("Home");
@@ -86,6 +88,7 @@ public class CreateSchedule extends javax.swing.JFrame {
                 homeLabelMouseEntered(evt);
             }
         });
+
         groupsLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         groupsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         groupsLabel.setText("Groups");
@@ -101,6 +104,7 @@ public class CreateSchedule extends javax.swing.JFrame {
                 groupsLabelMouseEntered(evt);
             }
         });
+
         accountLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         accountLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         accountLabel.setText("Account");
@@ -116,6 +120,7 @@ public class CreateSchedule extends javax.swing.JFrame {
                 accountLabelMouseEntered(evt);
             }
         });
+
         schedulesLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         schedulesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         schedulesLabel.setText("Schedules");
@@ -131,6 +136,7 @@ public class CreateSchedule extends javax.swing.JFrame {
                 schedulesLabelMouseEntered(evt);
             }
         });
+
         logoutLabel.setFont(new java.awt.Font("Canela", 1, 30)); // NOI18N
         logoutLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logoutLabel.setText("Logout");
@@ -146,11 +152,13 @@ public class CreateSchedule extends javax.swing.JFrame {
                 logoutLabelMouseEntered(evt);
             }
         });
+
         panelGradientForNavigationPanel.setLayer(homeLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(groupsLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(accountLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(schedulesLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradientForNavigationPanel.setLayer(logoutLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout panelGradientForNavigationPanelLayout = new javax.swing.GroupLayout(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setLayout(panelGradientForNavigationPanelLayout);
         panelGradientForNavigationPanelLayout.setHorizontalGroup(
@@ -176,77 +184,49 @@ public class CreateSchedule extends javax.swing.JFrame {
                 .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
         panelGradient1.add(panelGradientForNavigationPanel);
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
-        createYourScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
-        JTableHeader tableHeader = createYourScheduleJTable.getTableHeader();
+
+        GroupICreatedPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
+        GroupICreatedPageTitle.setText(Schedule.focusSchedule.getScheduleName());
+        panelGradient1.add(GroupICreatedPageTitle);
+        GroupICreatedPageTitle.setBounds(290, 30, 800, 100);
+
+        scheduleForGroupIDidNotCreateJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
+        JTableHeader tableHeader = scheduleForGroupIDidNotCreateJTable.getTableHeader();
         Font headerFont = new Font("Canela", 1, 17);
         tableHeader.setFont(headerFont);
-        createYourScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17));
-        
-        createYourScheduleJTable.setModel(new javax.swing.table.DefaultTableModel(
-        		arrayForDisplayingScheduleTable, arrayForScheduleTableColumnTitles) 
+        scheduleForGroupIDidNotCreateJTable.setFont(new java.awt.Font("Canela", 1, 17));
+        scheduleForGroupIDidNotCreateJTable.setModel(new javax.swing.table.DefaultTableModel(
+        		arrayForDisplayingGroupScheduleTable, arrayForGroupScheduleTableColumnTitles) 
         {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true, true
+                false, false, false, false, false, false, true, false
             };
+
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        createYourScheduleJTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        createYourScheduleJTable.setRowHeight(40);
-        createYourScheduleJTable.setSelectionBackground(new java.awt.Color(0, 204, 204));
-        createYourScheduleJTable.setShowGrid(true);
-        createYourScheduleJTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(createYourScheduleJTable);
+        scheduleForGroupIDidNotCreateJTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        scheduleForGroupIDidNotCreateJTable.setRowHeight(40);
+        scheduleForGroupIDidNotCreateJTable.setSelectionBackground(new java.awt.Color(0, 204, 204));
+        scheduleForGroupIDidNotCreateJTable.setShowGrid(true);
+        scheduleForGroupIDidNotCreateJTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(scheduleForGroupIDidNotCreateJTable);
+
         panelGradient1.add(jScrollPane1);
-        jScrollPane1.setBounds(300, 230, 1060, 460);
-        scheduleNameLabel.setFont(new java.awt.Font("Canela", 1, 40)); // NOI18N
-        scheduleNameLabel.setText("Schedule Name:");
-        panelGradient1.add(scheduleNameLabel);
-        scheduleNameLabel.setBounds(300, 150, 310, 60);
-        saveButton.setBackground(new java.awt.Color(13, 165, 165));
-        saveButton.setFont(new java.awt.Font("Canela", 0, 40)); // NOI18N
-        saveButton.setText("Save");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
-            }
-        });
-        panelGradient1.add(saveButton);
-        saveButton.setBounds(760, 710, 130, 70);
-        createYourScheduleTitleLabel.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        createYourScheduleTitleLabel.setText("Create Your Schedule");
-        panelGradient1.add(createYourScheduleTitleLabel);
-        createYourScheduleTitleLabel.setBounds(490, 50, 740, 70);
-        scheduleNameTextField.setFont(new java.awt.Font("Canela", 0, 18)); // NOI18N
-        scheduleNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduleNameTextFieldActionPerformed(evt);
-            }
-        });
-        panelGradient1.add(scheduleNameTextField);
-        scheduleNameTextField.setBounds(600, 160, 270, 50);
+        jScrollPane1.setBounds(300, 180, 1090, 540);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        
-        cancelButton.setBackground(new java.awt.Color(13, 165, 165));
-        cancelButton.setFont(new java.awt.Font("Canela", 1, 36)); // NOI18N
-        cancelButton.setText("Cancel");
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
-            }
-        });
-        panelGradient1.add(cancelButton);
-        cancelButton.setBounds(1270, 20, 150, 70);
-        
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,154 +236,121 @@ public class CreateSchedule extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
         );
+
         pack();
     }// </editor-fold>                        
+
     private void homeLabelMouseClicked(java.awt.event.MouseEvent evt) {                                       
     	this.dispose();
     	HomePage.main(null);
     }                                      
+
     private void homeLabelMouseExited(java.awt.event.MouseEvent evt) {                                      
         homeLabel = (JLabel) evt.getComponent();
         homeLabel.setOpaque(false);
         homeLabel.setForeground( new Color(0, 0, 0) );
         homeLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                     
+
     private void homeLabelMouseEntered(java.awt.event.MouseEvent evt) {                                       
-        //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
+    	//mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         homeLabel = (JLabel) evt.getComponent();
         homeLabel.setOpaque(true);
         homeLabel.setBackground(new Color(220,232,238));
-        
+
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         homeLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                      
+
     private void groupsLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        this.dispose();
+    	this.dispose();
     	GroupsPage.main(null);
     }                                        
+
     private void groupsLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
         groupsLabel = (JLabel) evt.getComponent();
         groupsLabel.setOpaque(false);
         groupsLabel.setForeground( new Color(0, 0, 0) );
         groupsLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                       
+
     private void groupsLabelMouseEntered(java.awt.event.MouseEvent evt) {                                         
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         groupsLabel = (JLabel) evt.getComponent();
         groupsLabel.setOpaque(true);
         groupsLabel.setBackground(new Color(220,232,238));
-        
+
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         groupsLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
+
     private void accountLabelMouseClicked(java.awt.event.MouseEvent evt) {                                          
     	this.dispose();
     	AccountPage.main(null);
     }                                         
+
     private void accountLabelMouseExited(java.awt.event.MouseEvent evt) {                                         
         accountLabel = (JLabel) evt.getComponent();
         accountLabel.setOpaque(false);
         accountLabel.setForeground( new Color(0, 0, 0) );
         accountLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                        
+
     private void accountLabelMouseEntered(java.awt.event.MouseEvent evt) {                                          
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         accountLabel = (JLabel) evt.getComponent();
         accountLabel.setOpaque(true);
         accountLabel.setBackground(new Color(220,232,238));
-        
+
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         accountLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                         
+
     private void schedulesLabelMouseClicked(java.awt.event.MouseEvent evt) {                                            
     	this.dispose();
     	SchedulesPage.main(null);
     }                                           
+
     private void schedulesLabelMouseExited(java.awt.event.MouseEvent evt) {                                           
         schedulesLabel = (JLabel) evt.getComponent();
         schedulesLabel.setOpaque(false);
         schedulesLabel.setForeground( new Color(0, 0, 0) );
         schedulesLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                          
+
     private void schedulesLabelMouseEntered(java.awt.event.MouseEvent evt) {                                            
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         schedulesLabel = (JLabel) evt.getComponent();
         schedulesLabel.setOpaque(true);
         schedulesLabel.setBackground(new Color(220,232,238));
-        
+
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         schedulesLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                           
+
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
     	this.dispose();
     	User.nullifyInstance();
-    	InitialWelcomePage.main(null);
+    	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                        
+
     private void logoutLabelMouseExited(java.awt.event.MouseEvent evt) {                                        
         logoutLabel = (JLabel) evt.getComponent();
         logoutLabel.setOpaque(false);
         logoutLabel.setForeground( new Color(0, 0, 0) );
         logoutLabel.setBorder(BorderFactory.createEmptyBorder());
     }                                       
+
     private void logoutLabelMouseEntered(java.awt.event.MouseEvent evt) {                                         
         //mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         logoutLabel = (JLabel) evt.getComponent();
         logoutLabel.setOpaque(true);
         logoutLabel.setBackground(new Color(220,232,238));
-        
+
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-    	if (evt.getSource() == saveButton)
-        {
-        	Schedule.focusSchedule = MysqlConn.initializePersonalSchedule(scheduleNameTextField.getText());
-        	//System.out.println(Schedule.focusSchedule.getScheduleID());
-        	Integer[][] personalValues = new Integer[7][24];
-            numOfTimesPressed++;
-            //System.out.println(numOfTimesPressed + " Time Pressed");
-            for (int i = 0; createYourScheduleJTable.getRowCount() > i; i++) {
-                for (int j = 1; createYourScheduleJTable.getColumnCount() > j; j++)
-                {
-                    Boolean col = (Boolean) createYourScheduleJTable.getValueAt(i, j);
-                    //System.out.println("Row " + i + ":  Col " + j + ": " + col);
-                    if (col)
-                    	personalValues[j - 1][i] = 1;
-                    else
-                    	personalValues[j - 1][i] = 0;
-                }
 
-            }
-            Schedule.focusSchedule.setDaysTimes(personalValues);
-            MysqlConn.updatePersonalSchedule(Schedule.focusSchedule);
-            //System.out.println();
-            this.dispose();
-            SampleMyPersonalSchedulePage.main(null);
-       }
-    }                                          
-    private void scheduleNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                      
-        // TODO add your handling code here:
-    }  
-    
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        JLabel cancelMessage = new JLabel("Are you sure you want to cancel?", SwingConstants.CENTER);
-        cancelMessage.setFont(new Font("Canela", 1, 30));
-        cancelMessage.setOpaque(true);
-        
-        //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
-         int value = JOptionPane.showConfirmDialog(null,
-                cancelMessage,
-                null, 
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE);
-         
-         //if yes option is selected, the new schedule will be discarded
-         if (value == JOptionPane.YES_OPTION) {
-            this.dispose();
-            SchedulesPage.main(null);
-            }
-    }   
-    
     /**
      * @param args the command line arguments
      */
@@ -421,39 +368,34 @@ public class CreateSchedule extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateSchedule().setVisible(true);
+                new SampleGroupIDidNotCreatePage().setVisible(true);
             }
         });
     }
-                   
+                  
+    private javax.swing.JLabel GroupICreatedPageTitle;
     private javax.swing.JLabel accountLabel;
-    private javax.swing.JButton cancelButton;
-    private javax.swing.JTable createYourScheduleJTable;
-    private javax.swing.JLabel createYourScheduleTitleLabel;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutLabel;
-    private GUI.PanelGradient panelGradient1;
-    private GUI.PanelGradient panelGradientForNavigationPanel;
-    private javax.swing.JButton saveButton;
-    private javax.swing.JLabel scheduleNameLabel;
-    private javax.swing.JTextField scheduleNameTextField;
+    private gui.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradientForNavigationPanel;
+    private javax.swing.JTable scheduleForGroupIDidNotCreateJTable;
     private javax.swing.JLabel schedulesLabel;
-    private Object[][] arrayForDisplayingScheduleTable;
-    private String[] arrayForScheduleTableColumnTitles;
-                  
-    private int numOfTimesPressed = 0;
+    private Object[][] arrayForDisplayingGroupScheduleTable;
+    private String[] arrayForGroupScheduleTableColumnTitles;                
 }

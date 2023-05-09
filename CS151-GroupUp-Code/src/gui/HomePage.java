@@ -1,7 +1,7 @@
 
-package GUI;
+package gui;
 
-import GroupUp.User;
+import groupup.User;
 
 public class HomePage extends javax.swing.JFrame {
 
@@ -16,7 +16,7 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        panelGradient1 = new GUI.PanelGradient();
+        panelGradient1 = new gui.PanelGradient();
         HomePageLabel = new javax.swing.JLabel();
         logoutButton = new javax.swing.JButton();
         accountButton1 = new javax.swing.JButton();
@@ -158,6 +158,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton accountButton1;
     private javax.swing.JButton groupsButton;
     private javax.swing.JButton logoutButton;
-    private GUI.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradient1;
     private javax.swing.JButton schedulesButton;                  
 }

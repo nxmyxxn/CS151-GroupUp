@@ -1,20 +1,25 @@
-package GUI;
+package gui;
 
 import java.awt.Color; 
 import java.awt.Font;
+import java.sql.SQLException;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
-import GroupUp.User;
+import groupup.MysqlConn;
+import groupup.Schedule;
+import groupup.User;
 
-
-public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
+public class SampleMyPersonalSchedulePage extends javax.swing.JFrame {
 
     /**
-     * Creates new form SampleGroupIDidNotCreatePage
+     * Creates new form SampleMySchedulePage
      */
-    public SampleGroupIDidNotCreatePage() {
+    public SampleMyPersonalSchedulePage() {
         initComponents();
     }
 
@@ -22,45 +27,46 @@ public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        panelGradient1 = new GUI.PanelGradient();
-        panelGradientForNavigationPanel = new GUI.PanelGradient();
+        panelGradient1 = new gui.PanelGradient();
+        panelGradientForNavigationPanel = new gui.PanelGradient();
         homeLabel = new javax.swing.JLabel();
         groupsLabel = new javax.swing.JLabel();
         accountLabel = new javax.swing.JLabel();
         schedulesLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
         GroupICreatedPageTitle = new javax.swing.JLabel();
+        saveButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        scheduleForGroupIDidNotCreateJTable = new javax.swing.JTable();
-        
-        arrayForDisplayingGroupScheduleTable = new Object [][] {
-            {"12 AM", null, null, null, null, null, null, null},
-            {"1 AM", null, null, null, null, null, null, null},
-            {"2 AM", null, null, null, null, null, null, null},
-            {"3 AM", null, null, null, null, null, null, null},
-            {"4 AM", null, null, null, null, null, null, null},
-            {"5 AM", null, null, null, null, null, null, null},
-            {"6 AM", null, null, null, null, null, null, null},
-            {"7 AM", null, null, null, null, null, null, null},
-            {"8 AM", null, null, null, null, null, null, null},
-            {"9 AM", null, null, null, null, null, null, null},
-            {"10 AM", null, null, null, null, null, null, null},
-            {"11 AM", null, null, null, null, null, null, null},
-            {"12 PM", null, null, null, null, null, null, null},
-            {"1 PM", null, null, null, null, null, null, null},
-            {"2 PM", null, null, null, null, null, null, null},
-            {"3 PM", null, null, null, null, null, null, null},
-            {"4 PM", null, null, null, null, null, null, null},
-            {"5 PM", null, null, null, null, null, null, null},
-            {"6 PM", null, null, null, null, null, null, null},
-            {"7 PM", null, null, null, null, null, null, null},
-            {"8 PM", null, null, null, null, null, null, null},
-            {"9 PM", null, null, null, null, null, null, null},
-            {"10 PM", null, null, null, null, null, null, null},
-            {"11 PM", null, null, null, null, null, null, null}
+        myScheduleJTable = new javax.swing.JTable();
+        deleteScheduleButton = new javax.swing.JButton();
+        arrayForDisplayingMyPersonalScheduleTable = new Object [][] {
+            {"12 AM", Schedule.focusSchedule.getDayTimeBool(0, 0), Schedule.focusSchedule.getDayTimeBool(1, 0), Schedule.focusSchedule.getDayTimeBool(2, 0), Schedule.focusSchedule.getDayTimeBool(3, 0), Schedule.focusSchedule.getDayTimeBool(4, 0), Schedule.focusSchedule.getDayTimeBool(5, 0), Schedule.focusSchedule.getDayTimeBool(6, 0)},
+            {"1 AM", Schedule.focusSchedule.getDayTimeBool(0, 1), Schedule.focusSchedule.getDayTimeBool(1, 1), Schedule.focusSchedule.getDayTimeBool(2, 1), Schedule.focusSchedule.getDayTimeBool(3, 1), Schedule.focusSchedule.getDayTimeBool(4, 1), Schedule.focusSchedule.getDayTimeBool(5, 1), Schedule.focusSchedule.getDayTimeBool(6, 1)},
+            {"2 AM", Schedule.focusSchedule.getDayTimeBool(0, 2), Schedule.focusSchedule.getDayTimeBool(1, 2), Schedule.focusSchedule.getDayTimeBool(2, 2), Schedule.focusSchedule.getDayTimeBool(3, 2), Schedule.focusSchedule.getDayTimeBool(4, 2), Schedule.focusSchedule.getDayTimeBool(5, 2), Schedule.focusSchedule.getDayTimeBool(6, 2)},
+            {"3 AM", Schedule.focusSchedule.getDayTimeBool(0, 3), Schedule.focusSchedule.getDayTimeBool(1, 3), Schedule.focusSchedule.getDayTimeBool(2, 3), Schedule.focusSchedule.getDayTimeBool(3, 3), Schedule.focusSchedule.getDayTimeBool(4, 3), Schedule.focusSchedule.getDayTimeBool(5, 3), Schedule.focusSchedule.getDayTimeBool(6, 3)},
+            {"4 AM", Schedule.focusSchedule.getDayTimeBool(0, 4), Schedule.focusSchedule.getDayTimeBool(1, 4), Schedule.focusSchedule.getDayTimeBool(2, 4), Schedule.focusSchedule.getDayTimeBool(3, 4), Schedule.focusSchedule.getDayTimeBool(4, 4), Schedule.focusSchedule.getDayTimeBool(5, 4), Schedule.focusSchedule.getDayTimeBool(6, 4)},
+            {"5 AM", Schedule.focusSchedule.getDayTimeBool(0, 5), Schedule.focusSchedule.getDayTimeBool(1, 5), Schedule.focusSchedule.getDayTimeBool(2, 5), Schedule.focusSchedule.getDayTimeBool(3, 5), Schedule.focusSchedule.getDayTimeBool(4, 5), Schedule.focusSchedule.getDayTimeBool(5, 5), Schedule.focusSchedule.getDayTimeBool(6, 5)},
+            {"6 AM", Schedule.focusSchedule.getDayTimeBool(0, 6), Schedule.focusSchedule.getDayTimeBool(1, 6), Schedule.focusSchedule.getDayTimeBool(2, 6), Schedule.focusSchedule.getDayTimeBool(3, 6), Schedule.focusSchedule.getDayTimeBool(4, 6), Schedule.focusSchedule.getDayTimeBool(5, 6), Schedule.focusSchedule.getDayTimeBool(6, 6)},
+            {"7 AM", Schedule.focusSchedule.getDayTimeBool(0, 7), Schedule.focusSchedule.getDayTimeBool(1, 7), Schedule.focusSchedule.getDayTimeBool(2, 7), Schedule.focusSchedule.getDayTimeBool(3, 7), Schedule.focusSchedule.getDayTimeBool(4, 7), Schedule.focusSchedule.getDayTimeBool(5, 7), Schedule.focusSchedule.getDayTimeBool(6, 7)},
+            {"8 AM", Schedule.focusSchedule.getDayTimeBool(0, 8), Schedule.focusSchedule.getDayTimeBool(1, 8), Schedule.focusSchedule.getDayTimeBool(2, 8), Schedule.focusSchedule.getDayTimeBool(3, 8), Schedule.focusSchedule.getDayTimeBool(4, 8), Schedule.focusSchedule.getDayTimeBool(5, 8), Schedule.focusSchedule.getDayTimeBool(6, 8)},
+            {"9 AM", Schedule.focusSchedule.getDayTimeBool(0, 9), Schedule.focusSchedule.getDayTimeBool(1, 9), Schedule.focusSchedule.getDayTimeBool(2, 9), Schedule.focusSchedule.getDayTimeBool(3, 9), Schedule.focusSchedule.getDayTimeBool(4, 9), Schedule.focusSchedule.getDayTimeBool(5, 9), Schedule.focusSchedule.getDayTimeBool(6, 9)},
+            {"10 AM", Schedule.focusSchedule.getDayTimeBool(0, 10), Schedule.focusSchedule.getDayTimeBool(1, 10), Schedule.focusSchedule.getDayTimeBool(2, 10), Schedule.focusSchedule.getDayTimeBool(3, 10), Schedule.focusSchedule.getDayTimeBool(4, 10), Schedule.focusSchedule.getDayTimeBool(5, 10), Schedule.focusSchedule.getDayTimeBool(6, 10)},
+            {"11 AM", Schedule.focusSchedule.getDayTimeBool(0, 11), Schedule.focusSchedule.getDayTimeBool(1, 11), Schedule.focusSchedule.getDayTimeBool(2, 11), Schedule.focusSchedule.getDayTimeBool(3, 11), Schedule.focusSchedule.getDayTimeBool(4, 11), Schedule.focusSchedule.getDayTimeBool(5, 11), Schedule.focusSchedule.getDayTimeBool(6, 11)},
+            {"12 PM", Schedule.focusSchedule.getDayTimeBool(0, 12), Schedule.focusSchedule.getDayTimeBool(1, 12), Schedule.focusSchedule.getDayTimeBool(2, 12), Schedule.focusSchedule.getDayTimeBool(3, 12), Schedule.focusSchedule.getDayTimeBool(4, 12), Schedule.focusSchedule.getDayTimeBool(5, 12), Schedule.focusSchedule.getDayTimeBool(6, 12)},
+            {"1 PM", Schedule.focusSchedule.getDayTimeBool(0, 13), Schedule.focusSchedule.getDayTimeBool(1, 13), Schedule.focusSchedule.getDayTimeBool(2, 13), Schedule.focusSchedule.getDayTimeBool(3, 13), Schedule.focusSchedule.getDayTimeBool(4, 13), Schedule.focusSchedule.getDayTimeBool(5, 13), Schedule.focusSchedule.getDayTimeBool(6, 13)},
+            {"2 PM", Schedule.focusSchedule.getDayTimeBool(0, 14), Schedule.focusSchedule.getDayTimeBool(1, 14), Schedule.focusSchedule.getDayTimeBool(2, 14), Schedule.focusSchedule.getDayTimeBool(3, 14), Schedule.focusSchedule.getDayTimeBool(4, 14), Schedule.focusSchedule.getDayTimeBool(5, 14), Schedule.focusSchedule.getDayTimeBool(6, 14)},
+            {"3 PM", Schedule.focusSchedule.getDayTimeBool(0, 15), Schedule.focusSchedule.getDayTimeBool(1, 15), Schedule.focusSchedule.getDayTimeBool(2, 15), Schedule.focusSchedule.getDayTimeBool(3, 15), Schedule.focusSchedule.getDayTimeBool(4, 15), Schedule.focusSchedule.getDayTimeBool(5, 15), Schedule.focusSchedule.getDayTimeBool(6, 15)},
+            {"4 PM", Schedule.focusSchedule.getDayTimeBool(0, 16), Schedule.focusSchedule.getDayTimeBool(1, 16), Schedule.focusSchedule.getDayTimeBool(2, 16), Schedule.focusSchedule.getDayTimeBool(3, 16), Schedule.focusSchedule.getDayTimeBool(4, 16), Schedule.focusSchedule.getDayTimeBool(5, 16), Schedule.focusSchedule.getDayTimeBool(6, 16)},
+            {"5 PM", Schedule.focusSchedule.getDayTimeBool(0, 17), Schedule.focusSchedule.getDayTimeBool(1, 17), Schedule.focusSchedule.getDayTimeBool(2, 17), Schedule.focusSchedule.getDayTimeBool(3, 17), Schedule.focusSchedule.getDayTimeBool(4, 17), Schedule.focusSchedule.getDayTimeBool(5, 17), Schedule.focusSchedule.getDayTimeBool(6, 17)},
+            {"6 PM", Schedule.focusSchedule.getDayTimeBool(0, 18), Schedule.focusSchedule.getDayTimeBool(1, 18), Schedule.focusSchedule.getDayTimeBool(2, 18), Schedule.focusSchedule.getDayTimeBool(3, 18), Schedule.focusSchedule.getDayTimeBool(4, 18), Schedule.focusSchedule.getDayTimeBool(5, 18), Schedule.focusSchedule.getDayTimeBool(6, 18)},
+            {"7 PM", Schedule.focusSchedule.getDayTimeBool(0, 19), Schedule.focusSchedule.getDayTimeBool(1, 19), Schedule.focusSchedule.getDayTimeBool(2, 19), Schedule.focusSchedule.getDayTimeBool(3, 19), Schedule.focusSchedule.getDayTimeBool(4, 19), Schedule.focusSchedule.getDayTimeBool(5, 19), Schedule.focusSchedule.getDayTimeBool(6, 19)},
+            {"8 PM", Schedule.focusSchedule.getDayTimeBool(0, 20), Schedule.focusSchedule.getDayTimeBool(1, 20), Schedule.focusSchedule.getDayTimeBool(2, 20), Schedule.focusSchedule.getDayTimeBool(3, 20), Schedule.focusSchedule.getDayTimeBool(4, 20), Schedule.focusSchedule.getDayTimeBool(5, 20), Schedule.focusSchedule.getDayTimeBool(6, 20)},
+            {"9 PM", Schedule.focusSchedule.getDayTimeBool(0, 21), Schedule.focusSchedule.getDayTimeBool(1, 21), Schedule.focusSchedule.getDayTimeBool(2, 21), Schedule.focusSchedule.getDayTimeBool(3, 21), Schedule.focusSchedule.getDayTimeBool(4, 21), Schedule.focusSchedule.getDayTimeBool(5, 21), Schedule.focusSchedule.getDayTimeBool(6, 21)},
+            {"10 PM", Schedule.focusSchedule.getDayTimeBool(0, 22), Schedule.focusSchedule.getDayTimeBool(1, 22), Schedule.focusSchedule.getDayTimeBool(2, 22), Schedule.focusSchedule.getDayTimeBool(3, 22), Schedule.focusSchedule.getDayTimeBool(4, 22), Schedule.focusSchedule.getDayTimeBool(5, 22), Schedule.focusSchedule.getDayTimeBool(6, 22)},
+            {"11 PM", Schedule.focusSchedule.getDayTimeBool(0, 23), Schedule.focusSchedule.getDayTimeBool(1, 23), Schedule.focusSchedule.getDayTimeBool(2, 23), Schedule.focusSchedule.getDayTimeBool(3, 23), Schedule.focusSchedule.getDayTimeBool(4, 23), Schedule.focusSchedule.getDayTimeBool(5, 23), Schedule.focusSchedule.getDayTimeBool(6, 23)}
         };
         
-        arrayForGroupScheduleTableColumnTitles = new String [] {
+        arrayForMyPersonalScheduleTableColumnTitles = new String [] {
                 "", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
             };
 
@@ -188,23 +194,34 @@ public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
         panelGradientForNavigationPanel.setBounds(0, 0, 250, 830);
 
         GroupICreatedPageTitle.setFont(new java.awt.Font("Canela", 1, 70)); // NOI18N
-        GroupICreatedPageTitle.setText("Group Name");
+        GroupICreatedPageTitle.setText(Schedule.focusSchedule.getScheduleName());
         panelGradient1.add(GroupICreatedPageTitle);
-        GroupICreatedPageTitle.setBounds(290, 30, 800, 100);
+        GroupICreatedPageTitle.setBounds(300, 30, 800, 100);
 
-        scheduleForGroupIDidNotCreateJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
-        JTableHeader tableHeader = scheduleForGroupIDidNotCreateJTable.getTableHeader();
+        saveButton.setBackground(new java.awt.Color(13, 165, 165));
+        saveButton.setFont(new java.awt.Font("Canela", 0, 40)); // NOI18N
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(saveButton);
+        saveButton.setBounds(760, 710, 130, 70);
+
+        myScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17)); // NOI18N
+        JTableHeader tableHeader = myScheduleJTable.getTableHeader();
         Font headerFont = new Font("Canela", 1, 17);
         tableHeader.setFont(headerFont);
-        scheduleForGroupIDidNotCreateJTable.setFont(new java.awt.Font("Canela", 1, 17));
-        scheduleForGroupIDidNotCreateJTable.setModel(new javax.swing.table.DefaultTableModel(
-        		arrayForDisplayingGroupScheduleTable, arrayForGroupScheduleTableColumnTitles) 
+        myScheduleJTable.setFont(new java.awt.Font("Canela", 1, 17));
+        myScheduleJTable.setModel(new javax.swing.table.DefaultTableModel(
+        		arrayForDisplayingMyPersonalScheduleTable, arrayForMyPersonalScheduleTableColumnTitles) 
         {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, true, true, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -215,15 +232,26 @@ public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        scheduleForGroupIDidNotCreateJTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scheduleForGroupIDidNotCreateJTable.setRowHeight(40);
-        scheduleForGroupIDidNotCreateJTable.setSelectionBackground(new java.awt.Color(0, 204, 204));
-        scheduleForGroupIDidNotCreateJTable.setShowGrid(true);
-        scheduleForGroupIDidNotCreateJTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(scheduleForGroupIDidNotCreateJTable);
+        myScheduleJTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        myScheduleJTable.setRowHeight(40);
+        myScheduleJTable.setSelectionBackground(new java.awt.Color(0, 204, 204));
+        myScheduleJTable.setShowGrid(true);
+        myScheduleJTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(myScheduleJTable);
 
         panelGradient1.add(jScrollPane1);
-        jScrollPane1.setBounds(300, 180, 1090, 540);
+        jScrollPane1.setBounds(300, 150, 1080, 540);
+        
+        deleteScheduleButton.setBackground(new java.awt.Color(13, 165, 165));
+        deleteScheduleButton.setFont(new java.awt.Font("Canela", 1, 36)); // NOI18N
+        deleteScheduleButton.setText("Delete Schedule");
+        deleteScheduleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteScheduleButtonActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(deleteScheduleButton);
+        deleteScheduleButton.setBounds(1100, 20, 320, 70);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,7 +282,6 @@ public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
     private void homeLabelMouseEntered(java.awt.event.MouseEvent evt) {                                       
     	//mouse hovering feature source: https://gist.github.com/TabsPH/4057899
         homeLabel = (JLabel) evt.getComponent();
-        homeLabel.setOpaque(true);
         homeLabel.setBackground(new Color(220,232,238));
 
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
@@ -322,13 +349,13 @@ public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
         schedulesLabel = (JLabel) evt.getComponent();
         schedulesLabel.setOpaque(true);
         schedulesLabel.setBackground(new Color(220,232,238));
-
+        
         //creating border source: https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
         schedulesLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                           
 
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {                                         
-    	this.dispose();
+        this.dispose();
     	User.nullifyInstance();
     	InitialWelcomePage.main(null);			//go back to welcome page on logout and set User instance to null.
     }                                        
@@ -350,6 +377,59 @@ public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
         logoutLabel.setBorder(BorderFactory.createLineBorder(new Color(220,232,238)));
     }                                        
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        if (evt.getSource() == saveButton)
+        {
+        	//Schedule tempPersonal = new Schedule();
+        	Integer[][] personalValues = new Integer[7][24];
+            numOfTimesPressed++;
+            System.out.println(numOfTimesPressed + " Time Pressed");
+            for (int i = 0; myScheduleJTable.getRowCount() > i; i++) {
+                for (int j = 1; myScheduleJTable.getColumnCount() > j; j++)
+                {
+                    Boolean col = (Boolean) myScheduleJTable.getValueAt(i, j);
+                    System.out.println("Row " + i + ":  Col " + j + ": " + col);
+                    if (col)
+                    	personalValues[j - 1][i] = 1;
+                    else
+                    	personalValues[j - 1][i] = 0;
+                }
+
+            }
+            Schedule.focusSchedule.setDaysTimes(personalValues);
+            MysqlConn.updatePersonalSchedule(Schedule.focusSchedule);
+            System.out.println();
+        }
+    }                                          
+
+    private void deleteScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        JLabel cancelMessage = new JLabel("Are you sure you want to delete your schedule?", SwingConstants.CENTER);
+        cancelMessage.setFont(new Font("Canela", 1, 20));
+        cancelMessage.setOpaque(true);
+
+        //source: https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
+        int value = JOptionPane.showConfirmDialog(null,
+            cancelMessage,
+            null,
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE);
+
+        //if yes option is selected, the schedule will be discarded
+        if (value == JOptionPane.YES_OPTION) {
+            //personal schedule should be deleted from database
+        	//Schedule tempPersonal = new Schedule();
+        	//String theScheduleName = tempPersonal.getScheduleName();
+        	//String theUsername = User.getInstance().getUsername();
+        	try {
+				MysqlConn.deleteSchedule(Schedule.focusSchedule.getScheduleName(), Schedule.focusSchedule.getCreator().getUsername());
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+            this.dispose();
+            SchedulesPage.main(null);
+        }
+    }         
+    
     /**
      * @param args the command line arguments
      */
@@ -367,34 +447,38 @@ public class SampleGroupIDidNotCreatePage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleMyPersonalSchedulePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleMyPersonalSchedulePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleMyPersonalSchedulePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SampleGroupIDidNotCreatePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SampleMyPersonalSchedulePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SampleGroupIDidNotCreatePage().setVisible(true);
+                new SampleMyPersonalSchedulePage().setVisible(true);
             }
         });
     }
-                  
+               
     private javax.swing.JLabel GroupICreatedPageTitle;
     private javax.swing.JLabel accountLabel;
+    private javax.swing.JButton deleteScheduleButton;
     private javax.swing.JLabel groupsLabel;
     private javax.swing.JLabel homeLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoutLabel;
-    private GUI.PanelGradient panelGradient1;
-    private GUI.PanelGradient panelGradientForNavigationPanel;
-    private javax.swing.JTable scheduleForGroupIDidNotCreateJTable;
+    private javax.swing.JTable myScheduleJTable;
+    private gui.PanelGradient panelGradient1;
+    private gui.PanelGradient panelGradientForNavigationPanel;
+    private javax.swing.JButton saveButton;
     private javax.swing.JLabel schedulesLabel;
-    private Object[][] arrayForDisplayingGroupScheduleTable;
-    private String[] arrayForGroupScheduleTableColumnTitles;                
+    private Object[][] arrayForDisplayingMyPersonalScheduleTable;
+    private String[] arrayForMyPersonalScheduleTableColumnTitles;
+             
+    private int numOfTimesPressed = 0;
 }
