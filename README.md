@@ -17,6 +17,7 @@ GroupSchedule
       - wrote the state diagram
       - updated state diagram
       - formatted the report into GitHub
+      - making presentation slides
   + Danilo
     - code
       - Day/Schedule/User/ErrorPopup/MysqlConn classes and all the exception classes, handled database and execptions
@@ -112,6 +113,8 @@ GroupSchedule
 <img width="1440" alt="initialHompage" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/4664a766-2c4c-4943-8b17-8990ed891171">
 
 <img width="1440" alt="logIn" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/2350d048-fa32-4bf5-b670-0a5720f40b91">
+<img width="1440" alt="home" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/6496cf2c-2057-4c88-badd-e0109a5acbb0">
+
 
 <img width="1440" alt="createPMOschedule" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/c23f551f-204b-4825-b74c-bd2def4543b7">
 <img width="1440" alt="schedulePMO" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/777976cf-e1cd-40b6-ad17-b01a714cf1ca">
