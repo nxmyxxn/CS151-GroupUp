@@ -99,12 +99,22 @@ GroupSchedule
   6. A Group (Schedule) : Check the common free time of your friends or group users.
 
 - **Snapshot of the running program**
-  ![initialWelcomePage](https://user-images.githubusercontent.com/72899436/236298065-8675a9aa-d959-4b65-a372-43dc861b1d68.PNG)
-  <img width="1438" alt="Screen Shot 2023-05-04 at 2 11 14 PM" src="https://user-images.githubusercontent.com/72899436/236335223-9ef1993c-c9b1-4f8f-a2b2-b3e447b62261.png">
-<img width="1439" alt="Screen Shot 2023-05-04 at 2 14 20 PM" src="https://user-images.githubusercontent.com/72899436/236335224-070354d0-16e5-4ca9-8d7f-ae7c842ae1fd.png">
-  <img width="1435" alt="Screen Shot 2023-05-04 at 2 06 12 PM" src="https://user-images.githubusercontent.com/72899436/236335126-a94b3f30-f7c2-411e-87cd-a7697af4f807.png">
-<img width="1440" alt="Screen Shot 2023-05-04 at 2 16 29 PM" src="https://user-images.githubusercontent.com/72899436/236335227-35a94695-e1dd-442a-b2c9-f30d6e9a5c72.png">
-<img width="1440" alt="Screen Shot 2023-05-04 at 2 17 24 PM" src="https://user-images.githubusercontent.com/72899436/236335229-5a53bc76-e7fe-4fd2-b19b-165f69802943.png">
+<img width="1440" alt="initialHompage" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/4664a766-2c4c-4943-8b17-8990ed891171">
+
+<img width="1440" alt="signUp" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/0641df19-36c4-4bd5-8171-5bbb022ac902">
+
+<img width="1440" alt="home" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/6496cf2c-2057-4c88-badd-e0109a5acbb0">
+
+<img width="1440" alt="initialHompage" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/4664a766-2c4c-4943-8b17-8990ed891171">
+
+<img width="1440" alt="logIn" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/2350d048-fa32-4bf5-b670-0a5720f40b91">
+
+<img width="1440" alt="createschedule" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/a3ae2df6-d831-43fd-bb2d-f2cd1b7e812a">
+<img width="1440" alt="schedulePMO" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/777976cf-e1cd-40b6-ad17-b01a714cf1ca">
+
+<img width="1437" alt="groups" src="https://github.com/nxmyxxn/CS151-GroupUp/assets/72899436/454ae56d-c9a6-4f65-b6a9-e60b52834247">
+
+
 
 - **References**
   > - [1] https://calendar.google.com/ 
