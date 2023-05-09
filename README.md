@@ -32,6 +32,7 @@ GroupSchedule
     - report
       - wrote the class diagram
       - updated the class diagram
+      - wrote the entity relationship diagram
       - updated the specifics of the problem statement, existing applications, descriptions, and functionality
   + Preethi  
     - code
