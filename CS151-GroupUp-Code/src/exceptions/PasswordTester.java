@@ -2,8 +2,6 @@ package exceptions;
 
 public class PasswordTester {
 	
-	private static String specialChars = "!@#$%^&*()-_=+,<.>/?[{]}\\|";
-	
 	/**
 	 * tests the validity of an input password by using five tests, as commented below
 	 * Throws an appropriate exception if any condition is not met

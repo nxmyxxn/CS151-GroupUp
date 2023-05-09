@@ -15,6 +15,7 @@ import exceptions.UserAlreadyExistsException;
 import exceptions.UserIsAlreadyAMemberException;
 import exceptions.UserIsNotAMemberException;
 import exceptions.UserNotFoundException;
+import exceptions.UserScheduleNotFoundException;
 import gui.ErrorPopup;
 
 /**
@@ -554,28 +555,22 @@ public class MysqlConn {
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
 			state = sqlConn.createStatement();
-			try
+			
+			String userHere = null;
+			rs = state.executeQuery("select member from group_day where scheduleID = \'" + schedule.getScheduleID() + "\' and member = \'" + username + "\' and dayNum = \'1\'");
+			while (rs.next())
 			{
-				String userHere = null;
-				rs = state.executeQuery("select member from group_day where scheduleID = \'" + schedule.getScheduleID() + "\' and member = \'" + username + "\' and dayNum = \'1\'");
-				while (rs.next())
-				{
-					userHere = rs.getString("member");
-				}
-				if (userHere != null)
-					throw new UserIsAlreadyAMemberException();
+				userHere = rs.getString("member");
 			}
-			catch (UserIsAlreadyAMemberException e)
-			{
-				ErrorPopup.makePopup(e.getMessage());
-				return;
-			}
+			if (userHere != null)
+				throw new UserIsAlreadyAMemberException();
+			
 			
 			rs = state.executeQuery("select scheduleID from 7dayschedule where creator = \'" + username + "\' and scheduleName = \'" + addedSchedule + "\' and accessibility = \'personal\'");
 			while (rs.next())
 				tempID = rs.getInt("scheduleID");
 			if (tempID == 0)
-				throw new UserNotFoundException();
+				throw new UserScheduleNotFoundException();
 			
 			state.execute("insert into account_schedule values(\'" + username + "\', \'" + schedule.getScheduleID() + "\')");
 			
@@ -616,7 +611,7 @@ public class MysqlConn {
 		{
 			e.printStackTrace();
 		}
-		catch (UserNotFoundException e)
+		catch (UserScheduleNotFoundException | UserIsAlreadyAMemberException e)
 		{
 			ErrorPopup.makePopup(e.getMessage());
 			return;
@@ -695,6 +690,128 @@ public class MysqlConn {
 		catch (UserIsNotAMemberException e)
 		{
 			ErrorPopup.makePopup(e.getMessage());
+		}
+	}
+	
+	
+	public static void initializeDatabaseTables()
+	{
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConn = DriverManager.getConnection(database, myUsername, myPassword);
+			state = sqlConn.createStatement();
+			
+			state.execute("CREATE TABLE IF NOT EXISTS `151projconnector`.`7dayschedule` (\r\n"
+					+ "  `scheduleID` INT NOT NULL AUTO_INCREMENT,\r\n"
+					+ "  `creator` VARCHAR(15) NULL DEFAULT NULL,\r\n"
+					+ "  `scheduleName` VARCHAR(45) NULL DEFAULT NULL,\r\n"
+					+ "  `accessibility` VARCHAR(10) NULL DEFAULT NULL,\r\n"
+					+ "  `sunday` TINYINT NULL DEFAULT '1',\r\n"
+					+ "  `monday` TINYINT NULL DEFAULT '2',\r\n"
+					+ "  `tuesday` TINYINT NULL DEFAULT '3',\r\n"
+					+ "  `wednesday` TINYINT NULL DEFAULT '4',\r\n"
+					+ "  `thursday` TINYINT NULL DEFAULT '5',\r\n"
+					+ "  `friday` TINYINT NULL DEFAULT '6',\r\n"
+					+ "  `saturday` TINYINT NULL DEFAULT '7',\r\n"
+					+ "  PRIMARY KEY (`scheduleID`))");
+			state.execute("CREATE TABLE IF NOT EXISTS `151projconnector`.`account` (\r\n"
+					+ "  `username` VARCHAR(45) NOT NULL,\r\n"
+					+ "  `password` VARCHAR(45) NOT NULL,\r\n"
+					+ "  `firstName` VARCHAR(45) NOT NULL,\r\n"
+					+ "  `lastName` VARCHAR(45) NOT NULL,\r\n"
+					+ "  `email` VARCHAR(45) NOT NULL,\r\n"
+					+ "  PRIMARY KEY (`username`),\r\n"
+					+ "  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)");
+			state.execute("CREATE TABLE IF NOT EXISTS `151projconnector`.`account_schedule` (\r\n"
+					+ "  `username` VARCHAR(15) NOT NULL,\r\n"
+					+ "  `scheduleID` INT NOT NULL,\r\n"
+					+ "  PRIMARY KEY (`username`, `scheduleID`),\r\n"
+					+ "  INDEX `accSched_FK_schedID_idx` (`scheduleID` ASC) VISIBLE,\r\n"
+					+ "  CONSTRAINT `accSched_FK_schedID`\r\n"
+					+ "    FOREIGN KEY (`scheduleID`)\r\n"
+					+ "    REFERENCES `151projconnector`.`7dayschedule` (`scheduleID`)\r\n"
+					+ "    ON DELETE CASCADE\r\n"
+					+ "    ON UPDATE CASCADE,\r\n"
+					+ "  CONSTRAINT `accSched_FK_username`\r\n"
+					+ "    FOREIGN KEY (`username`)\r\n"
+					+ "    REFERENCES `151projconnector`.`account` (`username`))");
+			state.execute("CREATE TABLE IF NOT EXISTS `151projconnector`.`group_day` (\r\n"
+					+ "  `scheduleID` INT NOT NULL,\r\n"
+					+ "  `dayNum` TINYINT NOT NULL,\r\n"
+					+ "  `member` VARCHAR(45) NOT NULL,\r\n"
+					+ "  `12am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `1am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `2am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `3am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `4am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `5am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `6am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `7am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `8am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `9am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `10am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `11am` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `12pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `1pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `2pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `3pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `4pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `5pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `6pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `7pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `8pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `9pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `10pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  `11pm` TINYINT NULL DEFAULT NULL,\r\n"
+					+ "  PRIMARY KEY (`scheduleID`, `dayNum`, `member`),\r\n"
+					+ "  INDEX `gDay_FK_scheduleID_idx` (`scheduleID` ASC) VISIBLE,\r\n"
+					+ "  CONSTRAINT `gDay_FK_scheduleID`\r\n"
+					+ "    FOREIGN KEY (`scheduleID`)\r\n"
+					+ "    REFERENCES `151projconnector`.`7dayschedule` (`scheduleID`)\r\n"
+					+ "    ON DELETE CASCADE\r\n"
+					+ "    ON UPDATE CASCADE)");
+			state.execute("CREATE TABLE IF NOT EXISTS `151projconnector`.`personal_day` (\r\n"
+					+ "  `scheduleID` INT NOT NULL,\r\n"
+					+ "  `dayNum` TINYINT NOT NULL,\r\n"
+					+ "  `12am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `1am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `2am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `3am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `4am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `5am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `6am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `7am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `8am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `9am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `10am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `11am` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `12pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `1pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `2pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `3pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `4pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `5pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `6pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `7pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `8pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `9pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `10pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  `11pm` TINYINT(1) NULL DEFAULT NULL,\r\n"
+					+ "  PRIMARY KEY (`scheduleID`, `dayNum`),\r\n"
+					+ "  INDEX `pFriday_FK_scheduleID_idx` (`scheduleID` ASC) VISIBLE,\r\n"
+					+ "  CONSTRAINT `pDay_FK_scheduleID`\r\n"
+					+ "    FOREIGN KEY (`scheduleID`)\r\n"
+					+ "    REFERENCES `151projconnector`.`7dayschedule` (`scheduleID`)\r\n"
+					+ "    ON DELETE CASCADE\r\n"
+					+ "    ON UPDATE CASCADE)");
+			
+			
+			sqlConn.close();
+		}
+		catch (SQLException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
 		}
 	}
 	

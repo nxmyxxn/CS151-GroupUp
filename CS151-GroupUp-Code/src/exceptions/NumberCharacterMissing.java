@@ -8,7 +8,7 @@ public class NumberCharacterMissing extends PasswordException {
 	 */
 	public NumberCharacterMissing()
 	{
-		super("password should contain a number");
+		super("Password should contain a number");
 	}
 
 }

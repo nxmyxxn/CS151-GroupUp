@@ -7,7 +7,7 @@ public class RequireScheduleNameException extends Exception {
 	 */
 	public RequireScheduleNameException()
 	{
-		super("please input a schedule name");
+		super("Please input a schedule name");
 	}
 
 }

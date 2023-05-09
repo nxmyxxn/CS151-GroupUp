@@ -12,7 +12,6 @@ import javax.swing.SwingConstants;
 
 import exceptions.NoDuplicateScheduleNamesException;
 import exceptions.NoSuchScheduleExistsException;
-import exceptions.UserNotFoundException;
 import groupup.MysqlConn;
 import groupup.Schedule;
 import groupup.User;
@@ -429,7 +428,7 @@ public class CreateGroup extends javax.swing.JFrame {
         			if (groupNameTextField.getText().equals(allPersonalSchedules.get(i).getScheduleName()))
         				throw new NoDuplicateScheduleNamesException();
         		}
-        		if (!hasSchedule)
+        		if (Boolean.FALSE.equals(hasSchedule))
         			throw new NoSuchScheduleExistsException();
         	}
         	catch (NoSuchScheduleExistsException | NoDuplicateScheduleNamesException e)

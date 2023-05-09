@@ -4,6 +4,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import groupup.MysqlConn;
+
 public class InitialWelcomePage extends javax.swing.JFrame {
 
 	/**
@@ -169,6 +171,7 @@ public class InitialWelcomePage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InitialWelcomePage().setVisible(true);
+                MysqlConn.initializeDatabaseTables();
                 
             }
         });

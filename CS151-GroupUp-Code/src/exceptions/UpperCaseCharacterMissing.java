@@ -7,7 +7,7 @@ public class UpperCaseCharacterMissing extends PasswordException {
 	 */
 	public UpperCaseCharacterMissing()
 	{
-		super("password should contain an upper case letter");
+		super("Password should contain an upper case letter");
 	}
 	
 }

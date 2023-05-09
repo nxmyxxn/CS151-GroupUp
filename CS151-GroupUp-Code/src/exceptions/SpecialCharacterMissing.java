@@ -7,7 +7,7 @@ public class SpecialCharacterMissing extends PasswordException {
 	 */
 	public SpecialCharacterMissing()
 	{
-		super("password should contain a special character");
+		super("Password should contain a special character");
 	}
 
 }

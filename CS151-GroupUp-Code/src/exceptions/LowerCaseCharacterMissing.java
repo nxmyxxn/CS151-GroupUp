@@ -7,7 +7,7 @@ public class LowerCaseCharacterMissing extends PasswordException {
 	 */
 	public LowerCaseCharacterMissing()
 	{
-		super("password should contain a lower case letter");
+		super("Password should contain a lower case letter");
 	}
 
 }

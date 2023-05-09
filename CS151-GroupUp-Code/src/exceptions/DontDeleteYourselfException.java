@@ -7,7 +7,7 @@ public class DontDeleteYourselfException extends Exception {
 	 */
 	public DontDeleteYourselfException()
 	{
-		super("you own this schedule, you cannot delete yourself from it");
+		super("You own this schedule, you cannot delete yourself from it");
 	}
 
 }

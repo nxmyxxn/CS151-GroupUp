@@ -7,7 +7,7 @@ public class NoDuplicateScheduleNamesException extends Exception {
 	 */
 	public NoDuplicateScheduleNamesException()
 	{
-		super("please select a unique schedule name");
+		super("Please select a unique schedule name");
 	}
 
 }
