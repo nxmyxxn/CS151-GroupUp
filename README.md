@@ -132,4 +132,9 @@ GroupSchedule
   > - https://www.tutorialspoint.com/jdbc/jdbc-quick-guide.htm#
   > - https://www.youtube.com/watch?v=bmv5SLrEQ-M
   > - https://www.youtube.com/watch?v=6PvKTg9NXkU
+  > - https://gist.github.com/TabsPH/4057899
+  > - https://docs.oracle.com/javase/tutorial/uiswing/components/border.html
+  > - https://stackoverflow.com/questions/11204878/joptionpane-showconfirmdialog-with-only-one-button
+  > - http://www.java2s.com/Tutorials/Java/Swing_How_to/JComboBox/Change_the_colour_of_JComboBox_s_selected_Item.htm
+  > - https://github.com/DJ-Raven/java-swing-login/blob/main/src/swing/PanelGradiente.java
  
