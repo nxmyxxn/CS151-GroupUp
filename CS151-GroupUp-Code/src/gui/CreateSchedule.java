@@ -2,12 +2,16 @@
 package gui;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.JTableHeader;
 
+import exceptions.NoDuplicateScheduleNamesException;
+import exceptions.RequireScheduleNameException;
 import groupup.MysqlConn;
 import groupup.Schedule;
 import groupup.User;
@@ -357,16 +361,34 @@ public class CreateSchedule extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
     	if (evt.getSource() == saveButton)
         {
+    		try
+    		{
+    			if (scheduleNameTextField.getText().isEmpty())
+    				throw new RequireScheduleNameException();
+    			ArrayList<Schedule> allPersonalSchedules = new ArrayList<>();
+    			allPersonalSchedules.addAll(MysqlConn.getPersonalSchedules());
+    	        for (int i = 0; i < allPersonalSchedules.size(); i++)
+    	        {
+    	        	if (scheduleNameTextField.getText().equals(allPersonalSchedules.get(i).getScheduleName()))
+    	        		throw new NoDuplicateScheduleNamesException();
+    	        }
+    		}
+    		catch (RequireScheduleNameException | NoDuplicateScheduleNamesException e)
+    		{
+    			ErrorPopup.makePopup(e.getMessage());
+    			return;
+    		}
+    		
         	Schedule.focusSchedule = MysqlConn.initializePersonalSchedule(scheduleNameTextField.getText());
-        	//System.out.println(Schedule.focusSchedule.getScheduleID());
+        	
         	Integer[][] personalValues = new Integer[7][24];
             numOfTimesPressed++;
-            //System.out.println(numOfTimesPressed + " Time Pressed");
+            
             for (int i = 0; createYourScheduleJTable.getRowCount() > i; i++) {
                 for (int j = 1; createYourScheduleJTable.getColumnCount() > j; j++)
                 {
                     Boolean col = (Boolean) createYourScheduleJTable.getValueAt(i, j);
-                    //System.out.println("Row " + i + ":  Col " + j + ": " + col);
+                    
                     if (col)
                     	personalValues[j - 1][i] = 1;
                     else
@@ -376,7 +398,7 @@ public class CreateSchedule extends javax.swing.JFrame {
             }
             Schedule.focusSchedule.setDaysTimes(personalValues);
             MysqlConn.updatePersonalSchedule(Schedule.focusSchedule);
-            //System.out.println();
+            
             this.dispose();
             SampleMyPersonalSchedulePage.main(null);
        }

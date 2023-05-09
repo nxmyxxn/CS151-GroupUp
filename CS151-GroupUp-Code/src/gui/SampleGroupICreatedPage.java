@@ -471,7 +471,6 @@ public class SampleGroupICreatedPage extends javax.swing.JFrame {
     }                                                
 
     private void addUserButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
     	MysqlConn.inviteMemberSchedule(addUserTextField.getText(), addUserScheduleTextField.getText(), Schedule.focusSchedule);
     	ArrayList<Schedule> allCreatedGroups = new ArrayList<>();
     	allCreatedGroups.addAll(MysqlConn.findCreatedSchedules());

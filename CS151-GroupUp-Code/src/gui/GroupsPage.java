@@ -225,7 +225,6 @@ public class GroupsPage extends javax.swing.JFrame {
 
         groupsIDidNotCreateComboBox.setBackground(new java.awt.Color(159, 234, 234));
         groupsIDidNotCreateComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
-        //groupsIDidNotCreateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         groupsIDidNotCreateComboBox.setBorder(null);
         groupsIDidNotCreateComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         
@@ -233,12 +232,7 @@ public class GroupsPage extends javax.swing.JFrame {
         for (int i = 0; i < allJoinedGroups.size(); i++)
         {
         	groupsIDidNotCreateComboBox.addItem(allJoinedGroups.get(i).getScheduleName());
-        	//System.out.println(allPersonalSchedules.get(i).getScheduleID());
         }
-        
-        //groupsIDidNotCreateComboBox.addItem("mySchedule1");
-        //groupsIDidNotCreateComboBox.addItem("mySchedule2");
-        //groupsIDidNotCreateComboBox.addItem("mySchedule3");
         
         groupsIDidNotCreateComboBox.setRenderer(new TwoDecimalRenderer(groupsIDidNotCreateComboBox.getRenderer()));
         
@@ -267,19 +261,13 @@ public class GroupsPage extends javax.swing.JFrame {
 
         groupsICreatedComboBox.setBackground(new java.awt.Color(159, 234, 234));
         groupsICreatedComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
-        //groupsICreatedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         groupsICreatedComboBox.setBorder(null);
         groupsICreatedComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         allCreatedGroups.addAll(MysqlConn.findCreatedSchedules());
         for (int i = 0; i < allCreatedGroups.size(); i++)
         {
         	groupsICreatedComboBox.addItem(allCreatedGroups.get(i).getScheduleName());
-        	//System.out.println(allPersonalSchedules.get(i).getScheduleID());
         }
-        
-        //groupsICreatedComboBox.addItem("mySchedule1");
-        //groupsICreatedComboBox.addItem("mySchedule2");
-        //groupsICreatedComboBox.addItem("mySchedule3");
         
         groupsICreatedComboBox.setRenderer(new TwoDecimalRenderer(groupsICreatedComboBox.getRenderer()));
         

@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 import exceptions.UserAlreadyExistsException;
 import exceptions.UserIsAlreadyAMemberException;
+import exceptions.UserIsNotAMemberException;
 import exceptions.UserNotFoundException;
 import gui.ErrorPopup;
 
@@ -32,11 +33,8 @@ public class MysqlConn {
 	private static final String myPassword = "Screw_HW-4";			//programmers are prompted to create a password along with the 'root' username
 	private static final String database = "jdbc:mysql://localhost:3306/151projconnector";
 	private String allQuery = "select * from account";			//SQL code to retrieve all values from every column in table user
-	private static String userInsert = "insert into account values (";			//incomplete SQL code to insert a user's details into the table
 	private static String scheduleDelete = "delete from 7dayschedule where scheduleName = \'";
 	private static String scheduleInsert = "insert into personal_day (scheduleID, dayNum, 12am, 1am, 2am, 3am, 4am, 5am, 6am, 7am, 8am, 9am, 10am, 11am, 12pm, 1pm, 2pm, 3pm, 4pm, 5pm, 6pm, 7pm, 8pm, 9pm, 10pm, 11pm) values (";
-	private static String insertPersonalSchedule = "insert into 7dayschedule (creator, scheduleName, accessibility) values (";
-	
 	private static ArrayList<String> retrievedUsername = new ArrayList<>();
 	private static ArrayList<String> retrievedFN = new ArrayList<>();
 	private static ArrayList<String> retrievedLN = new ArrayList<>();
@@ -103,7 +101,7 @@ public class MysqlConn {
 	 */
 	public static void insertUserIntoDB(String user, String f, String l, String email, String pass) throws ClassNotFoundException, UserAlreadyExistsException
 	{
-		String tempUserInput = userInsert;
+		String tempUserInput = "insert into account values (";
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -249,30 +247,30 @@ public class MysqlConn {
 					names.add(rs.getString("scheduleName"));
 					tempID.add(rs.getInt("scheduleID")); 
 				}
-				for (int s = 0; s < tempID.size(); s++)
+			}
+			for (int s = 0; s < tempID.size(); s++)
+			{
+				Integer[][] result = new Integer[7][24];
+				for (int a = 0; a < 7; a++)
 				{
-					Integer[][] result = new Integer[7][24];
-					for (int a = 0; a < 7; a++)
+					for (int b = 0; b < 24; b++)
 					{
-						for (int b = 0; b < 24; b++)
-						{
-							result[a][b] = 0;
-						}
+						result[a][b] = 0;
 					}
-					for (int j = 1; j < 8; j++)
-					{	
-						rs = state.executeQuery("select * from group_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + j + "\'");
-						while (rs.next())
-						{
-							for (int counter = 0; counter < 24; counter++)
-							{
-								result[j - 1][counter] += rs.getInt(timeDefinitions[counter]);
-							}
-							
-						}
-					}
-					schedules.add(new Schedule(result, tempID.get(s), names.get(s), User.getInstance()));
 				}
+				for (int j = 1; j < 8; j++)
+				{	
+					rs = state.executeQuery("select * from group_day where scheduleID = \'" + tempID.get(s) + "\' and dayNum = \'" + j + "\'");
+					while (rs.next())
+					{
+						for (int counter = 0; counter < 24; counter++)
+						{
+							result[j - 1][counter] += rs.getInt(timeDefinitions[counter]);
+						}
+						
+					}
+				}
+				schedules.add(new Schedule(result, tempID.get(s), names.get(s), User.getInstance()));
 			}
 	
 			sqlConn.close();
@@ -424,7 +422,6 @@ public class MysqlConn {
 					counter ++;
 				}
 				scheduleInsert += schedule.getDayTimeValue(dayNum - 1, 23) + ")";
-				System.out.println(scheduleInsert);
 				state.execute(scheduleInsert);
 				dayNum ++;
 				
@@ -448,7 +445,7 @@ public class MysqlConn {
 	{
 		
 		Schedule initialized = new Schedule();
-		String tempInsertStatement = insertPersonalSchedule;
+		String tempInsertStatement = "insert into 7dayschedule (creator, scheduleName, accessibility) values (";
 		
 		try
 		{
@@ -511,7 +508,7 @@ public class MysqlConn {
 	{
 		
 		Schedule initialized = new Schedule();
-		String tempInsertStatement = insertPersonalSchedule;
+		String tempInsertStatement = "insert into 7dayschedule (creator, scheduleName, accessibility) values (";
 		
 		try
 		{
@@ -546,7 +543,7 @@ public class MysqlConn {
 	 * adds another user to a schedule group, as long as the parameters match a user and their personal schedule, and as long as they are not already a member
 	 * @param username the username of the user to be added
 	 * @param addedSchedule the name of the personal schedule to be added
-	 * @param schedule the schedule that the user is being aded to 
+	 * @param schedule the schedule that the user is being added to 
 	 */
 	public static void inviteMemberSchedule(String username, String addedSchedule, Schedule schedule)
 	{
@@ -573,13 +570,15 @@ public class MysqlConn {
 				ErrorPopup.makePopup(e.getMessage());
 				return;
 			}
-			state.execute("insert into account_schedule values(\'" + username + "\', \'" + schedule.getScheduleID() + "\')");
 			
 			rs = state.executeQuery("select scheduleID from 7dayschedule where creator = \'" + username + "\' and scheduleName = \'" + addedSchedule + "\' and accessibility = \'personal\'");
 			while (rs.next())
 				tempID = rs.getInt("scheduleID");
 			if (tempID == 0)
 				throw new UserNotFoundException();
+			
+			state.execute("insert into account_schedule values(\'" + username + "\', \'" + schedule.getScheduleID() + "\')");
+			
 			Integer[][] result = new Integer[7][24];
 			
 			for (int j = 1; j < 8; j++)
@@ -606,7 +605,6 @@ public class MysqlConn {
 					counter2 ++;
 				}
 				scheduleInsert += result[dayNum - 1][23] + ")";
-				System.out.println(scheduleInsert);
 				state.execute(scheduleInsert);
 				dayNum ++;
 				
@@ -621,6 +619,7 @@ public class MysqlConn {
 		catch (UserNotFoundException e)
 		{
 			ErrorPopup.makePopup(e.getMessage());
+			return;
 		}
 	}
 	
@@ -644,11 +643,9 @@ public class MysqlConn {
 				while (counter < 23)
 				{
 					scheduleInsert +="\'" +  schedule.getDayTimeValue(dayNum - 1, counter) + "\', ";
-					System.out.println(schedule.getDayTimeValue(dayNum - 1, counter));
 					counter ++;
 				}
 				scheduleInsert += schedule.getDayTimeValue(dayNum - 1, 23) + ")";
-				System.out.println(scheduleInsert);
 				state.execute(scheduleInsert);
 				dayNum ++;
 				
@@ -687,7 +684,7 @@ public class MysqlConn {
 				state.execute("delete from account_schedule where username = \'" + username + "\' and scheduleID = \'" + schedule.getScheduleID() + "\'");
 			}
 			else
-				throw new UserNotFoundException();
+				throw new UserIsNotAMemberException();
 			
 			sqlConn.close();
 		}
@@ -695,7 +692,7 @@ public class MysqlConn {
 		{
 			e.printStackTrace();
 		} 	
-		catch (UserNotFoundException e)
+		catch (UserIsNotAMemberException e)
 		{
 			ErrorPopup.makePopup(e.getMessage());
 		}

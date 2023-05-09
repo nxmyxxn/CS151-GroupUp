@@ -199,7 +199,6 @@ public class SchedulesPage extends javax.swing.JFrame {
 
         mySchedulesComboBox.setBackground(new java.awt.Color(159, 234, 234));
         mySchedulesComboBox.setFont(new java.awt.Font("Canela", 1, 24)); // NOI18N
-        //mySchedulesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         mySchedulesComboBox.setBorder(null);
         mySchedulesComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         
@@ -207,11 +206,7 @@ public class SchedulesPage extends javax.swing.JFrame {
         for (int i = 0; i < allPersonalSchedules.size(); i++)
         {
         	mySchedulesComboBox.addItem(allPersonalSchedules.get(i).getScheduleName());
-        	//System.out.println(allPersonalSchedules.get(i).getScheduleID());
         }
-        //mySchedulesComboBox.addItem("mySchedule1");
-        //mySchedulesComboBox.addItem("mySchedule2");
-        //mySchedulesComboBox.addItem("mySchedule3");
         
         mySchedulesComboBox.setRenderer(new TwoDecimalRenderer(mySchedulesComboBox.getRenderer()));
         

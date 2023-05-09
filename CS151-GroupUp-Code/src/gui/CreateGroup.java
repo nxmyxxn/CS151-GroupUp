@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+import exceptions.NoDuplicateScheduleNamesException;
+import exceptions.NoSuchScheduleExistsException;
 import exceptions.UserNotFoundException;
 import groupup.MysqlConn;
 import groupup.Schedule;
@@ -413,6 +415,29 @@ public class CreateGroup extends javax.swing.JFrame {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         if (evt.getSource() == doneButton) 
         {
+        	Boolean hasSchedule = false;
+        	ArrayList<Schedule> allPersonalSchedules = new ArrayList<>();
+        	allPersonalSchedules.addAll(MysqlConn.getPersonalSchedules());
+        	try
+        	{
+        		for (int i = 0; i < allPersonalSchedules.size(); i++)
+        		{
+        			if (addMyScheduleTextField.getText().equals(allPersonalSchedules.get(i).getScheduleName()))
+        			{
+        				hasSchedule = true;
+        			}
+        			if (groupNameTextField.getText().equals(allPersonalSchedules.get(i).getScheduleName()))
+        				throw new NoDuplicateScheduleNamesException();
+        		}
+        		if (!hasSchedule)
+        			throw new NoSuchScheduleExistsException();
+        	}
+        	catch (NoSuchScheduleExistsException | NoDuplicateScheduleNamesException e)
+        	{
+        		ErrorPopup.makePopup(e.getMessage());
+        		return;
+        	}
+            
         	Schedule.focusSchedule = MysqlConn.initializeGroupSchedule(groupNameTextField.getText());
         	
         	ArrayList<Schedule> allCreatedGroups = new ArrayList<>();
@@ -439,7 +464,6 @@ public class CreateGroup extends javax.swing.JFrame {
             }
         	SampleGroupICreatedPage.main(null);
         	this.dispose();
-        	//GroupsPage.main(null);
         }
     }                                          
 
