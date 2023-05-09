@@ -66,7 +66,7 @@ GroupSchedule
 
  
 - **Description of assumptions / operating environments / intended usage**
-  >  This application is intended for students and coworkers, where the operating environment to be used is a .jar file and a relational database management system / server that supports SQL code (For the purpose of this project, the RDBMS is simulated using MySQL Workbench. To run this program, it is assumed that the user has MySQL Workbench already downloaded). It is assumed that schedules on this website will only be shared with known or “friended” people; in other words, schedules will not be public.
+  >  This application is intended for students and coworkers, where the operating environment to be used is a .jar file and a relational database management system / server that supports SQL code (For the purpose of this project, the RDBMS is simulated using MySQL Workbench. To run this program, it is assumed that the user has MySQL Workbench already downloaded). It is assumed that schedules on this website will only be shared with familiar people; in other words, schedules will not be public.
 
 - **Diagrams**
   [Link to UML diagrams](https://github.com/nxmyxxn/CS151-GroupUp/blob/8f3f47d045004c48dd663e8f9beba15b6ea77914/updated%20diagrams/README.md)
