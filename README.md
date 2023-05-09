@@ -27,6 +27,8 @@ GroupSchedule
       - Enabled the code to create User and Schedule objects from user inputs and queried data to display in the UI and store in the database
       - Edited default GUI text fields and combo boxes to display queried information
       - Edited the base personal schedule display made by Preethi to dislay time inputs previously saved by a user
+      - Edited the base group display made by Preethi to dislay the sum of all time inputs from linked user schedules
+      - Edited the combo boxes made by Preethi to display appropriately selectable schedules and groups depending on what type of schedule the user wishes to access  
     - report
       - wrote the class diagram
       - updated the class diagram
